@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "packageManager": "pnpm@7.13.2",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --port 3333",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@wai-ri/core": "^0.0.84",
+    "@wai-ri/react": "^0.0.84",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
+    "usehooks-ts": "^2.7.2"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.8",
+    "@testing-library/react": "^13.4.0",
+    "@types/node": "^18.8.3",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@unocss/reset": "^0.45.29",
+    "@vitejs/plugin-react": "^2.1.0",
+    "@ziloen/eslint-config": "^0.0.65",
+    "@ziloen/eslint-config-format": "^0.0.65",
+    "eslint": "^8.25.0",
+    "jsdom": "^20.0.1",
+    "typescript": "^4.8.4",
+    "typescript-lib-enhancer": "^1.0.4",
+    "unocss": "^0.45.29",
+    "unplugin-auto-import": "^0.11.2",
+    "vite": "^3.1.6",
+    "vite-plugin-pages": "^0.26.0",
+    "vitest": "^0.24.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@ziloen",
+      "@ziloen/eslint-config-format"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
+  }
+}
