@@ -2,11 +2,11 @@
   "private": true,
   "packageManager": "pnpm@7.13.2",
   "scripts": {
-    "build": "vite build",
     "dev": "vite --port 3333",
+    "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview",
+    "build": "vite build",
     "test": "vitest"
   },
   "dependencies": {
