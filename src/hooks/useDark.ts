@@ -10,6 +10,6 @@ export default function useDark() {
 
   return {
     isDark,
-    toggleDark,
+    toggleDark
   }
 }
