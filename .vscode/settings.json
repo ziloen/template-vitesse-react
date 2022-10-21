@@ -1,16 +1,6 @@
 {
-  // "cSpell.words": [
-  //   "Vitesse"
-  // ],
   "prettier.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
+  }
 }
