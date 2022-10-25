@@ -32,8 +32,10 @@ export default defineConfig({
         'react-router-dom',
         { 'usehooks-ts': ['useCounter', 'useDarkMode'] }
       ],
-      dts: true
+      dts: './src/types/auto-imports.d.ts'
     })
+
+    // Auto import react component?
   ],
 
   css: {
