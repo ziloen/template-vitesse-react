@@ -28,9 +28,22 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
-        'react',
-        'react-router-dom',
-        { 'usehooks-ts': ['useCounter', 'useDarkMode'] }
+        {
+          react: [
+            'useState',
+            'useEffect',
+            'useMemo',
+            'useLayoutEffect',
+            'useCallback',
+            'useRef',
+            'forwardRef',
+            'useImperativeHandle',
+            'Suspense'
+          ]
+        },
+        { 'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'] },
+        { 'usehooks-ts': ['useCounter', 'useDarkMode'] },
+        { 'framer-motion': ['motion', 'AnimatePresence'] }
       ],
       dts: './src/types/auto-imports.d.ts'
     })
