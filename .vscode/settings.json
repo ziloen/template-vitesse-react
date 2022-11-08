@@ -1,10 +1,11 @@
 {
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-  },
-  // postcss support
-  // "files.associations": {
-  //   "*.css": "postcss"
-  // },
+  "editor.codeActionsOnSave": [
+    // only sort imports
+    "source.sortImports",
+    // remove unused imports & sort imports
+    // "source.organizeImports",
+    "source.fixAll.eslint",
+  ],
+  // add @apply to css atDirectives
+  "css.customData": ["./.vscode/css-data.json"],
 }
