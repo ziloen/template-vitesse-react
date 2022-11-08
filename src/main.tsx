@@ -5,6 +5,4 @@ import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import './styles/main.css'
 
-const container = document.querySelector('#root')
-const root = createRoot(container!)
-root.render(<App />)
+createRoot(document.querySelector('#root')!).render(<App />)
