@@ -32,7 +32,7 @@
     "@vitejs/plugin-react": "^2.2.0",
     "@ziloen/eslint-config": "^0.0.76",
     "@ziloen/eslint-config-format": "^0.0.76",
-    "eslint": "^8.27.0",
+    "eslint": "^8.28.0",
     "jsdom": "^20.0.2",
     "postcss": "^8.4.19",
     "postcss-preset-env": "^7.8.3",
