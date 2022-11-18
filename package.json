@@ -12,6 +12,7 @@
   "dependencies": {
     "@wai-ri/core": "^0.0.88",
     "@wai-ri/react": "^0.0.88",
+    "antd": "^5.0.0",
     "classnames": "^2.3.2",
     "framer-motion": "^7.6.7",
     "react": "^18.2.0",
