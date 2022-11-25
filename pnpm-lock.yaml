@@ -16,7 +16,7 @@ specifiers:
   antd: ^5.0.1
   classnames: ^2.3.2
   eslint: ^8.28.0
-  framer-motion: ^7.6.9
+  framer-motion: ^7.6.12
   jsdom: ^20.0.3
   postcss: ^8.4.19
   postcss-preset-env: ^7.8.3
@@ -39,7 +39,7 @@ dependencies:
   '@wai-ri/react': 0.0.88
   antd: 5.0.1_biqbaboplfbrettd7655fr4n2y
   classnames: 2.3.2
-  framer-motion: 7.6.9_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 7.6.12_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
@@ -2771,8 +2771,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/7.6.9_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-byPSPOqKApmVUvbtvmFCyL09dqBNLUwkXRQMeTsawtF6YpiB54yCVzk+9YXAnoswMSgsB7CQaA6ls7e8QL+C+g==}
+  /framer-motion/7.6.12_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Xm1jPB91v6vIr9b+V3q6c96sPzU1jWdvN+Mv4CvIAY23ZIezGNIWxWNGIWj1We0CZ8SSOQkttz8921M10TQjXg==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
