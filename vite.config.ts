@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
+import PostcssPresetEnv from 'postcss-preset-env'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
-import PostcssPresetEnv from 'postcss-preset-env'
 
 
 export default defineConfig({
@@ -53,7 +53,7 @@ export default defineConfig({
 
   css: {
     postcss: {
-      plugins: [PostcssPresetEnv({ stage: 2 })]
+      plugins: [PostcssPresetEnv({ stage: 0 })]
     }
   },
 
