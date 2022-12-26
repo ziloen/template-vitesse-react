@@ -1,4 +1,4 @@
-export default function useDark() {
+export function useDark() {
   const { isDarkMode: isDark, toggle: toggleDark } = useDarkMode()
 
   useEffect(() => {
