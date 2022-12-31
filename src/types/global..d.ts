@@ -1,7 +1,7 @@
 /**
  * declare global util types
  */
-export {}
+export { }
 declare global {
-  type Fn<Args extends any[] = any[], Return = any> = (...args: Args) => Return
+  type Fn<Args extends readonly unknown[] = any[], Return = any> = (...args: Args) => Return
 }
