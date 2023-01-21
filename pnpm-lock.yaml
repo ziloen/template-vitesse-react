@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@iconify-json/carbon': ^1.1.13
+  '@iconify-json/carbon': ^1.1.14
   '@testing-library/react': ^13.4.0
   '@types/node': ^18.11.18
   '@types/postcss-preset-env': ^7.7.0
@@ -47,7 +47,7 @@ dependencies:
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
-  '@iconify-json/carbon': 1.1.13
+  '@iconify-json/carbon': 1.1.14
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/node': 18.11.18
   '@types/postcss-preset-env': 7.7.0
@@ -612,8 +612,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/carbon/1.1.13:
-    resolution: {integrity: sha512-qPR7n3JkCqIrvjxnyUPIejhn0wrZJsLmija59U/zwFm5SMOITCfLx+Jp6VecnL0Sm76zRE5Kv54VzolQljB97A==}
+  /@iconify-json/carbon/1.1.14:
+    resolution: {integrity: sha512-Md5Vh3x2ALI5shFHlqZQBpEBk0coZf8bcFqzZBqf3bZuUTDg78y9vkwhQ+0PF1Q3wmZIfwkSJU9Pf6V228pXxw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
