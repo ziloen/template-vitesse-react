@@ -33,7 +33,7 @@
     "@ziloen/eslint-config": "^0.0.83",
     "@ziloen/eslint-config-format": "^0.0.83",
     "eslint": "^8.32.0",
-    "jsdom": "^21.0.0",
+    "jsdom": "^21.1.0",
     "postcss": "^8.4.21",
     "postcss-preset-env": "^7.8.3",
     "sass": "^1.57.1",
@@ -43,7 +43,7 @@
     "unplugin-auto-import": "^0.12.1",
     "vite": "^4.0.4",
     "vite-plugin-pages": "^0.28.0",
-    "vitest": "^0.27.2"
+    "vitest": "^0.27.3"
   },
   "eslintConfig": {
     "extends": [
