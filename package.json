@@ -31,7 +31,7 @@
     "@vitejs/plugin-react-swc": "^3.1.0",
     "@ziloen/eslint-config": "^0.0.83",
     "@ziloen/eslint-config-format": "^0.0.83",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "jsdom": "^21.1.0",
     "postcss": "^8.4.21",
     "postcss-preset-env": "^8.0.1",
