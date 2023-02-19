@@ -1,6 +1,6 @@
 /**
  * declare or fix module types
- * /// <reference type="" />
+ * /// <reference type="@types/xxx" />
  */
 
 import React from "react"
