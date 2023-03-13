@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Footer from './components/Footer'
 import routes from '~react-pages'
 
 export default function App() {
@@ -9,7 +8,7 @@ export default function App() {
       <Router>
         <Routes />
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   )
 }
