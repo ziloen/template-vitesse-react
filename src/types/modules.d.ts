@@ -3,7 +3,7 @@
  * /// <reference type="@types/xxx" />
  */
 
-namespace React {
+declare namespace React {
   // fix react forwardRef, https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
   function forwardRef<T, P = {}>(
     render: (props: P, ref: ForwardedRef<T>) => ReactElement | null
