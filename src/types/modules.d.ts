@@ -11,7 +11,7 @@ namespace React {
 
   // allow style to use css custom properties
   interface CSSProperties {
-    [CSSCutomProperties: `--${string}`]: string
+    [CSSCutomProperties: `--${string}`]: string | number | undefined
   }
 
 }
