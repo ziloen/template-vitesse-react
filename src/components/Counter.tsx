@@ -1,15 +1,22 @@
-export default function Counter({ initial }: { initial: number }) {
-  const { count, increment, decrement } = useCounter(initial ?? 0)
+import { withMobxStore } from '~/stores'
+import { counterStore } from '~/stores/counter'
 
-  return (
+
+export const Counter = withMobxStore({ counterStore })(({ counterStore }) =>
+  <div>
     <div>
-      {count}
-      <button className="inc" onClick={() => increment()}>
-      +
-      </button>
-      <button className="dec" onClick={() => decrement()}>
-      -
-      </button>
+      <span>count: </span>
+      {counterStore.count}
     </div>
-  )
-}
+    <div>
+      <span>double: </span>
+      {counterStore.double}
+    </div>
+    <button className="btn" onClick={() => counterStore.increment()}>
+      +
+    </button>
+    <button className="btn" onClick={() => counterStore.decrement()}>
+      -
+    </button>
+  </div>
+)

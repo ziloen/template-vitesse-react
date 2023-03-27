@@ -45,7 +45,7 @@ export default defineConfig({
         { 'usehooks-ts': ['useCounter', 'useDarkMode'] },
         { 'framer-motion': ['motion', 'AnimatePresence'] }
       ],
-      dts: './src/types/auto-imports.d.ts'
+      dts: 'src/types/auto-imports.d.ts'
     })
 
     // Auto import react component?

@@ -1,3 +1,4 @@
+import { Counter } from '~/components/Counter'
 
 
 export default function Index() {
@@ -22,6 +23,8 @@ export default function Index() {
       </p>
 
       <div className="py-4" />
+
+      <Counter />
 
       <input
         ref={name}
