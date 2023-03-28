@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 
 class Counter {
   constructor() {
@@ -12,11 +12,15 @@ class Counter {
   }
 
   increment(step = 1) {
-    this.count += step
+    runInAction(() => {
+      this.count += step
+    })
   }
 
   decrement(step = 1) {
-    this.count -= step
+    runInAction(() => {
+      this.count -= step
+    })
   }
 }
 

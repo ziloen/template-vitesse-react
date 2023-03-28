@@ -10,11 +10,11 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@wai-ri/core": "^0.0.96",
-    "@wai-ri/react": "^0.0.96",
-    "antd": "^5.3.2",
+    "@wai-ri/core": "^0.0.97",
+    "@wai-ri/react": "^0.0.97",
+    "antd": "^5.3.3",
     "classnames": "^2.3.2",
-    "framer-motion": "^10.9.1",
+    "framer-motion": "^10.9.2",
     "mobx": "^6.9.0",
     "mobx-react": "^8.0.0",
     "react": "^18.2.0",
@@ -27,7 +27,7 @@
     "@iconify-json/carbon": "^1.1.16",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^18.15.10",
-    "@types/react": "^18.0.29",
+    "@types/react": "^18.0.30",
     "@types/react-dom": "^18.0.11",
     "@unocss/reset": "^0.50.6",
     "@vitejs/plugin-react-swc": "^3.2.0",
@@ -36,7 +36,7 @@
     "eslint": "^8.36.0",
     "jsdom": "^21.1.1",
     "postcss": "^8.4.21",
-    "postcss-preset-env": "^8.1.0",
+    "postcss-preset-env": "^8.2.0",
     "sass": "^1.60.0",
     "typescript": "^5.0.2",
     "typescript-lib-enhancer": "^1.0.7",
@@ -44,7 +44,7 @@
     "unplugin-auto-import": "^0.15.2",
     "vite": "^4.2.1",
     "vite-plugin-pages": "^0.29.0",
-    "vitest": "^0.29.7"
+    "vitest": "^0.29.8"
   },
   "eslintConfig": {
     "extends": [
