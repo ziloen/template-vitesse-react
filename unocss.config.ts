@@ -29,6 +29,7 @@ export default defineConfig({
     })
   ],
   transformers: [
+    // support @apply
     transformerDirectives()
     // transformerVariantGroup(),
   ]
