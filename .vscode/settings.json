@@ -7,5 +7,9 @@
     "source.fixAll.eslint",
   ],
   // add @apply to css atDirectives
-  "css.customData": ["./.vscode/css-data.json"],
+  "css.customData": [
+    "./.vscode/css-data.json"
+  ],
+  // due to this issue https://github.com/microsoft/vscode/issues/179355, we need to set this to top
+  "editor.snippetSuggestions": "top"
 }
