@@ -11,7 +11,7 @@
   "dependencies": {
     "@wai-ri/core": "^0.0.97",
     "@wai-ri/react": "^0.0.97",
-    "antd": "^5.4.3",
+    "antd": "^5.4.4",
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.4",
     "mobx": "^6.9.0",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.16",
     "@testing-library/react": "^14.0.0",
-    "@types/node": "^18.15.12",
+    "@types/node": "^18.15.13",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@unocss/reset": "^0.51.5",
@@ -41,7 +41,7 @@
     "typescript-lib-enhancer": "^1.0.8",
     "unocss": "^0.51.5",
     "unplugin-auto-import": "^0.15.3",
-    "vite": "^4.3.0",
+    "vite": "^4.3.1",
     "vite-plugin-pages": "^0.29.0",
     "vitest": "^0.30.1"
   },
