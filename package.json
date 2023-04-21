@@ -50,6 +50,9 @@
       "@ziloen",
       "@ziloen/eslint-config-format"
     ],
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "project": "./tsconfig.json"
     },
