@@ -1,8 +1,8 @@
-import { withMobxStore } from '~/stores'
+import { observer } from 'mobx-react'
 import { counterStore } from '~/stores/counter'
 
 
-export const Counter = withMobxStore({ counterStore })(({ counterStore }) =>
+export const Counter = observer(() =>
   <div>
     <div>
       <span>count: </span>
