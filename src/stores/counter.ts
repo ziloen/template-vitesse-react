@@ -12,15 +12,11 @@ class Counter {
   }
 
   increment(step = 1) {
-    runInAction(() => {
-      this.count += step
-    })
+    this.count += step
   }
 
   decrement(step = 1) {
-    runInAction(() => {
-      this.count -= step
-    })
+    this.count -= step
   }
 }
 
