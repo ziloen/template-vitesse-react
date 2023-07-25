@@ -3,6 +3,7 @@ import { Counter } from '~/components/Counter'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
+  const { t } = useTranslation()
 
   const navigate = useNavigate()
   function go() {
@@ -29,7 +30,7 @@ export default function Index() {
       <input
         ref={name}
         id="input"
-        placeholder="What's your name?"
+        placeholder={t('placeholder')}
         type="text"
         className="px-4 py-2 w-250px text-center bg-transparent outline-none outline-active:none border border-rounded border-gray-200 border-dark:gray-700"
         onKeyDown={({ key }) => key === 'Enter' && go()}
