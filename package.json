@@ -11,7 +11,7 @@
   "dependencies": {
     "@wai-ri/core": "^0.0.99",
     "@wai-ri/react": "^0.0.99",
-    "antd": "^5.8.0",
+    "antd": "^5.8.1",
     "clsx": "^2.0.0",
     "framer-motion": "^10.15.0",
     "i18next": "^23.4.1",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",
     "@testing-library/react": "^14.0.0",
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.4.7",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "@unocss/reset": "^0.54.1",

@@ -1,0 +1,8 @@
+{
+  "css": {
+    "snippets": {
+      "@media": "@media (700px <= width <= 1400px) {\n\t${0}\n}",
+      "@container": "@container (700px <= width <= 1400px) {\n\t${0}\n}"
+    }
+  }
+}

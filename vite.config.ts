@@ -44,7 +44,8 @@ export default defineConfig({
         { 'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'] },
         { 'usehooks-ts': ['useCounter', 'useDarkMode'] },
         { 'framer-motion': ['motion', 'AnimatePresence'] },
-        { 'react-i18next': ['useTranslation'] }
+        { 'react-i18next': ['useTranslation'] },
+        { clsx: ['clsx'] }
       ],
       dts: 'src/types/auto-imports.d.ts'
     })

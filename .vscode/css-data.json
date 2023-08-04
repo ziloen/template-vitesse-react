@@ -1,9 +1,26 @@
 {
-  "version": 1.0,
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/master/docs/customData.schema.json",
+  "version": 1.1,
   "atDirectives": [
     {
       "name": "@apply",
-      "description": "@apply tailwindcss classes"
+      "description": "@apply tailwindcss classes",
+      "references": [
+        {
+          "name": "tailwind doc",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#apply"
+        }
+      ]
+    },
+    {
+      "name": "@container",
+      "description": "Container query",
+      "references": [
+        {
+          "name": "MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@container"
+        }
+      ]
     }
   ]
 }
