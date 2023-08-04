@@ -12,7 +12,7 @@
     "@wai-ri/core": "^0.0.99",
     "@wai-ri/react": "^0.0.99",
     "antd": "^5.8.0",
-    "classnames": "^2.3.2",
+    "clsx": "^2.0.0",
     "framer-motion": "^10.15.0",
     "i18next": "^23.4.1",
     "mobx": "^6.10.0",
