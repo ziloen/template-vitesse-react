@@ -11,8 +11,6 @@ declare global {
   const forwardRef: typeof import('react')['forwardRef']
   const motion: typeof import('framer-motion')['motion']
   const useCallback: typeof import('react')['useCallback']
-  const useCounter: typeof import('usehooks-ts')['useCounter']
-  const useDarkMode: typeof import('usehooks-ts')['useDarkMode']
   const useEffect: typeof import('react')['useEffect']
   const useImperativeHandle: typeof import('react')['useImperativeHandle']
   const useLayoutEffect: typeof import('react')['useLayoutEffect']

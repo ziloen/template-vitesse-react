@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc'
-import path from 'node:path'
+import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -11,7 +11,7 @@ import Pages from 'vite-plugin-pages'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`
+      '~': r('src')
     }
   },
 
@@ -39,13 +39,12 @@ export default defineConfig({
             'forwardRef',
             'useImperativeHandle',
             'Suspense'
-          ]
+          ],
+          'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
+          'framer-motion': ['motion', 'AnimatePresence'],
+          'react-i18next': ['useTranslation'],
+          clsx: ['clsx']
         },
-        { 'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'] },
-        { 'usehooks-ts': ['useCounter', 'useDarkMode'] },
-        { 'framer-motion': ['motion', 'AnimatePresence'] },
-        { 'react-i18next': ['useTranslation'] },
-        { clsx: ['clsx'] }
       ],
       dts: 'src/types/auto-imports.d.ts'
     })

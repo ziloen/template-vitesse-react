@@ -9,6 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@vue/reactivity": "^3.3.4",
     "@wai-ri/core": "^0.0.99",
     "@wai-ri/react": "^0.0.99",
     "antd": "^5.8.3",
@@ -21,8 +22,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.1.2",
     "react-router-dom": "^6.15.0",
-    "ulid": "^2.3.0",
-    "usehooks-ts": "^2.9.1"
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.19",
@@ -53,7 +53,8 @@
       "@ziloen/eslint-config-format"
     ],
     "rules": {
-      "no-console": "off"
+      "no-console": "off",
+      "vue/prefer-import-from-vue": "off"
     },
     "parserOptions": {
       "project": "./tsconfig.json"

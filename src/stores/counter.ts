@@ -1,24 +1,22 @@
-import { makeAutoObservable, runInAction } from 'mobx'
+import { computed, ref } from '@vue/reactivity'
+import { defineStore } from '.'
 
-class Counter {
-  constructor() {
-    makeAutoObservable(this)
+export const useCounterStore = defineStore(() => {
+  const count = ref(0)
+  const double = computed(() => count.value * 2)
+
+  function increment(step = 1) {
+    count.value += step
   }
 
-  count = 0
-
-  get double() {
-    return this.count * 2
+  function decrement(step = 1) {
+    count.value -= step
   }
 
-  increment(step = 1) {
-    this.count += step
+  return {
+    count,
+    double,
+    increment,
+    decrement
   }
-
-  decrement(step = 1) {
-    this.count -= step
-  }
-}
-
-
-export const counterStore = new Counter
+})
