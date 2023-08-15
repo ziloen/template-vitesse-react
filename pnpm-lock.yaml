@@ -21,8 +21,8 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.0
   framer-motion:
-    specifier: ^10.15.1
-    version: 10.15.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^10.15.2
+    version: 10.15.2(react-dom@18.2.0)(react@18.2.0)
   i18next:
     specifier: ^23.4.4
     version: 23.4.4
@@ -95,8 +95,8 @@ devDependencies:
     specifier: ^5.1.6
     version: 5.1.6
   typescript-lib-enhancer:
-    specifier: ^1.0.10
-    version: 1.0.10
+    specifier: ^1.0.12
+    version: 1.0.12
   unocss:
     specifier: ^0.55.0
     version: 0.55.0(postcss@8.4.27)(vite@4.4.9)
@@ -3249,8 +3249,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion@10.15.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-6avJj/Uftblw0fMmo6jDHkKRH4TBdkMX/FiyR3G/hFe3hQHE4BUNJCqlMPKg9EzfI5jyqDOwO5oDnU+bW5y0eg==}
+  /framer-motion@10.15.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-z14GYH4WQXnuTgggwf0qyX0vo98PDE+dw21F7aLzUqEcrsmfLovy4jPiA82Cp/X0juWuEHte7rJGOjds9GAQFA==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -6010,10 +6010,11 @@ packages:
     resolution: {integrity: sha512-qBs4sfmnLlPOyo2oSdvHbIFHe2CPgU54/1UGfSNceb7LARpIEVxUaeRX0Doje6oKpuySS2stqy90R3YrynR8Kg==}
     dev: true
 
-  /typescript-lib-enhancer@1.0.10:
-    resolution: {integrity: sha512-6zSyxP0AWkNYs+jQTdeBIdSrUdh7QQl0lAqAnzWHE9Y4HpyhEZ3YIGBv7F9KCLvEHV9w7MAZgpzg/oWdO1hxKQ==}
+  /typescript-lib-enhancer@1.0.12:
+    resolution: {integrity: sha512-zzTZZm/wbJsZ46gqG7yR1/TXIOKiVud6kRR6AYli6DbtlET1xbzcko1NPD8Nfa4AxEg4K3tqXQ3N6Ft2xZ3nXA==}
     dependencies:
       bumpp: 9.1.1
+      type-fest: 4.2.0
       typed-query-selector: 2.11.0
       typescript: 5.1.6
     transitivePeerDependencies:
