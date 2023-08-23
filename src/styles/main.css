@@ -7,5 +7,10 @@ body,
 }
 
 html.dark {
-  background: black;
+  background: #121212;
+  color: white;
+}
+
+body {
+  @apply font-sans;
 }
