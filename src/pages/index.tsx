@@ -1,9 +1,10 @@
 import { Counter } from '~/components/Counter'
+import { useI18n } from '~/hooks'
 
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
-  const { t } = useTranslation()
+  const { t } = useI18n()
 
   const navigate = useNavigate()
   function go() {
