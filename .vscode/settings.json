@@ -1,4 +1,10 @@
 {
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
   // add @apply & @container to css atDirectives
   "css.customData": [
     ".vscode/css-data.json"
@@ -15,5 +21,6 @@
   // add @container & @media snippet
   "emmet.extensionsPath": [
     ".vscode/emmet"
-  ]
+  ],
+  "eslint.format.enable": true
 }
