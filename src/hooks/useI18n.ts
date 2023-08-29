@@ -29,15 +29,15 @@ export function useI18n(
       function CustomTFn(key: string): string
       function CustomTFn(
         key: string,
-        data: Record< string, ((content: string) => ReactNode) | ReactNode>
-      ): string
+        data: Record<string, ((content: string) => ReactNode) | ReactNode>
+      ): ReactNode
       function CustomTFn(
         key: string,
-        data?: Record< string, ((content: string) => ReactNode) | ReactNode >
+        data?: Record<string, ((content: string) => ReactNode) | ReactNode>
       ) {
         if (!data) return t(key)
 
-        const fnData = new Map<string, ((content: string) => ReactNode)>()
+        const fnData = new Map<string, (content: string) => ReactNode>()
         const elementData = new Map<string, ReactElement>()
         const originalData = Object.create(null) as Record<string, unknown>
 
@@ -54,36 +54,36 @@ export function useI18n(
         if (fnData.size === 0 && elementData.size === 0) return t(key, originalData)
 
         // original translation result
-        const tResult = t(key, originalData)
+        const text = t(key, originalData)
 
         // match <tag>content</tag> or {{variable}}
         const regex = /<(\w+)>(.*?)<\/\1>|{{(\w+)}}/g
         let match
-        const customResult = [] as ReactNode[]
+        const result = [] as ReactNode[]
         let lastIndex = 0
 
         // match all interpolation
-        while ((match = regex.exec(tResult)) !== null) {
-          const [fullMatch, tag, content, variable] = match
-          const before = tResult.slice(lastIndex, match.index)
+        while ((match = regex.exec(text)) !== null) {
+          const [full, tag, content, variable] = match
+          const before = text.slice(lastIndex, match.index)
           lastIndex = regex.lastIndex
 
           // push before content
-          if (before) customResult.push(before)
+          if (before) result.push(before)
 
           if (tag) {
             // match <tag>content</tag>
             const fn = fnData.get(tag)
 
             if (fn) {
-              customResult.push(fn(content))
+              result.push(fn(content))
             } else {
               const element = elementData.get(tag)
 
               if (element) {
-                customResult.push(cloneElement(element, { children: content }))
+                result.push(cloneElement(element, { children: content }))
               } else {
-                customResult.push(content)
+                result.push(content)
               }
             }
           } else if (variable) {
@@ -91,15 +91,15 @@ export function useI18n(
             const element = elementData.get(variable)
 
             if (element) {
-              customResult.push(element)
+              result.push(element)
             } else {
-              customResult.push(fullMatch)
+              result.push(full)
             }
           }
         }
 
         // combine all result
-        return createElement(Fragment, null, ...customResult)
+        return createElement(Fragment, null, ...result)
       }
 
       return CustomTFn
