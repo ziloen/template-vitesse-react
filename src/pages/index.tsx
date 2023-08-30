@@ -46,6 +46,13 @@ export default function Index() {
           Go
         </button>
       </div>
+
+      <div>
+        {t('useI18nTest', {
+          link: <a className='text-blue' />,
+          name: <span className='text-green'>Dynamic Content</span>
+        })}
+      </div>
     </div>
   )
 }

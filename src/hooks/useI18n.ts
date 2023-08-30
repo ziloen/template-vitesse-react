@@ -98,6 +98,10 @@ export function useI18n(
           }
         }
 
+        // push last content
+        const last = text.slice(lastIndex)
+        if (last) result.push(last)
+
         // combine all result
         return createElement(Fragment, null, ...result)
       }
