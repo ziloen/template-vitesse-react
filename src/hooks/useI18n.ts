@@ -27,10 +27,11 @@ export function useI18n(
   return {
     t: useMemo(() => {
       function CustomTFn(key: string): string
+      function CustomTFn(key: string, data: Record<string, string>): string
       function CustomTFn(
         key: string,
         data: Record<string, ((content: string) => ReactNode) | ReactNode>
-      ): ReactNode | string
+      ): ReactNode
       function CustomTFn(
         key: string,
         data?: Record<string, ((content: string) => ReactNode) | ReactNode>
