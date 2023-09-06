@@ -30,7 +30,7 @@ export function useI18n(
       function CustomTFn(
         key: string,
         data: Record<string, ((content: string) => ReactNode) | ReactNode>
-      ): ReactNode
+      ): ReactNode | string
       function CustomTFn(
         key: string,
         data?: Record<string, ((content: string) => ReactNode) | ReactNode>
