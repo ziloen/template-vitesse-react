@@ -37,8 +37,11 @@ export function useI18n(
       ) {
         if (!data) return t(key)
 
+        // name: text => <span>{text}</span>
         const fnData = new Map<string, (content: string) => ReactNode>()
+        // name: <span className="text-red" />
         const elementData = new Map<string, ReactElement>()
+        // name: 'text'
         const originalData = Object.create(null) as Record<string, unknown>
 
         for (const [key, val] of Object.entries(data)) {
@@ -102,7 +105,7 @@ export function useI18n(
         const last = text.slice(lastIndex)
         if (last) result.push(last)
 
-        // combine all result
+        // combine all results
         return createElement(Fragment, null, ...result)
       }
 
