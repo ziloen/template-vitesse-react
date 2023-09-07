@@ -4,8 +4,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 export * from '@vue/reactivity'
 import { ReactiveEffect, Ref, UnwrapRef, computed, ref } from '@vue/reactivity'
-import { nanoid } from 'nanoid'
 import { memo } from 'react'
+import { ulid } from 'ulid'
 
 const storeMap = new Map<string, any>()
 
@@ -50,7 +50,7 @@ const ReactForwardRefSymbol = Symbol.for('react.forward_ref')
  * @returns useStore function to get store
  */
 export function defineStore<SS>(setup: () => SS) {
-  const id = nanoid()
+  const id = ulid()
 
   function useStore() {
     if (storeMap.has(id)) {
