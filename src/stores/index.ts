@@ -53,13 +53,14 @@ export function defineStore<SS>(setup: () => SS) {
   const id = ulid()
 
   return function useStore() {
-    if (storeMap.has(id)) {
-      return (storeMap.get(id) as Ref<SS>).value as UnwrapRef<SS>
-    } else {
-      const store = ref(setup())
+    let store = storeMap.get(id) as Ref<UnwrapRef<SS>> | undefined
+
+    if (!store) {
+      store = ref(setup())
       storeMap.set(id, store)
-      return store.value as UnwrapRef<SS>
     }
+
+    return store.value as UnwrapRef<SS>
   }
 }
 

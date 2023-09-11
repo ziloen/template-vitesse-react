@@ -1,5 +1,10 @@
-import { observable } from 'mobx'
+import { configure, observable } from 'mobx'
 import { ulid } from 'ulid'
+
+configure({
+  enforceActions: 'never',
+  useProxies: 'always',
+})
 
 const storeMap = new Map<string, any>()
 
@@ -8,13 +13,14 @@ function defineStore<SS>(setup: () => SS) {
   const id = ulid()
 
   return function useStore() {
-    if (storeMap.has(id)) {
-      return storeMap.get(id) as SS
-    } else {
-      const store = setup()
+    let store = storeMap.get(id) as SS | undefined
+
+    if (!store) {
+      store = setup()
       storeMap.set(id, store)
-      return store
     }
+
+    return store
   }
 }
 
