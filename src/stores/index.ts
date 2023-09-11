@@ -52,7 +52,7 @@ const ReactForwardRefSymbol = Symbol.for('react.forward_ref')
 export function defineStore<SS>(setup: () => SS) {
   const id = ulid()
 
-  function useStore() {
+  return function useStore() {
     if (storeMap.has(id)) {
       return (storeMap.get(id) as Ref<SS>).value as UnwrapRef<SS>
     } else {
@@ -61,8 +61,6 @@ export function defineStore<SS>(setup: () => SS) {
       return store.value as UnwrapRef<SS>
     }
   }
-
-  return useStore
 }
 
 
