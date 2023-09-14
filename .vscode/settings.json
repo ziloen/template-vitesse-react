@@ -9,7 +9,6 @@
   "css.customData": [
     ".vscode/css-data.json"
   ],
-  "dprint.path": "node_modules\\dprint\\dprint.exe",
   "editor.codeActionsOnSave": [
     // only sort imports
     "source.sortImports",
