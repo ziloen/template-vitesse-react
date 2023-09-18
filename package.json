@@ -11,9 +11,9 @@
   "dependencies": {
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vue/reactivity": "^3.3.4",
-    "@wai-ri/core": "^0.0.100",
-    "@wai-ri/react": "^0.0.100",
-    "antd": "^5.9.0",
+    "@wai-ri/core": "^0.0.101",
+    "@wai-ri/react": "^0.0.101",
+    "antd": "^5.9.1",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.4",
     "i18next": "^23.5.1",
@@ -43,6 +43,7 @@
     "type-fest": "^4.3.1",
     "typescript": "^5.2.2",
     "typescript-lib-enhancer": "^1.0.12",
+    "typescript-plugin-css-modules": "^5.0.1",
     "unocss": "^0.55.7",
     "unplugin-auto-import": "^0.16.6",
     "vite": "^4.4.9",
@@ -54,10 +55,6 @@
       "@ziloen/eslint-config-react",
       "@ziloen/eslint-config-format"
     ],
-    "rules": {
-      "no-console": "off",
-      "vue/prefer-import-from-vue": "off"
-    },
     "parserOptions": {
       "project": "./tsconfig.json"
     },

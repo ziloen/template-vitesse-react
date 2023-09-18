@@ -14,7 +14,7 @@
     "source.sortImports",
     // remove unused imports & sort imports
     // "source.organizeImports",
-    "source.fixAll.eslint",
+    // "source.fixAll.eslint",
   ],
   // due to this issue https://github.com/microsoft/vscode/issues/179355, we need to set this to top
   "editor.snippetSuggestions": "top",
@@ -22,5 +22,6 @@
   "emmet.extensionsPath": [
     ".vscode/emmet"
   ],
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
