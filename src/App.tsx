@@ -37,11 +37,9 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18next}>
-      <main className="font-sans px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-        <Router>
-          <Routes />
-        </Router>
-      </main>
+      <Router>
+        <Routes />
+      </Router>
     </I18nextProvider>
   )
 }
