@@ -116,6 +116,7 @@ export default defineConfig(({ command, mode }) => {
     ],
 
     css: {
+      devSourcemap: true,
       postcss: {
         plugins: [PostcssPresetEnv({ stage: 0 })]
       }
