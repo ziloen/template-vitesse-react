@@ -23,5 +23,7 @@
     ".vscode/emmet"
   ],
   "eslint.format.enable": true,
+  // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
+  // ts css module plugin support
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }

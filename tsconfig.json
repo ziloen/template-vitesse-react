@@ -43,6 +43,7 @@
       ],
     },
     "plugins": [
+      // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
       {
         "name": "typescript-plugin-css-modules"
       }
