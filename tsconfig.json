@@ -30,9 +30,9 @@
     "types": [
       "vite/client",
       "vite-plugin-pages/client-react",
-      "typescript-lib-enhancer",
-      "typescript-lib-enhancer/highlight",
-      "typescript-lib-enhancer/view-transition",
+      "ts-lib-enhance",
+      "ts-lib-enhance/highlight",
+      "ts-lib-enhance/view-transition",
     ],
     "paths": {
       "~/*": [

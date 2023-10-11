@@ -8,6 +8,7 @@ declare global {
   const AnimatePresence: typeof import('framer-motion')['AnimatePresence']
   const Suspense: typeof import('react')['Suspense']
   const clsx: typeof import('clsx')['clsx']
+  const createPortal: typeof import('react-dom')['createPortal']
   const forwardRef: typeof import('react')['forwardRef']
   const motion: typeof import('framer-motion')['motion']
   const useCallback: typeof import('react')['useCallback']

@@ -54,6 +54,7 @@ export default defineConfig(({ command, mode }) => {
               'useImperativeHandle',
               'Suspense'
             ],
+            'react-dom': ['createPortal'],
             'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
             'framer-motion': ['motion', 'AnimatePresence'],
             'react-i18next': ['useTranslation'],
