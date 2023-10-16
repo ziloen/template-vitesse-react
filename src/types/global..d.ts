@@ -1,12 +1,6 @@
-/**
- * declare global util types
- */
+/* eslint-disable no-var */
+declare const IS_PROD: boolean
+declare const IS_DEV: boolean
+declare const IS_BUILD: boolean
 
-
-declare global {
-  const IS_PROD: boolean
-  const IS_DEV: boolean
-  const IS_BUILD: boolean
-}
-
-export { }
+declare var __REACT_DEVTOOLS_GLOBAL_HOOK__: boolean
