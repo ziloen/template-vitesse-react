@@ -1,4 +1,5 @@
-// TODO: 参考 https://github.com/LegendApp/legend-state
+// 参考 https://github.com/LegendApp/legend-state
+// https://github.com/preactjs/signals/tree/main/packages/react
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */

@@ -85,7 +85,7 @@ export function useI18n(
               const element = elementData.get(tag)
 
               if (element) {
-                result.push(cloneElement(element, { children: content }))
+                result.push(cloneElement(element, undefined, content))
               } else {
                 result.push(content)
               }
