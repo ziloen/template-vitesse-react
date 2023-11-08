@@ -36,8 +36,8 @@ dependencies:
     specifier: ^6.10.2
     version: 6.10.2
   mobx-react:
-    specifier: ^9.0.1
-    version: 9.0.1(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^9.0.2
+    version: 9.0.2(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -65,11 +65,11 @@ devDependencies:
     specifier: ^14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
   '@types/react':
-    specifier: ^18.2.36
-    version: 18.2.36
+    specifier: ^18.2.37
+    version: 18.2.37
   '@types/react-dom':
-    specifier: ^18.2.14
-    version: 18.2.14
+    specifier: ^18.2.15
+    version: 18.2.15
   '@unocss/reset':
     specifier: ^0.57.2
     version: 0.57.2
@@ -2858,7 +2858,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.13
       '@testing-library/dom': 9.0.0
-      '@types/react-dom': 18.2.14
+      '@types/react-dom': 18.2.15
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -2936,27 +2936,27 @@ packages:
       postcss: 8.4.31
     dev: true
 
-  /@types/prop-types@15.7.9:
-    resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
+  /@types/prop-types@15.7.10:
+    resolution: {integrity: sha512-mxSnDQxPqsZxmeShFH+uwQ4kO4gcJcGahjjMFeLbKE95IAZiiZyiEepGZjtXJ7hN/yfu0bu9xN2ajcU0JcxX6A==}
 
-  /@types/react-dom@18.2.14:
-    resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
+  /@types/react-dom@18.2.15:
+    resolution: {integrity: sha512-HWMdW+7r7MR5+PZqJF6YFNSCtjz1T0dsvo/f1BV6HkV+6erD/nA7wd9NM00KVG83zf2nJ7uATPO9ttdIPvi3gg==}
     dependencies:
-      '@types/react': 18.2.36
+      '@types/react': 18.2.37
 
-  /@types/react@18.2.36:
-    resolution: {integrity: sha512-o9XFsHYLLZ4+sb9CWUYwHqFVoG61SesydF353vFMMsQziiyRu8np4n2OYMUSDZ8XuImxDr9c5tR7gidlH29Vnw==}
+  /@types/react@18.2.37:
+    resolution: {integrity: sha512-RGAYMi2bhRgEXT3f4B92WTohopH6bIXw05FuGlmJEnv/omEn190+QYEIYxIAuIBdKgboYYdVved2p1AxZVQnaw==}
     dependencies:
-      '@types/prop-types': 15.7.9
-      '@types/scheduler': 0.16.5
+      '@types/prop-types': 15.7.10
+      '@types/scheduler': 0.16.6
       csstype: 3.1.2
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: true
 
-  /@types/scheduler@0.16.5:
-    resolution: {integrity: sha512-s/FPdYRmZR8SjLWGMCuax7r3qCWQw9QKHzXVukAuuIJkXkDRwp+Pu5LMIVFi0Fxbav35WURicYr8u1QsoybnQw==}
+  /@types/scheduler@0.16.6:
+    resolution: {integrity: sha512-Vlktnchmkylvc9SnwwwozTv04L/e1NykF5vgoQ0XTmI8DD+wxfjQuHuvHS3p0r2jz2x2ghPs2h1FVeDirIteWA==}
 
   /@types/semver@7.5.4:
     resolution: {integrity: sha512-MMzuxN3GdFwskAnb6fz0orFvhfqi752yjaXylr0Rp4oDg5H0Zn1IuyRhDVvYOwAXoJirx2xuS16I3WjxnAIHiQ==}
@@ -3416,8 +3416,8 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@types/react': 18.2.36
-      '@types/react-dom': 18.2.14
+      '@types/react': 18.2.37
+      '@types/react-dom': 18.2.15
       '@wai-ri/shared': 0.0.101
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -6065,8 +6065,8 @@ packages:
       ufo: 1.3.1
     dev: true
 
-  /mobx-react-lite@4.0.4(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-68uNYvQC/5Dazs3sIBv+bnpzRwcWde8y4ujHiLizhq8yeQtJ2tlNUGSh4r40gyE5M0utACIofBDsAj2hplcovQ==}
+  /mobx-react-lite@4.0.5(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-StfB2wxE8imKj1f6T8WWPf4lVMx3cYH9Iy60bbKXEs21+HQ4tvvfIBZfSmMXgQAefi8xYEwQIz4GN9s0d2h7dg==}
     peerDependencies:
       mobx: ^6.9.0
       react: ^16.8.0 || ^17 || ^18
@@ -6084,8 +6084,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /mobx-react@9.0.1(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-0idiElBgNMJg20YqGgHvYEnlqIJpPDQaOkxj2dHJIZeqCvUh+zBkBkMkpUFw/uEd1OdPUvT0y+AFBqsWIUAXww==}
+  /mobx-react@9.0.2(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EB7uHSEiwre69k+d4sx4qnEz378kvTgGzCNyBKDrTbgjXBnsjCNF9ZOKuXu/uBFWNg8Notb46ksVLv1Zau/t7g==}
     peerDependencies:
       mobx: ^6.9.0
       react: ^16.8.0 || ^17 || ^18
@@ -6098,7 +6098,7 @@ packages:
         optional: true
     dependencies:
       mobx: 6.10.2
-      mobx-react-lite: 4.0.4(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0)
+      mobx-react-lite: 4.0.5(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
