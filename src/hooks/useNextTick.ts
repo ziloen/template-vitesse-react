@@ -26,7 +26,8 @@ export function useNextTick() {
     callbacks.current = []
   })
 
-  return useCallback((cb: () => void) => {
-    callbacks.current.push(cb)
+  return useCallback((callback?: () => void) => {
+    callback && callbacks.current.push(callback)
+    return new Promise<void>(resolve => callbacks.current.push(resolve))
   }, [])
 }
