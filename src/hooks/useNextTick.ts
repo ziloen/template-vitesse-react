@@ -7,11 +7,14 @@
  * ```tsx
  * const nextTick = useNextTick()
  * 
- * function onClick() {
+ * async function onClick() {
  *   setEditing(true)
  *   nextTick(() => {
  *     inputRef.current?.focus()
  *   })
+ *   // or
+ *   await nextTick()
+ *   inputRef.current?.focus()
  * }
  * ```
  */
