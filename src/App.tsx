@@ -1,3 +1,5 @@
+import { useAsyncEffect } from 'ahooks'
+import { App as AntApp } from 'antd'
 import i18next from 'i18next'
 import { Suspense } from 'react'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
@@ -26,20 +28,20 @@ i18next
   })
 
 export default function App() {
-  useEffect(() => {
-    (async () => {
-      const lang = 'en'
-      const resource = await import(`~/locales/${lang}.json`) as Record<string, any>
-      i18next.addResourceBundle(lang, 'translation', resource)
-      i18next.changeLanguage(lang)
-    })()
+  useAsyncEffect(async () => {
+    const lang = 'en'
+    const resource = await import(`~/locales/${lang}.json`) as Record<string, any>
+    i18next.addResourceBundle(lang, 'translation', resource)
+    i18next.changeLanguage(lang)
   }, [])
 
   return (
     <I18nextProvider i18n={i18next}>
-      <Router>
-        <Routes />
-      </Router>
+      <AntApp component={false}>
+        <Router>
+          <Routes />
+        </Router>
+      </AntApp>
     </I18nextProvider>
   )
 }
