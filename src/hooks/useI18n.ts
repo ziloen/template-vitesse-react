@@ -43,7 +43,7 @@ export function useI18n(
         // name: <span className="text-red" />
         const elementData = new Map<string, ReactElement>()
         // name: 'text'
-        const originalData = Object.create(null) as Record<string, unknown>
+        const stringData = Object.create(null) as Record<string, unknown>
 
         for (const [key, val] of Object.entries(data)) {
           if (isFn(val)) {
@@ -51,14 +51,14 @@ export function useI18n(
           } else if (isValidElement(val)) {
             elementData.set(key, val)
           } else {
-            originalData[key] = val
+            stringData[key] = val
           }
         }
 
-        if (fnData.size === 0 && elementData.size === 0) return t(key, originalData)
+        if (fnData.size === 0 && elementData.size === 0) return t(key, stringData)
 
         // original translation result
-        const text = t(key, originalData)
+        const text = t(key, stringData)
 
         // match <tag>content</tag> or {{variable}}
         const regex = /<(\w+)>(.*?)<\/\1>|{{(\w+)}}/g
@@ -68,41 +68,26 @@ export function useI18n(
 
         // match all interpolation
         while ((match = regex.exec(text)) !== null) {
-          const [full, tag, content, variable] = match
+          const [full, tagName, content, variable] = match
           const before = text.slice(lastIndex, match.index)
           lastIndex = regex.lastIndex
 
-          // push before content
+          // push content between last match and current match
           if (before) result.push(before)
 
-          if (tag) {
+          if (tagName) {
             // match <tag>content</tag>
-            const fn = fnData.get(tag)
-
-            if (fn) {
-              result.push(fn(content))
-            } else {
-              const element = elementData.get(tag)
-
-              if (element) {
-                result.push(cloneElement(element, undefined, content))
-              } else {
-                result.push(content)
-              }
-            }
+            const render = fnData.get(tagName) ?? elementData.get(tagName)
+            result.push(getRendered(render, content))
           } else if (variable) {
             // match {{variable}}
             const element = elementData.get(variable)
 
-            if (element) {
-              result.push(element)
-            } else {
-              result.push(full)
-            }
+            result.push(element ?? full)
           }
         }
 
-        // push last content
+        // push everything after last match
         const last = text.slice(lastIndex)
         if (last) result.push(last)
 
@@ -115,4 +100,13 @@ export function useI18n(
     i18n,
     ready
   }
+}
+
+/**
+ * get content from function or element
+ */
+function getRendered(getter: ((content: string) => ReactNode) | ReactElement | undefined, content: string) {
+  if (!getter) return content
+  if (isFn(getter)) return getter(content)
+  return cloneElement(getter, undefined, content)
 }
