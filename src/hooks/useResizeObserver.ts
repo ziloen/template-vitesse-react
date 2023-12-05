@@ -1,5 +1,6 @@
 import { useMemoizedFn } from 'ahooks'
-import { BasicTarget, getTargetElement } from 'ahooks/lib/utils/domTarget'
+import type { BasicTarget } from 'ahooks/lib/utils/domTarget'
+import { getTargetElement } from 'ahooks/lib/utils/domTarget'
 import useEffectWithTarget from 'ahooks/lib/utils/useEffectWithTarget'
 
 /**

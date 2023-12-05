@@ -1,5 +1,6 @@
 import { isFn } from '@wai-ri/core'
-import { Fragment, ReactElement, ReactNode, cloneElement, createElement, isValidElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
+import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
 
 /**
@@ -105,8 +106,11 @@ export function useI18n(
 /**
  * get content from function or element
  */
-function getRendered(getter: ((content: string) => ReactNode) | ReactElement | undefined, content: string) {
-  if (!getter) return content
+function getRendered(
+  getter: ((content: string) => ReactNode) | ReactElement | undefined,
+  content: string | undefined
+) {
+  if (!getter || !content) return content
   if (isFn(getter)) return getter(content)
   return cloneElement(getter, undefined, content)
 }
