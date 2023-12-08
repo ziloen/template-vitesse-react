@@ -6,6 +6,7 @@ import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import type { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 
@@ -62,7 +63,7 @@ export default defineConfig(({ command, mode }) => {
           },
         ],
         dts: 'src/types/auto-imports.d.ts'
-      }),
+      }) as Plugin,
 
       // Auto import react component?
 

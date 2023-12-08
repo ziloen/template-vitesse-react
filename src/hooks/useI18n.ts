@@ -1,4 +1,3 @@
-import { isFn } from '@wai-ri/core'
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -47,7 +46,7 @@ export function useI18n(
         const stringData = Object.create(null) as Record<string, unknown>
 
         for (const [key, val] of Object.entries(data)) {
-          if (isFn(val)) {
+          if (typeof val === 'function') {
             fnData.set(key, val)
           } else if (isValidElement(val)) {
             elementData.set(key, val)
@@ -111,6 +110,6 @@ function getRendered(
   content: string | undefined
 ) {
   if (!getter || !content) return content
-  if (isFn(getter)) return getter(content)
+  if (typeof getter === 'function') return getter(content)
   return cloneElement(getter, undefined, content)
 }

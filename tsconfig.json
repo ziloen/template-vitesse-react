@@ -21,6 +21,7 @@
     "esModuleInterop": true,
     // "incremental": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noUnusedLocals": false,
