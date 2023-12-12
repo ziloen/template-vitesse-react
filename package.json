@@ -17,7 +17,7 @@
     "ahooks": "^3.7.8",
     "antd": "^5.12.1",
     "clsx": "^2.0.0",
-    "framer-motion": "^10.16.15",
+    "framer-motion": "^10.16.16",
     "i18next": "^23.7.8",
     "mobx": "^6.12.0",
     "mobx-react": "^9.1.0",
@@ -29,9 +29,9 @@
     "ulid": "^2.3.0"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.24",
+    "@iconify-json/carbon": "^1.1.25",
     "@testing-library/react": "^14.1.2",
-    "@types/react": "^18.2.42",
+    "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@unocss/reset": "^0.58.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -50,6 +50,6 @@
     "unplugin-auto-import": "^0.17.2",
     "vite": "^5.0.7",
     "vite-plugin-pages": "^0.32.0",
-    "vitest": "^1.0.2"
+    "vitest": "^1.0.4"
   }
 }
