@@ -49,6 +49,7 @@ export default defineConfig(({ command, mode }) => {
               'forwardRef',
               'useCallback',
               'useEffect',
+              'useId',
               'useImperativeHandle',
               'useLayoutEffect',
               'useMemo',
