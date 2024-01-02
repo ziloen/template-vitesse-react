@@ -60,7 +60,8 @@ export default defineConfig(({ command, mode }) => {
             'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
             'framer-motion': ['motion', 'AnimatePresence'],
             'react-i18next': ['useTranslation'],
-            clsx: ['clsx']
+            clsx: ['clsx'],
+            'clsx/lite': [['clsx', 'clsxLite']],
           },
         ],
         dts: 'src/types/auto-imports.d.ts'
