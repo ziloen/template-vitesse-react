@@ -22,7 +22,7 @@
     // "incremental": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "noUnusedLocals": false,
     "forceConsistentCasingInFileNames": true,

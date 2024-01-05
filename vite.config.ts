@@ -6,6 +6,7 @@ import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import SvgComponent from 'unplugin-svg-component/vite'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
@@ -66,6 +67,17 @@ export default defineConfig(({ command, mode }) => {
         ],
         dts: 'src/types/auto-imports.d.ts'
       }) as Plugin,
+
+      // https://github.com/Jevon617/unplugin-svg-component
+      SvgComponent({
+        iconDir: r('src/assets/svg-icons'),
+        dts: true,
+        dtsDir: r('src/types'),
+        componentStyle: 'width: 1em; height: 1em;',
+        projectType: 'react',
+        preserveColor: /./,
+      }),
+
 
       // Auto import react component?
 
