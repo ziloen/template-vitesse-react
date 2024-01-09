@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@vitejs/plugin-legacy": "^5.2.0",
-    "@vue/reactivity": "^3.4.5",
+    "@vue/reactivity": "^3.4.7",
     "@wai-ri/core": "^0.0.101",
     "@wai-ri/react": "^0.0.101",
     "ahooks": "^3.7.8",
-    "antd": "^5.12.7",
+    "antd": "^5.12.8",
     "clsx": "^2.1.0",
-    "framer-motion": "^10.17.6",
+    "framer-motion": "^10.17.11",
     "i18next": "^23.7.16",
     "mobx": "^6.12.0",
     "mobx-react": "^9.1.0",
@@ -31,13 +31,13 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.27",
     "@testing-library/react": "^14.1.2",
-    "@types/react": "^18.2.46",
+    "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@unocss/reset": "^0.58.3",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "@ziloen/eslint-config": "^0.1.13",
+    "@ziloen/eslint-config": "^0.1.15",
     "eslint": "^8.56.0",
-    "jsdom": "^23.0.1",
+    "jsdom": "^23.2.0",
     "postcss": "^8.4.33",
     "postcss-preset-env": "^9.3.0",
     "sass": "^1.69.7",
@@ -49,8 +49,8 @@
     "unocss-preset-ziloen": "^0.0.5",
     "unplugin-auto-import": "^0.17.3",
     "unplugin-svg-component": "0.8.0",
-    "vite": "^5.0.10",
+    "vite": "^5.0.11",
     "vite-plugin-pages": "^0.32.0",
-    "vitest": "^1.1.2"
+    "vitest": "^1.1.3"
   }
 }
