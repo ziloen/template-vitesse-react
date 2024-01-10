@@ -20,7 +20,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     // "incremental": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
