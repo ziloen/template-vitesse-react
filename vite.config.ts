@@ -46,12 +46,14 @@ export default defineConfig(({ command, mode }) => {
         imports: [
           {
             react: [
+              'Fragment',
               'Suspense',
               'forwardRef',
               'useCallback',
               'useEffect',
               'useId',
               'useImperativeHandle',
+              'useInsertionEffect',
               'useLayoutEffect',
               'useMemo',
               'useRef',
@@ -60,7 +62,6 @@ export default defineConfig(({ command, mode }) => {
             'react-dom': ['createPortal'],
             'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
             'framer-motion': ['motion', 'AnimatePresence'],
-            'react-i18next': ['useTranslation'],
             clsx: ['clsx'],
             'clsx/lite': [['clsx', 'clsxLite']],
           },

@@ -1,3 +1,9 @@
+// react@experimental
+// React.unstable_Activity: Symbol("react.offscreen") / Symbol.for("react.offscreen")
+
+/** 
+ * A simulation of the React Offscreen Component
+ */
 export function Offscreen({
   children,
   mode = 'hidden'
@@ -7,22 +13,22 @@ export function Offscreen({
 }) {
   const slotRef = useRef<HTMLSlotElement>(null)
 
-  const fragmentSlot = useMemo(() => document.createElement('slot'), [])
+  const childrenSlot = useMemo(() => document.createElement('slot'), [])
 
   useEffect(() => {
     const slot = slotRef.current
     if (!slot) return
 
-    if (mode === 'visible' && !fragmentSlot.isConnected) {
-      slot.append(fragmentSlot)
+    if (mode === 'visible' && !childrenSlot.isConnected) {
+      slot.replaceWith(childrenSlot)
     } else if (mode === 'hidden') {
-      fragmentSlot.remove()
+      childrenSlot.replaceWith(slot)
     }
   }, [mode])
 
   return (
     <slot ref={slotRef}>
-      {createPortal(children, fragmentSlot)}
+      {createPortal(children, childrenSlot)}
     </slot>
   )
 }
