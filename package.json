@@ -42,7 +42,7 @@
     "postcss-preset-env": "^9.3.0",
     "sass": "^1.70.0",
     "ts-lib-enhance": "^1.0.16",
-    "type-fest": "^4.9.0",
+    "type-fest": "^4.10.0",
     "typescript": "^5.3.3",
     "typescript-plugin-css-modules": "^5.0.2",
     "unocss": "^0.58.3",
