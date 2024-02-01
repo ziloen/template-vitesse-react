@@ -24,14 +24,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.1",
-    "react-router-dom": "^6.21.3",
+    "react-router-dom": "^6.22.0",
     "rxjs": "8.0.0-alpha.13",
     "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.28",
-    "@testing-library/react": "^14.2.0",
-    "@types/react": "^18.2.50",
+    "@testing-library/react": "^14.2.1",
+    "@types/react": "^18.2.51",
     "@types/react-dom": "^18.2.18",
     "@unocss/reset": "^0.58.4",
     "@vitejs/plugin-react-swc": "^3.6.0",
