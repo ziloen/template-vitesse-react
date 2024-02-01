@@ -62,15 +62,15 @@ export function useI18n(
 
         // match <tag>content</tag> or {{variable}}
         const regex = /<(\w+)>(.*?)<\/\1>|{{(\w+)}}/g
-        let match
         const result = [] as ReactNode[]
         let lastIndex = 0
 
         // match all interpolation
-        while ((match = regex.exec(text)) !== null) {
+        for (const match of text.matchAll(regex)) {
+          if (match.index === undefined) continue
           const [full, tagName, content, variable] = match
           const before = text.slice(lastIndex, match.index)
-          lastIndex = regex.lastIndex
+          lastIndex = match.index + full.length
 
           // push content between last match and current match
           if (before) result.push(before)
