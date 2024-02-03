@@ -48,10 +48,8 @@ export default defineConfig(({ command, mode }) => {
             react: [
               'Fragment',
               'Suspense',
-              'createContext',
               'forwardRef',
               'useCallback',
-              'useContext',
               'useEffect',
               'useId',
               'useImperativeHandle',

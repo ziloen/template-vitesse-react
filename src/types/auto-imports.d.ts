@@ -10,12 +10,10 @@ declare global {
   const Suspense: typeof import('react')['Suspense']
   const clsx: typeof import('clsx')['clsx']
   const clsxLite: typeof import('clsx/lite')['clsx']
-  const createContext: typeof import('react')['createContext']
   const createPortal: typeof import('react-dom')['createPortal']
   const forwardRef: typeof import('react')['forwardRef']
   const motion: typeof import('framer-motion')['motion']
   const useCallback: typeof import('react')['useCallback']
-  const useContext: typeof import('react')['useContext']
   const useEffect: typeof import('react')['useEffect']
   const useId: typeof import('react')['useId']
   const useImperativeHandle: typeof import('react')['useImperativeHandle']
@@ -27,5 +25,4 @@ declare global {
   const useRef: typeof import('react')['useRef']
   const useRoutes: typeof import('react-router-dom')['useRoutes']
   const useState: typeof import('react')['useState']
-  const useTranslation: typeof import('react-i18next')['useTranslation']
 }

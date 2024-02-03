@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "9.1.51",
     "@vitejs/plugin-legacy": "^5.3.0",
     "@vue/reactivity": "^3.4.15",
     "@wai-ri/core": "^0.0.101",
@@ -31,7 +32,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.28",
     "@testing-library/react": "^14.2.1",
-    "@types/react": "^18.2.51",
+    "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
     "@unocss/reset": "^0.58.4",
     "@vitejs/plugin-react-swc": "^3.6.0",
