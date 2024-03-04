@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-invalid-void-type */
-/* eslint-disable @typescript-eslint/ban-types */
 declare namespace React {
   // fix react forwardRef, https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
   function forwardRef<T, P = {}>(
