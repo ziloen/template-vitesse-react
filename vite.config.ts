@@ -3,8 +3,7 @@
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react-swc'
 import { resolve as r } from 'node:path'
-import PostcssPresetEnv from 'postcss-preset-env'
-import Unocss from 'unocss/vite'
+import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import SvgComponent from 'unplugin-svg-component/vite'
 import type { Plugin } from 'vite'
@@ -32,10 +31,6 @@ export default defineConfig(({ command, mode }) => {
     },
 
     plugins: [
-    // https://github.com/antfu/unocss
-    // see unocss.config.ts for config
-      Unocss(),
-
       react(),
 
       // https://github.com/hannoeru/vite-plugin-pages
@@ -83,14 +78,14 @@ export default defineConfig(({ command, mode }) => {
       // Auto import react component?
 
       legacy({
-      // render legacy chunks for non-modern browsers
+        // render legacy chunks for non-modern browsers
         renderLegacyChunks: false,
         /** polyfills for non-modern browsers (not supports esm) */
         // polyfills: [],
         /** polyfills for modern browsers (supports esm) */
         modernPolyfills: [
-        // Web APIs
-        /** structuredClone() */
+          // Web APIs
+          /** structuredClone() */
           'web.structured-clone',
           /** URL.canParse() */
           'web.url.can-parse',
@@ -134,13 +129,15 @@ export default defineConfig(({ command, mode }) => {
 
     build: {
       // disable inline base64
-      assetsInlineLimit: 0
+      assetsInlineLimit: 0,
+      cssMinify: "lightningcss",
     },
 
     css: {
+      // transformer: "lightningcss",
       devSourcemap: true,
       postcss: {
-        plugins: [PostcssPresetEnv({ stage: 0 })]
+        plugins: [tailwindcss()]
       }
     },
 

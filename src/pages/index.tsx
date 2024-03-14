@@ -13,7 +13,7 @@ export default function Index() {
   }
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <SvgIcon name="favicon" className="text-blue text-50px" />
 
       <p>
@@ -31,10 +31,9 @@ export default function Index() {
 
       <input
         ref={name}
-        id="input"
         placeholder={t('placeholder')}
         type="text"
-        className="px-4 py-2 w-250px text-center bg-transparent outline-none outline-active:none border border-rounded border-gray-200 border-dark:gray-700"
+        className="px-4 py-2 w-250px text-center bg-transparent outline-none active:outline-none border rounded border-gray-200 dark:border-gray-700"
         onKeyDown={({ key }) => key === 'Enter' && go()}
       />
 
@@ -50,8 +49,8 @@ export default function Index() {
 
       <div>
         {t('useI18nTest', {
-          link: <a className='text-blue' />,
-          name: <span className='text-green'>Dynamic Content</span>
+          link: <a className='text-blue-400' />,
+          name: <span className='text-green-500'>Dynamic Content</span>
         })}
       </div>
     </div>

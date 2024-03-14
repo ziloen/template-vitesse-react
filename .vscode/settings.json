@@ -1,9 +1,9 @@
 {
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   // add @apply & @container to css atDirectives
   "css.customData": [
@@ -23,7 +23,7 @@
     ".vscode/emmet"
   ],
   "eslint.experimental.useFlatConfig": true,
-  "eslint.format.enable": true,
+  "eslint.format.enable": false,
   // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
   // ts css module plugin support
   "typescript.tsdk": "node_modules\\typescript\\lib"
