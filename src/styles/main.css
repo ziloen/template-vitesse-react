@@ -6,11 +6,11 @@ body,
   padding: 0;
 }
 
-html.dark {
+html[data-theme="dark"] {
   background: #121212;
   @apply text-gray-200;
 }
 
-body {
+html {
   @apply font-sans text-gray-700;
 }

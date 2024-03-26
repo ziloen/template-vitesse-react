@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react-swc'
 import { resolve as r } from 'node:path'
 import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
-import SvgComponent from 'unplugin-svg-component/vite'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
@@ -65,18 +64,9 @@ export default defineConfig(({ command, mode }) => {
       }) as Plugin,
 
       // https://github.com/Jevon617/unplugin-svg-component
-      SvgComponent({
-        iconDir: r('src/assets/svg-icons'),
-        dts: true,
-        dtsDir: r('src/types'),
-        componentStyle: 'width: 1em; height: 1em;',
-        projectType: 'react',
-        preserveColor: /./,
-      }),
+      // unplugin-svg-component infinitely watch reload on dev and throws error on build
 
-
-      // Auto import react component?
-
+      // polyfills
       legacy({
         // render legacy chunks for non-modern browsers
         renderLegacyChunks: false,

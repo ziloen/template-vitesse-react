@@ -2,6 +2,7 @@ import { defineConfig, pluginCreator, preset } from "@ziloen/tailwind-config"
 
 export default defineConfig({
   content: ["./src/**/*.{ts,tsx,html}"],
+  darkMode: ["variant", [`[data-theme="dark"] &`, `:host([data-theme="dark"]) &`]],
   theme: {
     extend: {
       colors: preset.theme.colors

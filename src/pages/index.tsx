@@ -1,6 +1,5 @@
 import { Counter } from '~/components/Counter'
 import { useI18n } from '~/hooks'
-import SvgIcon from '~virtual/svg-component'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
@@ -14,8 +13,6 @@ export default function Index() {
 
   return (
     <div className='flex flex-col items-center'>
-      <SvgIcon name="favicon" className="text-blue text-50px" />
-
       <p>
         <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
           Vitesse Lite

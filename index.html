@@ -24,7 +24,7 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       const setting = localStorage.getItem('color-schema') || 'auto'
       if (prefersDark)
-        document.documentElement.classList.toggle('dark', true)
+        document.documentElement.dataset.theme = "dark"
     })()
   </script>
 </body>
