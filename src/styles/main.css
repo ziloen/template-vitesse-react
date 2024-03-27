@@ -4,13 +4,15 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  contain: paint;
+  overflow: clip;
+}
+
+html {
+  @apply font-sans text-gray-700;
 }
 
 html[data-theme="dark"] {
   background: #121212;
   @apply text-gray-200;
-}
-
-html {
-  @apply font-sans text-gray-700;
 }

@@ -4,7 +4,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 export * from '@vue/reactivity'
-import { ReactiveEffect, Ref, UnwrapRef, computed, ref } from '@vue/reactivity'
+import type { Ref, UnwrapRef } from '@vue/reactivity'
+import { ReactiveEffect, computed, ref } from '@vue/reactivity'
 import { memo } from 'react'
 import { ulid } from 'ulid'
 
