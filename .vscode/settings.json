@@ -1,9 +1,9 @@
 {
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // add @apply & @container to css atDirectives
   "css.customData": [
@@ -24,6 +24,7 @@
   ],
   "eslint.experimental.useFlatConfig": true,
   "eslint.format.enable": false,
+  "prettier.enable": true,
   // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
   // ts css module plugin support
   "typescript.tsdk": "node_modules\\typescript\\lib"
