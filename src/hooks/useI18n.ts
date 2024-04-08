@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next'
  * @example
  * ```
  * const { t } = useI18n()
- * 
+ *
  * return (
  *   <div>
- *    {t('hello', { 
+ *    {t('hello', {
  *      variable: <span>world</span>,
  *      tag: text => <strong>{text}</strong>,
  *      element: <span className="text-red" />
@@ -19,9 +19,7 @@ import { useTranslation } from 'react-i18next'
  * )
  * ```
  */
-export function useI18n(
-  ...args: Parameters<typeof useTranslation>
-) {
+export function useI18n(...args: Parameters<typeof useTranslation>) {
   const { t, i18n, ready } = useTranslation(...args)
 
   return {
@@ -98,7 +96,7 @@ export function useI18n(
       return CustomTFn
     }, [t]),
     i18n,
-    ready
+    ready,
   }
 }
 

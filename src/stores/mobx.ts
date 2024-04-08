@@ -8,7 +8,6 @@ configure({
 
 const storeMap = new Map<string, any>()
 
-
 function defineStore<SS>(setup: () => SS) {
   const id = ulid()
 
@@ -37,7 +36,9 @@ export const useMobxStore = defineStore(() => {
 
   return {
     count,
-    get double() { return count.get() * 2 },
+    get double() {
+      return count.get() * 2
+    },
     increment,
     decrement,
   }

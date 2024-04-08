@@ -1,7 +1,6 @@
 import { reactivity } from '~/stores'
 import { useCounterStore } from '~/stores/counter'
 
-
 export const Counter = reactivity(() => {
   const counterStore = useCounterStore()
 

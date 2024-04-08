@@ -1,12 +1,10 @@
-
-
 /**
  * Waits for the next tick (useEffect) to execute a callback.
- * 
+ *
  * @example
  * ```tsx
  * const nextTick = useNextTick()
- * 
+ *
  * async function onClick() {
  *   setEditing(true)
  *   nextTick(() => {

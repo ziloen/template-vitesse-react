@@ -1,7 +1,4 @@
-import { react } from "@ziloen/eslint-config"
-
+import { react } from '@ziloen/eslint-config'
 
 /** @type { import("@ziloen/eslint-config").FlatESLintConfig[] } */
-export default [
-  ...react({ tsconfigPath: "./tsconfig.json" }),
-]
+export default [...react({ tsconfigPath: './tsconfig.json' })]

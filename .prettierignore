@@ -1,0 +1,14 @@
+**/*.css
+**/*.scss
+**/*.json
+**/*.jsonc
+**/*.html
+**/*.vue
+**/*.yml
+**/*.md
+
+.github
+.vscode
+dist
+public
+src/types/auto-imports.d.ts

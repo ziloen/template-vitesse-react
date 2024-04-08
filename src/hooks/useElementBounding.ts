@@ -20,7 +20,10 @@ type UseElementBoundingOptions = {
   immediate?: boolean
 }
 
-export function useElementBounding(target: React.RefObject<HTMLElement | null>, options: UseElementBoundingOptions = {}) {
+export function useElementBounding(
+  target: React.RefObject<HTMLElement | null>,
+  options: UseElementBoundingOptions = {}
+) {
   const optionsRef = useLatest(options)
 
   const [rect, setRect] = useState<DOMRect>(() => new DOMRect())
@@ -46,10 +49,13 @@ export function useElementBounding(target: React.RefObject<HTMLElement | null>, 
 
   useEventListener('resize', update)
 
-  useEffectWithTarget(() => {
-    if (optionsRef.current.immediate)
-      update()
-  }, [], target)
+  useEffectWithTarget(
+    () => {
+      if (optionsRef.current.immediate) update()
+    },
+    [],
+    target
+  )
 
   return rect
 }

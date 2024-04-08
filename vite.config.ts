@@ -9,7 +9,6 @@ import type { Plugin } from 'vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 
-
 export default defineConfig(({ command, mode }) => {
   const IS_PROD = process.env.NODE_ENV === 'production'
   const IS_DEV = process.env.NODE_ENV === 'development'
@@ -20,7 +19,7 @@ export default defineConfig(({ command, mode }) => {
       alias: {
         '~': r('src'),
         '~cwd': process.cwd(),
-      }
+      },
     },
 
     define: {
@@ -60,7 +59,7 @@ export default defineConfig(({ command, mode }) => {
             'clsx/lite': [['clsx', 'clsxLite']],
           },
         ],
-        dts: 'src/types/auto-imports.d.ts'
+        dts: 'src/types/auto-imports.d.ts',
       }) as Plugin,
 
       // https://github.com/Jevon617/unplugin-svg-component
@@ -113,27 +112,27 @@ export default defineConfig(({ command, mode }) => {
           'es.aggregate-error.cause',
           /** Error: cause */
           'es.error.cause',
-        ]
-      })
+        ],
+      }),
     ],
 
     build: {
       // disable inline base64
       assetsInlineLimit: 0,
-      cssMinify: "lightningcss",
+      cssMinify: 'lightningcss',
     },
 
     css: {
       // transformer: "lightningcss",
       devSourcemap: true,
       postcss: {
-        plugins: [tailwindcss()]
-      }
+        plugins: [tailwindcss()],
+      },
     },
 
     // https://github.com/vitest-dev/vitest
     test: {
-      environment: 'jsdom'
-    }
+      environment: 'jsdom',
+    },
   }
 })

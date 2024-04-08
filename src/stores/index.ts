@@ -16,34 +16,34 @@ const ReactForwardRefSymbol = Symbol.for('react.forward_ref')
 /**
  * Define a store, the store will be created only once when the first time useStore is called
  * @param setup setup function, see {@link https://pinia.vuejs.org/core-concepts/#setup-stores Pinia fefine setup store}
- * @example 
+ * @example
  * ```tsx
  * const useUserStore = defineStore(() => {
  *   const userName = ref('user')
  *   const userEmail = ref('example@mail.com')
- * 
+ *
  *   function changeUserName(name: string) {
  *     userName.value = name
  *   }
- * 
+ *
  *   return { userName, userEmail }
  * })
- * 
+ *
  * // In react component, wrap with reactivity to make it auto re-render
  * const User = reactivity(() => {
  *   const userStore = useUserStore()
- * 
+ *
  *   return (
  *     <div>
  *       <div>{userStore.userName}</div>
  *       <div>{userStore.userEmail}</div>
- *     </div> 
+ *     </div>
  *   )
  * })
- * 
+ *
  * // outside component, use store directly or call useStore for lazy init
  * const userStore = useUserStore()
- * 
+ *
  * function changeUserEmail() {
  *   const userStore = useUserStore()
  *   userStore.userEmail = ''
@@ -66,10 +66,9 @@ export function defineStore<SS>(setup: () => SS) {
   }
 }
 
-
 /**
  * Make a component reactive, the component will re-render when store changed, same as {@link https://mobx.js.org/api.html#observer mobx observer}
- * @param baseComponent 
+ * @param baseComponent
  * @example
  * ```tsx
  * const User = reactivity(() => {
@@ -82,7 +81,7 @@ export function defineStore<SS>(setup: () => SS) {
  *   )
  * })
  * ```
- * @returns 
+ * @returns
  */
 export function reactivity<P extends object, TRef = {}>(
   baseComponent:
@@ -93,14 +92,15 @@ export function reactivity<P extends object, TRef = {}>(
   const render = baseComponent
   const baseComponentName = baseComponent.displayName || baseComponent.name
 
-  let observerComponent = (props: any, ref: React.Ref<TRef>) => useObserver(() => render(props, ref), baseComponentName);
+  let observerComponent = (props: any, ref: React.Ref<TRef>) =>
+    useObserver(() => render(props, ref), baseComponentName)
 
-  (observerComponent as React.FunctionComponent).displayName = baseComponent.displayName
+  ;(observerComponent as React.FunctionComponent).displayName = baseComponent.displayName
 
   Object.defineProperty(observerComponent, 'name', {
     value: baseComponent.name,
     writable: true,
-    configurable: true
+    configurable: true,
   })
 
   // @ts-expect-error $$typeof is not in the type definition
@@ -125,7 +125,6 @@ function useObserver<T>(render: () => T, baseComponentName = 'observed') {
   return effect.run()
 }
 
-
 /**
  * use computed inside react component
  * @param getter getter function
@@ -134,7 +133,7 @@ function useObserver<T>(render: () => T, baseComponentName = 'observed') {
  * const User = reactivity(() => {
  *   const userStore = useUserStore()
  *   const userName = useComputed(() => `UserName: ${userStore.userName}`)
- * 
+ *
  *   return (
  *     <div>
  *       <div>{userName}</div>
@@ -142,11 +141,9 @@ function useObserver<T>(render: () => T, baseComponentName = 'observed') {
  *     </div>
  *   )
  * })
- * @returns 
+ * @returns
  */
 const useComputed = <T>(getter: () => T) => useMemo(() => computed(getter), []).value
-
-
 
 // TODO: asyncComputed
 // const a = ref(1)

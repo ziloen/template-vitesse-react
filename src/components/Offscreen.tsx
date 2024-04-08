@@ -1,12 +1,12 @@
 // react@experimental
 // React.unstable_Activity: Symbol("react.offscreen") / Symbol.for("react.offscreen")
 
-/** 
+/**
  * A simulation of the React Offscreen Component
  */
 export function Offscreen({
   children,
-  mode = 'hidden'
+  mode = 'hidden',
 }: {
   children: React.ReactNode
   mode: 'hidden' | 'visible'
@@ -26,9 +26,5 @@ export function Offscreen({
     }
   }, [mode])
 
-  return (
-    <slot ref={slotRef}>
-      {createPortal(children, childrenSlot)}
-    </slot>
-  )
+  return <slot ref={slotRef}>{createPortal(children, childrenSlot)}</slot>
 }

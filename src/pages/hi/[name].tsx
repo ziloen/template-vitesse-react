@@ -4,20 +4,15 @@ export default function Hi() {
 
   return (
     <div>
-      <div className="i-carbon-pedestrian text-4xl inline-block" />
-      <p>
-      Hi, { params.name }
-      </p>
-      <p className="text-sm op50">
+      <div className="i-carbon-pedestrian inline-block text-4xl" />
+      <p>Hi, {params.name}</p>
+      <p className="op50 text-sm">
         <em>Dynamic route!</em>
       </p>
 
       <div>
-        <button
-          className="btn m-3 text-sm mt-8"
-          onClick={() => navigate(-1)}
-        >
-        Back
+        <button className="btn m-3 mt-8 text-sm" onClick={() => navigate(-1)}>
+          Back
         </button>
       </div>
     </div>

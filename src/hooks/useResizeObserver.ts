@@ -13,13 +13,17 @@ export function useResizeObserver(
 ) {
   const callbackFn = useMemoizedFn(callback)
 
-  useEffectWithTarget(() => {
-    const el = getTargetElement(target)
-    if (!el) return
+  useEffectWithTarget(
+    () => {
+      const el = getTargetElement(target)
+      if (!el) return
 
-    const observer = new ResizeObserver(callbackFn)
-    observer.observe(el, options)
+      const observer = new ResizeObserver(callbackFn)
+      observer.observe(el, options)
 
-    return () => observer.disconnect()
-  }, [], target)
+      return () => observer.disconnect()
+    },
+    [],
+    target
+  )
 }

@@ -1,17 +1,13 @@
 import { useMemoizedFn } from 'ahooks'
 import type { Observable } from 'rxjs'
 
-
 /**
- * 
+ *
  * @example
  * ```ts
  * ```
  */
-export function useSubscribe<T>(
-  observable: Observable<T>,
-  subscriber: (value: T) => void
-) {
+export function useSubscribe<T>(observable: Observable<T>, subscriber: (value: T) => void) {
   const fnRef = useMemoizedFn(subscriber)
 
   useEffect(() => {
