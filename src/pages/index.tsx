@@ -35,8 +35,12 @@ export default function Index() {
 
       <div>
         {t('useI18nTest', {
-          link: <a className="text-blue-400" />,
-          name: <span className="text-green-500">Dynamic Content</span>,
+          link: <a className="text-blue-500 dark:text-blue-400" />,
+          name: (
+            <span className="text-green-700 dark:text-green-500">
+              Dynamic Content
+            </span>
+          ),
         })}
       </div>
     </div>
