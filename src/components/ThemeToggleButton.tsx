@@ -19,7 +19,9 @@ export function ThemeToggleButton() {
         document.documentElement.dataset.theme = state
 
         await new Promise<void>(resolve => {
-          requestAnimationFrame(() => resolve())
+          setTimeout(() => {
+            resolve()
+          }, 0)
         })
       })
     } else {
