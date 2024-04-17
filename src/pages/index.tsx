@@ -14,7 +14,11 @@ export default function Index() {
   return (
     <div className="flex flex-col items-center">
       <p>
-        <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
+        <a
+          rel="noreferrer"
+          href="https://github.com/antfu/vitesse-lite"
+          target="_blank"
+        >
           Vitesse Lite
         </a>
       </p>
