@@ -23,7 +23,10 @@ export default function Index() {
         ref={name}
         placeholder={t('placeholder')}
         type="text"
-        className="w-250px rounded border border-gray-200 bg-transparent px-4 py-2 text-center outline-none active:outline-none dark:border-gray-700"
+        className="w-250px rounded border bg-transparent px-4 py-2 text-center outline-none [--d:theme(colors.gray.700)] [--l:theme(colors.gray.200)] active:outline-none"
+        style={{
+          borderColor: 'light-dark(var(--l), var(--d))',
+        }}
         onKeyDown={({ key }) => key === 'Enter' && go()}
       />
 
@@ -35,9 +38,21 @@ export default function Index() {
 
       <div>
         {t('useI18nTest', {
-          link: <a className="text-blue-500 dark:text-blue-400" />,
+          link: (
+            <a
+              className="[--d:theme(colors.blue.400)] [--l:theme(colors.blue.500)]"
+              style={{
+                color: 'light-dark(var(--l), var(--d))',
+              }}
+            />
+          ),
           name: (
-            <span className="text-green-700 dark:text-green-500">
+            <span
+              className="[--d:theme(colors.green.500)] [--l:theme(colors.green.700)]"
+              style={{
+                color: 'light-dark(var(--l), var(--d))',
+              }}
+            >
               Dynamic Content
             </span>
           ),
