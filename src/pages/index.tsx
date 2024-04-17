@@ -1,4 +1,5 @@
 import { Counter } from '~/components/Counter'
+import { ThemeToggleButton } from '~/components/ThemeToggleButton'
 import { useI18n } from '~/hooks'
 
 export default function Index() {
@@ -24,6 +25,8 @@ export default function Index() {
       <div className="py-4" />
 
       <Counter />
+
+      <ThemeToggleButton />
 
       <input
         ref={name}
