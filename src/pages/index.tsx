@@ -13,20 +13,7 @@ export default function Index() {
 
   return (
     <div className="flex flex-col items-center">
-      <p>
-        <a
-          rel="noreferrer"
-          href="https://github.com/antfu/vitesse-lite"
-          target="_blank"
-        >
-          Vitesse Lite
-        </a>
-      </p>
-      <p>
-        <em className="op75 text-sm">Opinionated Vite Starter Template</em>
-      </p>
-
-      <div className="py-4" />
+      <em className="op75 text-sm">Vite Starter Template</em>
 
       <Counter />
 
