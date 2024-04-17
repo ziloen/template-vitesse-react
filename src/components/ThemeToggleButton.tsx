@@ -1,5 +1,12 @@
 import { useColorScheme, useCycleList } from '~/hooks'
 
+function enableTransitions() {
+  return (
+    'startViewTransition' in document &&
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  )
+}
+
 export function ThemeToggleButton() {
   const [colorScheme, setColorScheme] = useColorScheme()
   const { state, next } = useCycleList(['light', 'dark', 'auto'] as const, {
@@ -7,7 +14,17 @@ export function ThemeToggleButton() {
   })
 
   useEffect(() => {
-    document.documentElement.dataset.theme = state
+    if (enableTransitions()) {
+      document.startViewTransition!(async () => {
+        document.documentElement.dataset.theme = state
+
+        await new Promise<void>(resolve => {
+          requestAnimationFrame(() => resolve())
+        })
+      })
+    } else {
+      document.documentElement.dataset.theme = state
+    }
   }, [colorScheme])
 
   return (
