@@ -53,7 +53,9 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
           }
         }
 
-        if (fnData.size === 0 && elementData.size === 0) return t(key, stringData)
+        if (fnData.size === 0 && elementData.size === 0) {
+          return t(key, stringData)
+        }
 
         // original translation result
         const text = t(key, stringData)
@@ -100,6 +102,23 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
   }
 }
 
+const voidElements = new Set([
+  'area',
+  'base',
+  'br',
+  'col',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'link',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr',
+])
+
 /**
  * get content from function or element
  */
@@ -107,7 +126,16 @@ function getRendered(
   getter: ((content: string) => ReactNode) | ReactElement | undefined,
   content: string | undefined
 ) {
-  if (!getter || !content) return content
-  if (typeof getter === 'function') return getter(content)
-  return cloneElement(getter, undefined, content)
+  if (!getter || !content) {
+    return content
+  }
+
+  if (typeof getter === 'function') {
+    return getter(content)
+  }
+
+  const isVoid =
+    typeof getter.type === 'string' && voidElements.has(getter.type)
+
+  return cloneElement(getter, undefined, isVoid ? undefined : content)
 }
