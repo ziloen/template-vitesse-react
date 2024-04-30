@@ -27,8 +27,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^14.1.1",
     "react-router-dom": "^6.23.0",
-    "rxjs": "8.0.0-alpha.14",
-    "ulid": "^2.3.0"
+    "rxjs": "8.0.0-alpha.14"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.32",

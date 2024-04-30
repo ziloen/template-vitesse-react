@@ -7,7 +7,6 @@ export * from '@vue/reactivity'
 import type { Ref, UnwrapRef } from '@vue/reactivity'
 import { ReactiveEffect, computed, ref } from '@vue/reactivity'
 import { memo } from 'react'
-import { ulid } from 'ulid'
 
 const storeMap = new Map<string, any>()
 
@@ -52,7 +51,7 @@ const ReactForwardRefSymbol = Symbol.for('react.forward_ref')
  * @returns useStore function to get store
  */
 export function defineStore<SS>(setup: () => SS) {
-  const id = ulid()
+  const id = crypto.randomUUID()
 
   return function useStore() {
     let store = storeMap.get(id) as Ref<UnwrapRef<SS>> | undefined
@@ -87,7 +86,9 @@ export function reactivity<P extends object, TRef = {}>(
   baseComponent:
     | React.ForwardRefRenderFunction<TRef, P>
     | React.FunctionComponent<P>
-    | React.ForwardRefExoticComponent<React.PropsWithRef<P> & React.RefAttributes<TRef>>
+    | React.ForwardRefExoticComponent<
+        React.PropsWithRef<P> & React.RefAttributes<TRef>
+      >
 ) {
   const render = baseComponent
   const baseComponentName = baseComponent.displayName || baseComponent.name
@@ -95,7 +96,8 @@ export function reactivity<P extends object, TRef = {}>(
   let observerComponent = (props: any, ref: React.Ref<TRef>) =>
     useObserver(() => render(props, ref), baseComponentName)
 
-  ;(observerComponent as React.FunctionComponent).displayName = baseComponent.displayName
+  ;(observerComponent as React.FunctionComponent).displayName =
+    baseComponent.displayName
 
   Object.defineProperty(observerComponent, 'name', {
     value: baseComponent.name,
@@ -143,7 +145,9 @@ function useObserver<T>(render: () => T, baseComponentName = 'observed') {
  * })
  * @returns
  */
-const useComputed = <T>(getter: () => T) => useMemo(() => computed(getter), []).value
+const useComputed = <T>(getter: () => T) => {
+  return useMemo(() => computed(getter), []).value
+}
 
 // TODO: asyncComputed
 // const a = ref(1)
