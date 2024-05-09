@@ -3,6 +3,7 @@
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react-swc'
 import { resolve as r } from 'node:path'
+import PostcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import type { Plugin } from 'vite'
@@ -126,7 +127,7 @@ export default defineConfig(({ command, mode }) => {
       // transformer: "lightningcss",
       devSourcemap: true,
       postcss: {
-        plugins: [tailwindcss()],
+        plugins: [PostcssPresetEnv({ stage: 0 }), tailwindcss()],
       },
     },
 
