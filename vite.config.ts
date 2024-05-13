@@ -52,6 +52,7 @@ export default defineConfig(({ command, mode }) => {
               'useMemo',
               'useRef',
               'useState',
+              'useSyncExternalStore',
             ],
             'react-dom': ['createPortal'],
             'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
