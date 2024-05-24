@@ -25,4 +25,5 @@ declare global {
   const useRef: typeof import('react')['useRef']
   const useRoutes: typeof import('react-router-dom')['useRoutes']
   const useState: typeof import('react')['useState']
+  const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
 }

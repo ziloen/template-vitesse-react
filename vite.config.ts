@@ -66,6 +66,13 @@ export default defineConfig(({ command, mode }) => {
 
       // https://github.com/Jevon617/unplugin-svg-component
       // unplugin-svg-component infinitely watch reload on dev and throws error on build
+      // UnpluginSvgComponent({
+      //   iconDir: r('src/assets/svg-icons'),
+      //   dts: true,
+      //   dtsDir: r('src/types'),
+      //   componentStyle: 'width: 1em; height: 1em;',
+      //   projectType: 'react',
+      // }),
 
       // polyfills
       legacy({
