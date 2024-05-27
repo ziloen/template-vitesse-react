@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
@@ -30,6 +30,7 @@ export default defineConfig(({ command, mode }) => {
     },
 
     plugins: [
+      // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
       react(),
 
       // https://github.com/hannoeru/vite-plugin-pages
@@ -75,6 +76,7 @@ export default defineConfig(({ command, mode }) => {
       // }),
 
       // polyfills
+      // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
       legacy({
         // render legacy chunks for non-modern browsers
         renderLegacyChunks: false,
