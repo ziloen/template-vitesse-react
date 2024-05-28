@@ -6,7 +6,7 @@ export default function Hi() {
     <div>
       <div className="i-carbon-pedestrian inline-block text-4xl" />
       <p>Hi, {params.name}</p>
-      <p className="op50 text-sm">
+      <p className="opacity-50 text-sm">
         <em>Dynamic route!</em>
       </p>
 
