@@ -1,25 +1,19 @@
-import { reactivity } from '~/stores'
-import { useCounterStore } from '~/stores/counter'
-
-export const Counter = reactivity(() => {
-  const counterStore = useCounterStore()
+export function Counter({ initial = 0 }: { initial?: number }) {
+  const [count, setCount] = useState(initial)
 
   return (
     <div>
       <div>
         <span>count: </span>
-        {counterStore.count}
+        {count}
       </div>
-      <div>
-        <span>double: </span>
-        {counterStore.double}
-      </div>
-      <button className="btn" onClick={() => counterStore.increment()}>
+
+      <button className="btn" onClick={() => setCount(count + 1)}>
         +
       </button>
-      <button className="btn" onClick={() => counterStore.decrement()}>
+      <button className="btn" onClick={() => setCount(count - 1)}>
         -
       </button>
     </div>
   )
-})
+}
