@@ -39,6 +39,7 @@
     "@ziloen/tailwind-config": "1.1.12",
     "eslint": "^8.57.0",
     "jsdom": "24.1.0",
+    "lightningcss": "1.25.1",
     "postcss": "8.4.38",
     "postcss-preset-env": "9.5.14",
     "prettier": "3.2.5",
