@@ -17,7 +17,7 @@
     "@wai-ri/core": "0.0.101",
     "@wai-ri/react": "0.0.101",
     "ahooks": "3.8.0",
-    "antd": "5.17.3",
+    "antd": "5.17.4",
     "clsx": "2.1.1",
     "framer-motion": "11.0.8",
     "i18next": "23.11.5",
@@ -51,7 +51,7 @@
     "unplugin-auto-import": "0.17.6",
     "unplugin-svg-component": "0.10.1",
     "vite": "5.2.11",
-    "vite-plugin-pages": "0.32.1",
+    "vite-plugin-pages": "0.32.2",
     "vitest": "1.6.0"
   }
 }
