@@ -36,7 +36,7 @@ export default defineConfig(({ command, mode }) => {
       // https://github.com/hannoeru/vite-plugin-pages
       Pages(),
 
-      // https://github.com/antfu/unplugin-auto-import
+      // https://github.com/unplugin/unplugin-auto-import
       AutoImport({
         imports: [
           {
