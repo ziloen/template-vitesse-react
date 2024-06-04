@@ -7,7 +7,10 @@ import type { Observable } from 'rxjs'
  * ```ts
  * ```
  */
-export function useSubscribe<T>(observable: Observable<T>, subscriber: (value: T) => void) {
+export function useSubscribe<T>(
+  observable: Observable<T>,
+  subscriber: (value: T) => void
+) {
   const fnRef = useMemoizedFn(subscriber)
 
   useEffect(() => {

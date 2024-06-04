@@ -10,7 +10,16 @@ declare namespace React {
   }
 
   // allow destructor return value
-  function useEffect(effect: () => void | (() => void), deps?: DependencyList): void
-  function useInsertionEffect(effect: () => void | (() => void), deps?: DependencyList): void
-  function useLayoutEffect(effect: () => void | (() => void), deps?: DependencyList): void
+  function useEffect(
+    effect: () => void | (() => void),
+    deps?: DependencyList
+  ): void
+  function useInsertionEffect(
+    effect: () => void | (() => void),
+    deps?: DependencyList
+  ): void
+  function useLayoutEffect(
+    effect: () => void | (() => void),
+    deps?: DependencyList
+  ): void
 }

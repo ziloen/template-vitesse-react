@@ -3,11 +3,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3333",
+    "build": "vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "build": "vite build",
-    "test": "vitest",
     "format": "prettier --write ."
   },
   "dependencies": {
@@ -15,7 +15,7 @@
     "@wai-ri/core": "0.0.101",
     "@wai-ri/react": "0.0.101",
     "ahooks": "3.8.0",
-    "antd": "5.17.4",
+    "antd": "5.18.0",
     "clsx": "2.1.1",
     "framer-motion": "11.0.8",
     "i18next": "23.11.5",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.34",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-legacy": "5.4.1",

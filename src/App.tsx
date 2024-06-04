@@ -28,7 +28,10 @@ i18next.use(initReactI18next).init({
 export default function App() {
   useAsyncEffect(async () => {
     const lang = 'en'
-    const resource = (await import(`~/locales/${lang}.json`)) as Record<string, any>
+    const resource = (await import(`~/locales/${lang}.json`)) as Record<
+      string,
+      any
+    >
     i18next.addResourceBundle(lang, 'translation', resource)
     i18next.changeLanguage(lang)
   }, [])
@@ -36,7 +39,7 @@ export default function App() {
   return (
     <I18nextProvider i18n={i18next}>
       <AntApp component={false}>
-        <Router>
+        <Router basename="">
           <Routes />
         </Router>
       </AntApp>
@@ -47,5 +50,7 @@ export default function App() {
 function Routes() {
   const { t } = useI18n()
 
-  return <Suspense fallback={<p>{t('loading')}</p>}>{useRoutes(routes)}</Suspense>
+  return (
+    <Suspense fallback={<p>{t('loading')}</p>}>{useRoutes(routes)}</Suspense>
+  )
 }
