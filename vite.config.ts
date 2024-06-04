@@ -7,19 +7,22 @@ import PostcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import type { Plugin } from 'vite'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import Pages from 'vite-plugin-pages'
 
 export default defineConfig(({ command, mode }) => {
-  const IS_PROD = process.env.NODE_ENV === 'production'
-  const IS_DEV = process.env.NODE_ENV === 'development'
+  const cwd = process.cwd()
+  const env = loadEnv(mode, cwd)
+
+  const IS_PROD = env.PROD
+  const IS_DEV = env.DEV
   const IS_BUILD = command === 'build'
 
   return {
     resolve: {
       alias: {
         '~': r('src'),
-        '~cwd': process.cwd(),
+        '~cwd': cwd,
       },
     },
 
