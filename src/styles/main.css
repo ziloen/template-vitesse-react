@@ -9,7 +9,7 @@ body,
 }
 
 html {
-  @apply font-sans text-gray-700;
+  @apply font-sans;
   background: light-dark(white, #121212);
   color: light-dark(black, theme("colors.gray.200"));
 }
