@@ -14,5 +14,7 @@
   "endOfLine": "lf",
   "plugins": [
     "prettier-plugin-tailwindcss"
-  ]
+  ],
+  "tailwindPreserveWhitespace": false,
+  "tailwindPreserveDuplicates": false
 }
