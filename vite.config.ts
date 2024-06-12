@@ -6,6 +6,7 @@ import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
+import unpluginIcons from 'unplugin-icons/vite'
 import type { Plugin } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import Pages from 'vite-plugin-pages'
@@ -77,6 +78,13 @@ export default defineConfig(({ command, mode }) => {
       //   componentStyle: 'width: 1em; height: 1em;',
       //   projectType: 'react',
       // }),
+
+      // https://github.com/unplugin/unplugin-icons
+      unpluginIcons({
+        compiler: 'jsx',
+        jsx: 'react',
+        scale: 1,
+      }),
 
       // polyfills
       // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
