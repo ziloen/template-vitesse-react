@@ -13,7 +13,7 @@ export default function Index() {
 
   return (
     <div className="flex flex-col items-center">
-      <em className="op75 text-sm">Vite Starter Template</em>
+      <em className="text-sm opacity-75">Vite Starter Template</em>
 
       <Counter />
 
@@ -23,7 +23,7 @@ export default function Index() {
         ref={name}
         placeholder={t('placeholder')}
         type="text"
-        className="w-250px rounded border bg-transparent px-4 py-2 text-center outline-none [--d:theme(colors.gray.700)] [--l:theme(colors.gray.200)] active:outline-none"
+        className="w-[250px] rounded border bg-transparent px-4 py-2 text-center outline-none [--d:theme(colors.gray.700)] [--l:theme(colors.gray.200)] active:outline-none"
         style={{
           borderColor: 'light-dark(var(--l), var(--d))',
         }}
