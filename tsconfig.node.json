@@ -6,7 +6,8 @@
     "moduleResolution": "bundler",
     "strictNullChecks": true,
     "allowJs": true,
-    "noEmit": true,
+    // "noEmit": true,
+    "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
     "types": [
       "node"
