@@ -2,11 +2,11 @@
   "compilerOptions": {
     "composite": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strictNullChecks": true,
     "allowJs": true,
-    // "noEmit": true,
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
     "types": [
