@@ -3,9 +3,19 @@ import { App as AntApp } from 'antd'
 import i18next from 'i18next'
 import { Suspense } from 'react'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
+import type { RouteObject } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useI18n } from '~/hooks'
 import routes from '~react-pages'
+
+function flatRoutes(routes: RouteObject[], parentPath: string = ''): string[] {
+  return routes.flatMap(route => {
+    if (typeof route.path !== 'string') return []
+    const path = parentPath ? `${parentPath}/${route.path}` : route.path
+
+    return route.children ? flatRoutes(route.children, path) : path
+  })
+}
 
 i18next.use(initReactI18next).init({
   lng: 'en',
