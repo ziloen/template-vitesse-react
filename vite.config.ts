@@ -148,7 +148,15 @@ export default defineConfig(({ command, mode }) => {
       // transformer: "lightningcss",
       devSourcemap: true,
       postcss: {
-        plugins: [PostcssPresetEnv({ stage: 0 }), tailwindcss()],
+        plugins: [
+          PostcssPresetEnv({
+            stage: 0,
+            features: {
+              'logical-properties-and-values': false,
+            },
+          }),
+          tailwindcss(),
+        ],
       },
     },
 
