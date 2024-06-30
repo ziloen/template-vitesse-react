@@ -11,7 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@floating-ui/react": "0.26.18",
+    "@floating-ui/react": "0.26.19",
     "@wai-ri/core": "0.0.101",
     "@wai-ri/react": "0.0.101",
     "ahooks": "3.8.0",
@@ -29,10 +29,10 @@
     "rxjs": "8.0.0-alpha.14",
     "use-context-selector": "2.0.0",
     "zod": "3.23.8",
-    "zustand": "4.5.2"
+    "zustand": "4.5.4"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.222",
+    "@iconify/json": "2.2.223",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@testing-library/react": "^16.0.0",
@@ -40,14 +40,14 @@
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-legacy": "5.4.1",
     "@vitejs/plugin-react": "4.3.1",
-    "@ziloen/eslint-config": "^0.1.37",
+    "@ziloen/eslint-config": "^0.1.38",
     "@ziloen/tailwind-config": "1.1.13",
     "cross-env": "7.0.3",
-    "eslint": "^9.5.0",
+    "eslint": "^9.6.0",
     "jsdom": "24.1.0",
     "lightningcss": "1.25.1",
-    "postcss": "8.4.38",
-    "postcss-preset-env": "9.5.14",
+    "postcss": "8.4.39",
+    "postcss-preset-env": "9.5.15",
     "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "0.6.5",
     "tailwindcss": "3.4.4",
@@ -58,8 +58,8 @@
     "unplugin-auto-import": "0.17.6",
     "unplugin-icons": "0.19.0",
     "unplugin-svg-component": "0.10.3",
-    "vite": "5.3.1",
-    "vite-plugin-pages": "0.32.2",
+    "vite": "5.3.2",
+    "vite-plugin-pages": "0.32.3",
     "vitest": "1.6.0"
   }
 }
