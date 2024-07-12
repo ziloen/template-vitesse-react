@@ -32,7 +32,7 @@
     "zustand": "4.5.4"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.225",
+    "@iconify/json": "2.2.226",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@testing-library/react": "^16.0.0",
@@ -47,7 +47,7 @@
     "jsdom": "24.1.0",
     "lightningcss": "1.25.1",
     "postcss": "8.4.39",
-    "postcss-preset-env": "9.5.16",
+    "postcss-preset-env": "9.6.0",
     "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "0.6.5",
     "tailwindcss": "3.4.4",
@@ -55,11 +55,11 @@
     "type-fest": "4.21.0",
     "typescript": "5.5.3",
     "typescript-plugin-css-modules": "5.1.0",
-    "unplugin-auto-import": "0.17.6",
+    "unplugin-auto-import": "0.18.0",
     "unplugin-icons": "0.19.0",
     "unplugin-svg-component": "0.10.3",
     "vite": "5.3.3",
     "vite-plugin-pages": "0.32.3",
-    "vitest": "1.6.0"
+    "vitest": "2.0.2"
   }
 }
