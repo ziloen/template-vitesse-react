@@ -8,6 +8,12 @@ body,
   overflow: clip;
 }
 
+#root {
+  /* Create a new block formatting context */
+  /* Prevents margin collapse */
+  display: flow-root;
+}
+
 html {
   @apply font-sans;
   background: light-dark(white, #121212);
