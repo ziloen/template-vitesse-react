@@ -7,7 +7,6 @@ import PostcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import unpluginIcons from 'unplugin-icons/vite'
-import type { Plugin } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import Pages from 'vite-plugin-pages'
 
@@ -67,7 +66,7 @@ export default defineConfig(({ command, mode }) => {
           },
         ],
         dts: 'src/types/auto-imports.d.ts',
-      }) as Plugin,
+      }),
 
       // https://github.com/Jevon617/unplugin-svg-component
       // unplugin-svg-component infinitely watch reload on dev and throws error on build
