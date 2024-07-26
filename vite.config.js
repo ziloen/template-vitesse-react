@@ -99,6 +99,8 @@ export default defineConfig(({ command, mode }) => {
           'web.structured-clone',
           /** URL.canParse() */
           'web.url.can-parse',
+          /** URL.parse() */
+          "web.url.parse",
 
           // ES2023
           /** Array.prototype.findLast() */
