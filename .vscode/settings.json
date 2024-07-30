@@ -22,7 +22,6 @@
   "emmet.extensionsPath": [
     ".vscode/emmet"
   ],
-  "eslint.experimental.useFlatConfig": true,
   "eslint.format.enable": false,
   "prettier.enable": true,
   // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
