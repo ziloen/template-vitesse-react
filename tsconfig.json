@@ -18,6 +18,8 @@
     "noImplicitReturns": false,
     "noUncheckedIndexedAccess": true,
     // resolve / build
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     // "incremental": true,
