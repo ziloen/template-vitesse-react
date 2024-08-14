@@ -1,3 +1,4 @@
+import type { ParseKeys } from 'i18next'
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -20,18 +21,18 @@ import { useTranslation } from 'react-i18next'
  * ```
  */
 export function useI18n(...args: Parameters<typeof useTranslation>) {
-  const { t, i18n, ready } = useTranslation(...args)
+  const { t, ...rest } = useTranslation(...args)
 
   return {
     t: useMemo(() => {
-      function CustomTFn(key: string): string
-      function CustomTFn(key: string, data: Record<string, string>): string
+      function CustomTFn(key: ParseKeys): string
+      function CustomTFn(key: ParseKeys, data: Record<string, string>): string
       function CustomTFn(
-        key: string,
+        key: ParseKeys,
         data: Record<string, ((content: string) => ReactNode) | ReactNode>
       ): ReactNode
       function CustomTFn(
-        key: string,
+        key: ParseKeys,
         data?: Record<string, ((content: string) => ReactNode) | ReactNode>
       ) {
         if (!data) return t(key)
@@ -97,8 +98,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
       return CustomTFn
     }, [t]),
-    i18n,
-    ready,
+    ...rest,
   }
 }
 
