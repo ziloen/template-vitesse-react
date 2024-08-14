@@ -1,7 +1,23 @@
-import type { ParseKeys } from 'i18next'
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
+import type ENJSON from '../locales/en.json'
+
+type JoinKeys<K1, K2> = `${K1 & string}.${K2 & string}`
+type KeysBuilder<Res> = KeysBuilderWithoutReturnObjects<Res>
+type $OmitArrayKeys<Arr> = Arr extends readonly any[]
+  ? Omit<Arr, keyof any[]>
+  : Arr
+export type $Dictionary<T = unknown> = { [key: string]: T }
+type KeysBuilderWithoutReturnObjects<
+  Res,
+  Key = keyof $OmitArrayKeys<Res>,
+> = Key extends keyof Res
+  ? Res[Key] extends $Dictionary | readonly unknown[]
+    ? JoinKeys<Key, KeysBuilderWithoutReturnObjects<Res[Key]>>
+    : Key
+  : never
+type Keys = KeysBuilder<typeof ENJSON>
 
 /**
  * Support custom tag, variable and element in translation string.
@@ -25,14 +41,14 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
   return {
     t: useMemo(() => {
-      function CustomTFn(key: ParseKeys): string
-      function CustomTFn(key: ParseKeys, data: Record<string, string>): string
+      function CustomTFn(key: Keys): string
+      function CustomTFn(key: Keys, data: Record<string, string>): string
       function CustomTFn(
-        key: ParseKeys,
+        key: Keys,
         data: Record<string, ((content: string) => ReactNode) | ReactNode>
       ): ReactNode
       function CustomTFn(
-        key: ParseKeys,
+        key: Keys,
         data?: Record<string, ((content: string) => ReactNode) | ReactNode>
       ) {
         if (!data) return t(key)
