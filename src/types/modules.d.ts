@@ -1,4 +1,4 @@
-declare namespace React {
+declare module 'react' {
   // fix react forwardRef, https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
   function forwardRef<T, P = {}>(
     render: (props: P, ref: ForwardedRef<T>) => ReactElement | null
@@ -23,3 +23,14 @@ declare namespace React {
     deps?: DependencyList
   ): void
 }
+
+declare module 'axios' {
+  // Add zod type to axios request config
+  interface AxiosRequestConfig {
+    requestZod?: import('zod').ZodTypeAny
+    responseZod?: import('zod').ZodTypeAny
+  }
+}
+
+export { }
+
