@@ -12,7 +12,7 @@ const postListSchema = z.array(postSchema)
 
 export type Post = z.infer<typeof postSchema>
 
-export async function getPostsApi() {
+export async function getPostListApi() {
   const { data } = await request.get<Post[]>('/posts', {
     responseZod: postListSchema,
   })

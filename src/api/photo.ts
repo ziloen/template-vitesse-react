@@ -13,7 +13,10 @@ const photoListSchema = z.array(photoSchema)
 
 export type Photo = z.infer<typeof photoSchema>
 
-export async function getPhotosApi(params: { page: number; pageSize: number }) {
+export async function getPhotoListApi(params: {
+  page: number
+  pageSize: number
+}) {
   const start = (params.page - 1) * params.pageSize
   const limit = params.pageSize
 
