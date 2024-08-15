@@ -12,10 +12,18 @@ const postListSchema = z.array(postSchema)
 
 export type Post = z.infer<typeof postSchema>
 
-export async function getPostListApi() {
-  const { data } = await request.get<Post[]>('/posts', {
-    responseZod: postListSchema,
-  })
+export async function getPostListApi(params: {
+  page: number
+  pageSize: number
+}) {
+  const start = (params.page - 1) * params.pageSize
+  const limit = params.pageSize
+
+  const { data } = await request.get<Post[]>(
+    `/posts?_start=${start}&_limit=${limit}`,
+    { responseZod: postListSchema }
+  )
+
   return data
 }
 
