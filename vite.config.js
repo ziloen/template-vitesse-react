@@ -162,6 +162,9 @@ export default defineConfig(({ command, mode }) => {
           tailwindcss(),
         ],
       },
+      modules: {
+        generateScopedName: "[hash:base64:8]",
+      }
     },
 
     // https://github.com/vitest-dev/vitest
