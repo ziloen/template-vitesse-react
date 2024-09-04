@@ -15,10 +15,10 @@
     "@wai-ri/core": "0.0.101",
     "@wai-ri/react": "0.0.101",
     "ahooks": "3.8.1",
-    "antd": "5.20.3",
-    "axios": "1.7.6",
+    "antd": "5.20.5",
+    "axios": "1.7.7",
     "clsx": "2.1.1",
-    "framer-motion": "11.3.31",
+    "framer-motion": "11.4.0",
     "i18next": "23.14.0",
     "its-fine": "1.2.5",
     "js-cookie": "3.0.5",
@@ -32,7 +32,7 @@
     "zustand": "4.5.5"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.242",
+    "@iconify/json": "2.2.243",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@testing-library/react": "^16.0.1",
@@ -46,7 +46,7 @@
     "eslint": "^9.9.1",
     "jsdom": "25.0.0",
     "lightningcss": "1.26.0",
-    "postcss": "8.4.41",
+    "postcss": "8.4.44",
     "postcss-preset-env": "10.0.2",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.6",
@@ -58,7 +58,7 @@
     "unplugin-auto-import": "0.18.2",
     "unplugin-icons": "0.19.2",
     "unplugin-svg-component": "0.10.3",
-    "vite": "5.4.2",
+    "vite": "5.4.3",
     "vite-plugin-pages": "0.32.3",
     "vitest": "2.0.5"
   }
