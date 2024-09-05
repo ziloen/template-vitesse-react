@@ -41,7 +41,7 @@
     "@vitejs/plugin-legacy": "5.4.2",
     "@vitejs/plugin-react": "4.3.1",
     "@ziloen/eslint-config": "^0.1.44",
-    "@ziloen/tailwind-config": "1.1.14",
+    "@ziloen/tailwind-config": "1.1.16",
     "cross-env": "7.0.3",
     "eslint": "^9.9.1",
     "jsdom": "25.0.0",
