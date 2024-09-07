@@ -4,8 +4,8 @@ import { react } from '@ziloen/eslint-config'
 export default [
   ...react({
     project: [
-      "./tsconfig.json",
-      "./tsconfig.node.json"
+      './tsconfig.json',
+      './tsconfig.node.json'
     ]
   })
 ]
