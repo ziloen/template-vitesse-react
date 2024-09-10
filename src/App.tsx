@@ -9,7 +9,7 @@ import { useI18n } from '~/hooks'
 import routes from '~react-pages'
 
 function flatRoutes(routes: RouteObject[], parentPath: string = ''): string[] {
-  return routes.flatMap(route => {
+  return routes.flatMap((route) => {
     if (typeof route.path !== 'string') return []
     const path = parentPath ? `${parentPath}/${route.path}` : route.path
 

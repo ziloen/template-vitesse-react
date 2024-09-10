@@ -13,7 +13,7 @@
   },
   // add @apply & @container to css atDirectives
   "css.customData": [
-    ".vscode/css-data.json"
+    ".vscode/css-data.json",
   ],
   "editor.codeActionsOnSave": [
     // only sort imports
@@ -26,10 +26,19 @@
   // "editor.snippetSuggestions": "top",
   // add @container & @media snippet
   "emmet.extensionsPath": [
-    ".vscode/emmet"
+    ".vscode/emmet",
   ],
   "eslint.format.enable": false,
+  // https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/#exclude-patterns-for-auto-imports10
+  "javascript.preferences.autoImportSpecifierExcludeRegexes": [
+    "^antd/es/_util.*$",
+    "^node:console$",
+  ],
   "prettier.enable": true,
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+    "^antd/es/_util.*$",
+    "^node:console$",
+  ],
   // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
   // ts css module plugin support
   "typescript.tsdk": "node_modules\\typescript\\lib"

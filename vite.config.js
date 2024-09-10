@@ -100,7 +100,7 @@ export default defineConfig(({ command, mode }) => {
           /** URL.canParse() */
           'web.url.can-parse',
           /** URL.parse() */
-          "web.url.parse",
+          'web.url.parse',
 
           // ES2023
           /** Array.prototype.findLast() */
@@ -163,8 +163,8 @@ export default defineConfig(({ command, mode }) => {
         ],
       },
       modules: {
-        generateScopedName: "[hash:base64:8]",
-      }
+        generateScopedName: '[hash:base64:8]',
+      },
     },
 
     // https://github.com/vitest-dev/vitest

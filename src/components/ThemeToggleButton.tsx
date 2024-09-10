@@ -18,7 +18,7 @@ export function ThemeToggleButton() {
       document.startViewTransition!(async () => {
         document.documentElement.dataset.theme = state
 
-        await new Promise<void>(resolve => {
+        await new Promise<void>((resolve) => {
           setTimeout(() => {
             resolve()
           }, 0)
