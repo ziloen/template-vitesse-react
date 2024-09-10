@@ -31,7 +31,7 @@ export function ThemeToggleButton() {
 
   return (
     <button
-      className="btn"
+      className="btn select-none"
       onClick={() => {
         setColorScheme(next())
       }}
