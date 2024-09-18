@@ -153,6 +153,7 @@ export default defineConfig(({ command, mode }) => {
           PostcssPresetEnv({
             stage: 0,
             features: {
+              // do not transform logical properties
               'float-clear-logical-values': false,
               'logical-overflow': false,
               'logical-overscroll-behavior': false,
