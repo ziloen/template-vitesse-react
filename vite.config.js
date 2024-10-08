@@ -94,6 +94,18 @@ export default defineConfig(({ command, mode }) => {
         // polyfills: [],
         /** polyfills for modern browsers (supports esm) */
         modernPolyfills: [
+          // Proposals
+          /** Array.fromAsync() */
+          'esnext.array.from-async',
+          /** Promise.withResolvers() */
+          'esnext.promise.with-resolvers',
+          /** https://github.com/tc39/proposal-set-methods */
+          'proposals/set-methods',
+          /** https://github.com/tc39/proposal-iterator-helpers */
+          'proposals/iterator-helpers',
+          /** https://github.com/tc39/proposal-async-iterator-helpers */
+          'proposals/async-iterator-helpers',
+
           // Web APIs
           /** structuredClone() */
           'web.structured-clone',
