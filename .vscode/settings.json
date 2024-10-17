@@ -1,8 +1,8 @@
 {
   "[json]": {
-    "editor.codeActionsOnSave": [
-      "source.sort.json"
-    ],
+    // "editor.codeActionsOnSave": [
+    //   "source.sort.json"
+    // ],
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescript]": {
