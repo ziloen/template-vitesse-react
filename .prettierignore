@@ -1,6 +1,7 @@
 **/*.css
 **/*.scss
 **/*.json
+!src/locales/*.json
 **/*.jsonc
 **/*.html
 **/*.vue

@@ -16,5 +16,17 @@
   "tailwindPreserveDuplicates": false,
   "tailwindPreserveWhitespace": true,
   "trailingComma": "es5",
-  "useTabs": false
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "src/locales/*.json",
+      "options": {
+        "printWidth": 0,
+        "plugins": [
+          "prettier-plugin-sort-json"
+        ],
+        "jsonRecursiveSort": true
+      }
+    }
+  ]
 }
