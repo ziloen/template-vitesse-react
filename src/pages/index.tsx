@@ -11,7 +11,7 @@ export default function Index() {
     if (name.current)
       navigate(`/hi/${encodeURIComponent(name.current.value)}`, {
         state: {
-          back: '/',
+          from: '/',
         },
       })
   }

@@ -1,10 +1,11 @@
+import type { Location } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import CarbonPedestrian from '~icons/carbon/pedestrian'
 
 export default function Hi() {
   const navigate = useNavigate()
   const params = useParams()
-  const location = useLocation()
+  const location = useLocation() as Location<{ from?: string } | undefined>
 
   return (
     <div>
@@ -18,8 +19,7 @@ export default function Hi() {
         <button
           className="btn m-3 mt-8 text-sm"
           onClick={() => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            if (location.state?.back) {
+            if (location.state?.from) {
               navigate(-1)
             } else {
               navigate('/')
