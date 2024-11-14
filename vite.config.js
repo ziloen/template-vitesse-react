@@ -60,7 +60,7 @@ export default defineConfig(({ command, mode }) => {
             ],
             'react-dom': ['createPortal'],
             'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
-            'framer-motion': ['motion', 'AnimatePresence'],
+            'motion/react': ['motion', 'AnimatePresence'],
             clsx: ['clsx'],
             'clsx/lite': [['clsx', 'clsxLite']],
           },
