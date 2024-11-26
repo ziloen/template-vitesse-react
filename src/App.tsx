@@ -1,5 +1,4 @@
 import { useAsyncEffect } from 'ahooks'
-import { App as AntApp } from 'antd'
 import i18next from 'i18next'
 import { Suspense } from 'react'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
@@ -48,11 +47,9 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18next}>
-      <AntApp component={false}>
-        <Router basename="">
-          <Routes />
-        </Router>
-      </AntApp>
+      <Router basename="">
+        <Routes />
+      </Router>
     </I18nextProvider>
   )
 }
