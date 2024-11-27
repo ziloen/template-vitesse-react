@@ -34,12 +34,10 @@
   "eslint.format.enable": false,
   // https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/#exclude-patterns-for-auto-imports10
   "javascript.preferences.autoImportSpecifierExcludeRegexes": [
-    "^antd/es/_util.*$",
     "^node:console$",
   ],
   "prettier.enable": true,
   "typescript.preferences.autoImportSpecifierExcludeRegexes": [
-    "^antd/es/_util.*$",
     "^node:console$",
   ],
   // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
