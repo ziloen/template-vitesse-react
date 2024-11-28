@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAsyncEffect } from 'ahooks'
 import i18next from 'i18next'
 import { Suspense } from 'react'
@@ -34,6 +35,8 @@ i18next.use(initReactI18next).init({
   // debug: IS_DEV,
 })
 
+const queryClient = new QueryClient()
+
 export default function App() {
   useAsyncEffect(async () => {
     const lang = 'en'
@@ -46,11 +49,13 @@ export default function App() {
   }, [])
 
   return (
-    <I18nextProvider i18n={i18next}>
-      <Router basename="">
-        <Routes />
-      </Router>
-    </I18nextProvider>
+    <QueryClientProvider client={queryClient}>
+      <I18nextProvider i18n={i18next}>
+        <Router basename="">
+          <Routes />
+        </Router>
+      </I18nextProvider>
+    </QueryClientProvider>
   )
 }
 

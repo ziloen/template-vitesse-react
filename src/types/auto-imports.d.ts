@@ -28,3 +28,9 @@ declare global {
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
 }
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { ReactNode, ComponentProps } from 'react'
+  import('react')
+}

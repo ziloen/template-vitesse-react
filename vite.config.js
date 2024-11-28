@@ -64,6 +64,11 @@ export default defineConfig(({ command, mode }) => {
             clsx: ['clsx'],
             'clsx/lite': [['clsx', 'clsxLite']],
           },
+          {
+            type: true,
+            from: 'react',
+            imports: ['ReactNode', 'ComponentProps'],
+          },
         ],
         dts: 'src/types/auto-imports.d.ts',
       }),
