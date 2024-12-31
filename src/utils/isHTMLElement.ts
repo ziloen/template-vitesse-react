@@ -41,6 +41,19 @@ export function isHTMLElement<
   )
 }
 
+export function isInstanceofElement<T extends typeof Element>(
+  element: unknown,
+  instance: T
+): element is T['prototype'] {
+  if (element instanceof instance) {
+    return true
+  }
+
+  return isHTMLElement(element, {
+    constructorName: instance.name as HTMLElementConstructorName,
+  })
+}
+
 /**
  * @internal
  */

@@ -16,7 +16,18 @@ export function ThemeToggleButton() {
   useEffect(() => {
     if (enableTransitions()) {
       document.startViewTransition!(async () => {
-        document.documentElement.dataset.theme = state
+        const colorScheme = document.head.querySelector(
+          "meta[name='color-scheme']"
+        )
+        if (colorScheme) {
+          colorScheme.setAttribute(
+            'content',
+            state === 'auto' ? 'dark light' : state
+          )
+        }
+
+        // eslint-disable-next-line unicorn/prefer-dom-node-dataset
+        document.documentElement.setAttribute('data-theme', state)
 
         await new Promise<void>((resolve) => {
           setTimeout(() => {
@@ -25,7 +36,19 @@ export function ThemeToggleButton() {
         })
       })
     } else {
-      document.documentElement.dataset.theme = state
+      const colorScheme = document.head.querySelector(
+        "meta[name='color-scheme']"
+      )
+
+      if (colorScheme) {
+        colorScheme.setAttribute(
+          'content',
+          state === 'auto' ? 'dark light' : state
+        )
+      }
+
+      // eslint-disable-next-line unicorn/prefer-dom-node-dataset
+      document.documentElement.setAttribute('data-theme', state)
     }
   }, [colorScheme])
 
