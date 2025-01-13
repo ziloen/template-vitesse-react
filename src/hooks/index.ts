@@ -1,10 +1,11 @@
 export * from './useColorScheme'
 export * from './useCycleList'
+export { useGetState } from './useGetState'
 export * from './useI18n'
 export { useLatest } from './useLatest'
 export * from './useMagicKeys'
 export { useMemoizedFn } from './useMemoizedFn'
-export * from './useNextTick'
+export { useNextTick } from './useNextTick'
 
 /**
  * @example
@@ -22,7 +23,7 @@ export function mergeRefs<T>(...refs: React.Ref<T>[]): React.RefCallback<T> {
       if (typeof ref === 'function') {
         ref(instance)
       } else if (ref) {
-        ;(ref as React.MutableRefObject<T | null>).current = instance
+        ref.current = instance
       }
     }
   }
