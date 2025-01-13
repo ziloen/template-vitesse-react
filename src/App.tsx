@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useAsyncEffect } from 'ahooks'
 import i18next from 'i18next'
 import { Suspense } from 'react'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
@@ -42,14 +41,12 @@ i18next.use(initReactI18next).init({
 const queryClient = new QueryClient()
 
 export default function App() {
-  useAsyncEffect(async () => {
+  useEffect(() => {
     const lang = 'en'
-    const resource = (await import(`~/locales/${lang}.json`)) as Record<
-      string,
-      any
-    >
-    i18next.addResourceBundle(lang, 'translation', resource)
-    i18next.changeLanguage(lang)
+    import(`~/locales/${lang}.json`).then((resource) => {
+      i18next.addResourceBundle(lang, 'translation', resource)
+      i18next.changeLanguage(lang)
+    })
   }, [])
 
   return (

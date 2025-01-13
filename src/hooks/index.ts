@@ -1,8 +1,9 @@
 export * from './useColorScheme'
 export * from './useCycleList'
-export * from './useElementBounding'
 export * from './useI18n'
+export { useLatest } from './useLatest'
 export * from './useMagicKeys'
+export { useMemoizedFn } from './useMemoizedFn'
 export * from './useNextTick'
 
 /**
