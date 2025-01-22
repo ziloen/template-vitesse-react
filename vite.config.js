@@ -46,7 +46,6 @@ export default defineConfig(({ command, mode }) => {
             react: [
               'Fragment',
               'Suspense',
-              'forwardRef',
               'useCallback',
               'useEffect',
               'useId',

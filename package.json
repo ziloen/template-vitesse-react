@@ -19,7 +19,7 @@
     "i18next": "24.2.1",
     "its-fine": "1.2.5",
     "js-cookie": "3.0.5",
-    "motion": "11.18.2",
+    "motion": "12.0.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-i18next": "15.4.0",
@@ -30,7 +30,7 @@
     "zustand": "5.0.3"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.297",
+    "@iconify/json": "2.2.298",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@testing-library/react": "^16.2.0",
@@ -51,14 +51,14 @@
     "prettier-plugin-tailwindcss": "0.6.10",
     "tailwindcss": "3.4.17",
     "ts-lib-enhance": "1.0.20",
-    "type-fest": "4.32.0",
+    "type-fest": "4.33.0",
     "typescript": "5.7.3",
     "typescript-plugin-css-modules": "5.1.0",
     "unplugin-auto-import": "19.0.0",
     "unplugin-icons": "22.0.0",
     "unplugin-svg-component": "0.12.1",
-    "vite": "6.0.9",
+    "vite": "6.0.11",
     "vite-plugin-pages": "0.32.4",
-    "vitest": "3.0.2"
+    "vitest": "3.0.3"
   }
 }

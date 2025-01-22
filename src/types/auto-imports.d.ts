@@ -12,7 +12,6 @@ declare global {
   const clsx: typeof import('clsx')['clsx']
   const clsxLite: typeof import('clsx/lite')['clsx']
   const createPortal: typeof import('react-dom')['createPortal']
-  const forwardRef: typeof import('react')['forwardRef']
   const motion: typeof import('motion/react')['motion']
   const useCallback: typeof import('react')['useCallback']
   const useEffect: typeof import('react')['useEffect']
