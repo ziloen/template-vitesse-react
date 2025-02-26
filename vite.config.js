@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 
+import tailwindcss from '@tailwindcss/postcss'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
 import { resolve as r } from 'node:path'
 import PostcssPresetEnv from 'postcss-preset-env'
-import tailwindcss from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import unpluginIcons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'

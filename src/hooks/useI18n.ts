@@ -37,7 +37,7 @@ type Keys = KeysBuilder<typeof ENJSON>
  * ```
  */
 export function useI18n(...args: Parameters<typeof useTranslation>) {
-  const { t, ...rest } = useTranslation(...args)
+  const { t, i18n, ready } = useTranslation(...args)
 
   return {
     t: useMemo(() => {
@@ -114,7 +114,8 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
       return CustomTFn
     }, [t]),
-    ...rest,
+    i18n,
+    ready,
   }
 }
 

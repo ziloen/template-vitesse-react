@@ -5,6 +5,19 @@
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "jsxSingleQuote": false,
+  "objectWrap": "preserve",
+  "overrides": [
+    {
+      "files": "src/locales/*.json",
+      "options": {
+        "jsonRecursiveSort": true,
+        "plugins": [
+          "prettier-plugin-sort-json"
+        ],
+        "printWidth": 0
+      }
+    }
+  ],
   "plugins": [
     "prettier-plugin-tailwindcss"
   ],
@@ -16,17 +29,5 @@
   "tailwindPreserveDuplicates": false,
   "tailwindPreserveWhitespace": true,
   "trailingComma": "es5",
-  "useTabs": false,
-  "overrides": [
-    {
-      "files": "src/locales/*.json",
-      "options": {
-        "printWidth": 0,
-        "plugins": [
-          "prettier-plugin-sort-json"
-        ],
-        "jsonRecursiveSort": true
-      }
-    }
-  ]
+  "useTabs": false
 }

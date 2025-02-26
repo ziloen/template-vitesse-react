@@ -16,7 +16,6 @@
   "include": [
     "vite.config.js",
     "eslint.config.js",
-    "tailwind.config.js",
     "test"
   ]
 }

@@ -1,9 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "@ziloen/tailwind-config/preset.css";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, :host([data-theme=dark]), :host([data-theme=dark]) *));
 
 @layer utilities {
   .btn {
-    @apply px-4 py-1 rounded inline-block bg-green-700 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
+    @apply px-4 py-1 rounded inline-block bg-green-700 text-white cursor-pointer hover:bg-green-600 disabled:cursor-default disabled:bg-dark-gray-50 disabled:opacity-50 border-none;
   }
 }

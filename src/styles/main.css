@@ -15,9 +15,9 @@ body,
 }
 
 html {
-  @apply font-sans;
+  font-family: var(--font-sans);
   background: light-dark(white, #121212);
-  color: light-dark(black, theme("colors.gray.200"));
+  color: light-dark(black, var(--color-light-gray-200));
 }
 
 html[data-theme="dark"] {
