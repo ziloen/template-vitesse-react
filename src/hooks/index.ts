@@ -6,6 +6,7 @@ export { useLatest } from './useLatest'
 export * from './useMagicKeys'
 export { useMemoizedFn } from './useMemoizedFn'
 export { useNextTick } from './useNextTick'
+export { usePointerCaptureRef } from './usePointerCaptureRef'
 
 /**
  * @example
