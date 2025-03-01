@@ -38,7 +38,7 @@ export function usePointerCaptureRef<T extends HTMLElement>(
 ): RefCallback<T> {
   const optionsRef = useLatest(options)
 
-  const ref = useMemoizedFn((el: T | null) => {
+  return useMemoizedFn((el: T | null) => {
     if (!el) return
 
     const ac = new AbortController()
@@ -101,6 +101,4 @@ export function usePointerCaptureRef<T extends HTMLElement>(
       ac.abort()
     }
   })
-
-  return ref
 }

@@ -8,6 +8,7 @@
     "strictNullChecks": true,
     "allowJs": true,
     "emitDeclarationOnly": true,
+    "erasableSyntaxOnly": true,
     "allowSyntheticDefaultImports": true,
     "types": [
       "node"
