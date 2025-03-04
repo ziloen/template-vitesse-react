@@ -39,7 +39,6 @@
       "vite-plugin-pages/client-react",
       "unplugin-icons/types/react",
       "ts-lib-enhance",
-      "ts-lib-enhance/view-transition",
     ],
     "paths": {
       "~/*": [
