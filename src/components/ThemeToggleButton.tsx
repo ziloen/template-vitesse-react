@@ -26,7 +26,6 @@ export function ThemeToggleButton() {
           )
         }
 
-        // eslint-disable-next-line unicorn/prefer-dom-node-dataset
         document.documentElement.setAttribute('data-theme', state)
 
         await new Promise<void>((resolve) => {
@@ -47,7 +46,6 @@ export function ThemeToggleButton() {
         )
       }
 
-      // eslint-disable-next-line unicorn/prefer-dom-node-dataset
       document.documentElement.setAttribute('data-theme', state)
     }
   }, [colorScheme])
