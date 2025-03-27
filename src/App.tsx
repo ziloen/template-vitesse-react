@@ -21,7 +21,7 @@ i18next.use(initReactI18next).init({
 
   react: {
     transSupportBasicHtmlNodes: true,
-    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i'],
+    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'b'],
   },
 
   interpolation: {
