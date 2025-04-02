@@ -174,6 +174,7 @@ export default defineConfig(({ command, mode }) => {
               'logical-overflow': false,
               'logical-overscroll-behavior': false,
               'logical-properties-and-values': false,
+              'light-dark-function': false,
             },
           }),
           tailwindcss(),

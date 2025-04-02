@@ -1,3 +1,5 @@
+@import "./tailwind.css" reference;
+
 html,
 body,
 #root {
@@ -15,9 +17,9 @@ body,
 }
 
 html {
-  font-family: var(--font-sans);
+  font-family: --theme(--font-sans);
   background: light-dark(white, #121212);
-  color: light-dark(black, var(--color-light-gray-200));
+  color: light-dark(black, --theme(--color-light-gray-200));
 }
 
 html[data-theme="dark"] {
