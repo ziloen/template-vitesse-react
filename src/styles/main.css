@@ -1,5 +1,14 @@
 @import "./tailwind.css" reference;
 
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  box-sizing: border-box;
+  border: 0 solid;
+}
+
 html,
 body,
 #root {
