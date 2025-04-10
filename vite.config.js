@@ -175,6 +175,9 @@ export default defineConfig(({ command, mode }) => {
               'logical-overscroll-behavior': false,
               'logical-properties-and-values': false,
               'light-dark-function': false,
+
+              // TODO: temporary disable until tailwindcss v4 fix it
+              'cascade-layers': false,
             },
           }),
           tailwindcss(),
