@@ -34,7 +34,7 @@ type UsePointerCaptureOptions<T> = {
 }
 
 export function usePointerCaptureRef<T extends HTMLElement>(
-  options: UsePointerCaptureOptions<T>
+  options: UsePointerCaptureOptions<T>,
 ): RefCallback<T> {
   const optionsRef = useLatest(options)
 
@@ -75,7 +75,7 @@ export function usePointerCaptureRef<T extends HTMLElement>(
               dy: moveEvent.y - startPosition.y,
             })
           },
-          { signal: controller.signal, passive: true }
+          { signal: controller.signal, passive: true },
         )
 
         /** pointerup 停止监听 */
@@ -91,10 +91,10 @@ export function usePointerCaptureRef<T extends HTMLElement>(
               dy: upEvent.y - startPosition.y,
             })
           },
-          { once: true }
+          { once: true },
         )
       },
-      { signal: ac.signal }
+      { signal: ac.signal },
     )
 
     return () => {

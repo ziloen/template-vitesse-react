@@ -9,7 +9,7 @@ type UseCycleListOptions<T> = {
 
 export function useCycleList<T>(
   list: T[],
-  options: UseCycleListOptions<T> = {}
+  options: UseCycleListOptions<T> = {},
 ) {
   const [index, setIndex] = useState(() => {
     const index = list.indexOf(options.initialValue as T)

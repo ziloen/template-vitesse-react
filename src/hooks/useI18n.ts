@@ -45,11 +45,11 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
       function CustomTFn(key: Keys, data: Record<string, string>): string
       function CustomTFn(
         key: Keys,
-        data: Record<string, ((content: string) => ReactNode) | ReactNode>
+        data: Record<string, ((content: string) => ReactNode) | ReactNode>,
       ): ReactNode
       function CustomTFn(
         key: Keys,
-        data?: Record<string, ((content: string) => ReactNode) | ReactNode>
+        data?: Record<string, ((content: string) => ReactNode) | ReactNode>,
       ) {
         if (!data) return t(key)
 
@@ -141,7 +141,7 @@ const voidElements = new Set([
  */
 function getRendered(
   getter: ((content: string) => ReactNode) | ReactElement | undefined,
-  content: string | undefined
+  content: string | undefined,
 ) {
   if (!getter || !content) {
     return content

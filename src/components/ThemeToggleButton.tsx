@@ -17,12 +17,12 @@ export function ThemeToggleButton() {
     if (enableTransitions()) {
       document.startViewTransition!(async () => {
         const colorScheme = document.head.querySelector(
-          "meta[name='color-scheme']"
+          "meta[name='color-scheme']",
         )
         if (colorScheme) {
           colorScheme.setAttribute(
             'content',
-            state === 'auto' ? 'dark light' : state
+            state === 'auto' ? 'dark light' : state,
           )
         }
 
@@ -36,13 +36,13 @@ export function ThemeToggleButton() {
       })
     } else {
       const colorScheme = document.head.querySelector(
-        "meta[name='color-scheme']"
+        "meta[name='color-scheme']",
       )
 
       if (colorScheme) {
         colorScheme.setAttribute(
           'content',
-          state === 'auto' ? 'dark light' : state
+          state === 'auto' ? 'dark light' : state,
         )
       }
 

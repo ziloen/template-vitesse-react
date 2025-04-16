@@ -28,6 +28,6 @@
   "tabWidth": 2,
   "tailwindPreserveDuplicates": false,
   "tailwindPreserveWhitespace": true,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "useTabs": false
 }

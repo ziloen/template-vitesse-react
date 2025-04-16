@@ -25,7 +25,7 @@ export function isHTMLElement<
      * Like `HTMLInputElement` for example.
      */
     constructorName?: ConstructorName
-  }
+  },
 ): element is InstanceType<
   (typeof globalThis)[[ConstructorName] extends [never]
     ? 'HTMLElement'
@@ -37,13 +37,13 @@ export function isHTMLElement<
       typedElement instanceof
         typedElement.ownerDocument.defaultView[
           options?.constructorName ?? 'HTMLElement'
-        ]
+        ],
   )
 }
 
 export function isInstanceofElement<T extends typeof Element>(
   element: unknown,
-  instance: T
+  instance: T,
 ): element is T['prototype'] {
   if (element instanceof instance) {
     return true

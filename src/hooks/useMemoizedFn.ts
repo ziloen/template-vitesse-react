@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 
 export function useMemoizedFn<T extends (this: any, ...args: any[]) => any>(
-  fn: T
+  fn: T,
 ): T {
   const fnRef = useRef<T>(fn)
   const memoizedFn = useRef<T | undefined>(undefined)

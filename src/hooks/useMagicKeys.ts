@@ -10,9 +10,9 @@ export function useMagicKeys() {
         {},
         {
           get(target, p, receiver) {},
-        }
+        },
       ),
-    []
+    [],
   )
 
   return proxy as Record<string, boolean>

@@ -21,7 +21,7 @@ export async function getPostListApi(params: {
 
   const { data } = await request.get<Post[]>(
     `/posts?_start=${start}&_limit=${limit}`,
-    { responseZod: postListSchema }
+    { responseZod: postListSchema },
   )
 
   return data

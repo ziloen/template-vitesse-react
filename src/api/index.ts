@@ -28,5 +28,5 @@ request.interceptors.response.use(
   },
   (error: Error) => {
     throw error
-  }
+  },
 )
