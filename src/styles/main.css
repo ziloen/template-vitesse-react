@@ -23,6 +23,7 @@ body,
   /* Create a new block formatting context */
   /* Prevents margin collapse */
   display: flow-root;
+  isolation: isolate;
 }
 
 html {

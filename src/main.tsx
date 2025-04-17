@@ -7,7 +7,7 @@ import './styles/tailwind.css'
 import './styles/main.css'
 
 if (import.meta.env.DEV) {
-  scan({ enabled: true })
+  scan({ enabled: true, animationSpeed: 'off' })
 }
 
 createRoot(document.querySelector('#root')!).render(<App />)

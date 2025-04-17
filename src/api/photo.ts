@@ -22,7 +22,7 @@ export async function getPhotoListApi(params: {
 
   const { data } = await request.get<Photo[]>(
     `/photos?_start=${start}&_limit=${limit}`,
-    { responseZod: photoListSchema },
+    { responseSchema: photoListSchema },
   )
 
   return data
@@ -30,7 +30,7 @@ export async function getPhotoListApi(params: {
 
 export async function getPhotoApi(id: number) {
   const { data } = await request.get<Photo>(`/photos/${id}`, {
-    responseZod: photoSchema,
+    responseSchema: photoSchema,
   })
   return data
 }

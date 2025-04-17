@@ -22,8 +22,8 @@ declare module 'react' {
 declare module 'axios' {
   // Add zod type to axios request config
   interface AxiosRequestConfig {
-    requestZod?: import('zod').ZodTypeAny
-    responseZod?: import('zod').ZodTypeAny
+    requestSchema?: import('zod').ZodTypeAny
+    responseSchema?: import('zod').ZodTypeAny
   }
 }
 
