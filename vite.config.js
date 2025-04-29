@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 
-import tailwindcss from '@tailwindcss/postcss'
+import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
+import { Features } from 'lightningcss'
 import { resolve as r } from 'node:path'
-import PostcssPresetEnv from 'postcss-preset-env'
 import AutoImport from 'unplugin-auto-import/vite'
 import unpluginIcons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
@@ -89,6 +89,8 @@ export default defineConfig(({ command, mode }) => {
         scale: 1,
       }),
 
+      tailwindcss(),
+
       // polyfills
       // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
       legacy({
@@ -162,27 +164,17 @@ export default defineConfig(({ command, mode }) => {
     },
 
     css: {
-      // transformer: "lightningcss",
-      devSourcemap: true,
-      postcss: {
-        plugins: [
-          PostcssPresetEnv({
-            stage: 0,
-            features: {
-              // do not transform logical properties
-              'float-clear-logical-values': false,
-              'logical-overflow': false,
-              'logical-overscroll-behavior': false,
-              'logical-properties-and-values': false,
-              'light-dark-function': false,
+      transformer: 'lightningcss',
+      lightningcss: {
+        // https://lightningcss.dev/transpilation.html#feature-flags
+        include: Features.Colors | Features.Nesting | Features.MediaRangeSyntax,
+        exclude: Features.LogicalProperties,
 
-              // TODO: temporary disable until tailwindcss v4 fix it
-              'cascade-layers': false,
-            },
-          }),
-          tailwindcss(),
-        ],
+        cssModules: {
+          generateScopedName: '[hash:base64:8]',
+        },
       },
+      devSourcemap: true,
       modules: {
         generateScopedName: '[hash:base64:8]',
       },
