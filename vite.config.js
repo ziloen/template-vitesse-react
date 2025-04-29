@@ -3,6 +3,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
+import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -17,6 +18,8 @@ export default defineConfig(({ command, mode }) => {
   const IS_PROD = env.PROD
   const IS_DEV = env.DEV
   const IS_BUILD = command === 'build'
+
+  const target = '> 0.5%, last 2 versions, Firefox ESR, not dead'
 
   return {
     resolve: {
@@ -96,64 +99,9 @@ export default defineConfig(({ command, mode }) => {
       legacy({
         // render legacy chunks for non-modern browsers
         renderLegacyChunks: false,
-        /** polyfills for non-modern browsers (not supports esm) */
-        // polyfills: [],
-        /** polyfills for modern browsers (supports esm) */
-        modernPolyfills: [
-          // Proposals
-          /** Array.fromAsync() */
-          'esnext.array.from-async',
-          /** Promise.withResolvers() */
-          'esnext.promise.with-resolvers',
-          /** https://github.com/tc39/proposal-set-methods */
-          'proposals/set-methods',
-          /** https://github.com/tc39/proposal-iterator-helpers */
-          'proposals/iterator-helpers',
-          /** https://github.com/tc39/proposal-async-iterator-helpers */
-          'proposals/async-iterator-helpers',
-
-          // Web APIs
-          /** structuredClone() */
-          'web.structured-clone',
-          /** URL.canParse() */
-          'web.url.can-parse',
-          /** URL.parse() */
-          'web.url.parse',
-
-          // ES2023
-          /** Array.prototype.findLast() */
-          'es.array.find-last',
-          /** Array.prototype.findLastIndex() */
-          'es.array.find-last-index',
-          /** TypedArray.prototype.findLast() */
-          'es.typed-array.find-last',
-          /** TypedArray.prototype.findLastIndex() */
-          'es.typed-array.find-last-index',
-          /** Array.prototype.toReversed() */
-          'esnext.array.to-reversed',
-          /** Array.prototype.toSorted() */
-          'esnext.array.to-sorted',
-          /** Array.prototype.toSpliced() */
-          'esnext.array.to-spliced',
-          /** Array.prototype.with() */
-          'esnext.array.with',
-
-          // ES2022
-          /** Array.prototype.at() */
-          'es.array.at',
-          /** String.prototype.at() */
-          'es.string.at-alternative',
-          /** TypedArray.prototype.at() */
-          'es.typed-array.at',
-          /** Object.hasOwn */
-          'es.object.has-own',
-          /** AggregateError */
-          'es.aggregate-error',
-          /** AggregateError: cause */
-          'es.aggregate-error.cause',
-          /** Error: cause */
-          'es.error.cause',
-        ],
+        targets: target,
+        modernTargets: target,
+        modernPolyfills: true,
       }),
     ],
 
@@ -161,6 +109,7 @@ export default defineConfig(({ command, mode }) => {
       // disable inline base64
       assetsInlineLimit: 0,
       cssMinify: 'lightningcss',
+      target: browserslistToEsbuild(target),
     },
 
     css: {

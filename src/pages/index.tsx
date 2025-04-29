@@ -8,12 +8,13 @@ export default function Index() {
 
   const navigate = useNavigate()
   function go() {
-    if (name.current)
+    if (name.current) {
       navigate(`/hi/${encodeURIComponent(name.current.value)}`, {
         state: {
           from: '/',
         },
       })
+    }
   }
 
   return (
