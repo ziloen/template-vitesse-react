@@ -160,7 +160,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       // disable inline base64
       assetsInlineLimit: 0,
-      cssMinify: 'esbuild',
+      cssMinify: 'lightningcss',
     },
 
     css: {
