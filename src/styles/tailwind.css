@@ -3,6 +3,28 @@
 
 @theme {
   --color-surface: light-dark(--theme(--color-light-gray-50), --theme(--color-dark-gray-500));
+
+  /* --color-[role]-[prominence]-[interaction] */
+  --text-color-neutral-primary: light-dark(black, --theme(--color-light-gray-100));
+  --text-color-neutral-primary-muted: light-dark(--theme(--color-dark-gray-700), --theme(--color-light-gray-400));
+
+  --text-color-neutral-secondary: light-dark(--theme(--color-dark-gray-500), --theme(--color-light-gray-300));
+  --text-color-neutral-secondary-muted: light-dark(--theme(--color-dark-gray-500), --theme(--color-light-gray-400));
+
+  --text-color-neutral-tertiary: light-dark(--theme(--color-dark-gray-300), --theme(--color-light-gray-500));
+  --text-color-neutral-tertiary-muted: light-dark(--theme(--color-dark-gray-300), --theme(--color-light-gray-200));
+
+
+  --text-color-error-primary: light-dark(--theme(--color-red-500), --theme(--color-red-300));
+
+  /* --color-field-bg: light-dark();
+  --color-field-fg: light-dark();
+
+  --color-field-bg-muted: light-dark();
+  --color-field-bg-hover: ;
+  --color-field-bg-active: ;
+  --color-field-ring-focus: ;
+  --color-field- */
 }
 
 /* 
