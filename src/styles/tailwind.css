@@ -1,5 +1,6 @@
 @import "@ziloen/tailwind-config/preset.css";
 
+/* @import "tailwindcss/preflight.css" layer(base); */
 
 @theme {
   --color-surface: light-dark(--theme(--color-light-gray-50), --theme(--color-dark-gray-500));
