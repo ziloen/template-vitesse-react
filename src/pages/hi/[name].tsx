@@ -1,5 +1,5 @@
-import type { Location } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import type { Location } from 'react-router'
+import { useLocation } from 'react-router'
 import CarbonPedestrian from '~icons/carbon/pedestrian'
 
 export default function Hi() {

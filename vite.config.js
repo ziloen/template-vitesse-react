@@ -61,7 +61,7 @@ export default defineConfig(({ command, mode }) => {
               'useSyncExternalStore',
             ],
             'react-dom': ['createPortal'],
-            'react-router-dom': ['useNavigate', 'useParams', 'useRoutes'],
+            'react-router': ['useNavigate', 'useParams', 'useRoutes'],
             'motion/react': ['motion', 'AnimatePresence'],
             clsx: ['clsx'],
             'clsx/lite': [['clsx', 'clsxLite']],

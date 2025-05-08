@@ -1,13 +1,19 @@
-@import "./tailwind.css" reference;
+@reference "./tailwind.css";
 
-*,
-::after,
-::before,
-::backdrop,
-::file-selector-button {
-  box-sizing: border-box;
-  border: 0 solid;
+
+
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    box-sizing: border-box;
+    border: 0 solid;
+  }
 }
+
 
 html,
 body,

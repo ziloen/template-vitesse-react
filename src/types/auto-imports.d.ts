@@ -20,10 +20,10 @@ declare global {
   const useInsertionEffect: typeof import('react')['useInsertionEffect']
   const useLayoutEffect: typeof import('react')['useLayoutEffect']
   const useMemo: typeof import('react')['useMemo']
-  const useNavigate: typeof import('react-router-dom')['useNavigate']
-  const useParams: typeof import('react-router-dom')['useParams']
+  const useNavigate: typeof import('react-router')['useNavigate']
+  const useParams: typeof import('react-router')['useParams']
   const useRef: typeof import('react')['useRef']
-  const useRoutes: typeof import('react-router-dom')['useRoutes']
+  const useRoutes: typeof import('react-router')['useRoutes']
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
 }
