@@ -15,3 +15,13 @@ tag 插值使用 camelCase 命名，方便在使用时作为对象的属性名 `
   "hello_world": "Hello <wrappedText>World</wrappedText>"
 }
 ```
+
+common 里存放一些简短通用的 key，最好是只有一个单词或固定短语
+```json
+{
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+  }
+}
+```

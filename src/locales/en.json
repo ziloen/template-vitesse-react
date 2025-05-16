@@ -1,17 +1,15 @@
 {
-  "actions": {
+  "common": {
+    "back": "Back",
     "cancel": "Cancel",
+    "close": "Close",
     "confirm": "Confirm",
     "delete": "Delete",
     "download": "Download",
     "edit": "Edit",
-    "save": "Save"
-  },
-  "common": {
-    "back": "Back",
-    "close": "Close",
     "next": "Next",
     "ok": "OK",
+    "save": "Save",
     "submit": "Submit"
   },
   "loading": "Loading...",
