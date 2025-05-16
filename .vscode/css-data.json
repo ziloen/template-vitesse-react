@@ -31,6 +31,16 @@
           "url": "https://tailwindcss.com/docs/functions-and-directives#custom-variant-directive"
         }
       ]
+    },
+    {
+      "name": "@reference",
+      "description": "make tailwindcss available in context",
+      "references": [
+        {
+          "name": "tailwind doc",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#reference-directive"
+        }
+      ]
     }
   ]
 }
