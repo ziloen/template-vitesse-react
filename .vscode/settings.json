@@ -14,6 +14,10 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "cSpell.words": [
+    "tailwindcss",
+    "ziloen"
+  ],
   // add @apply & @container to css atDirectives
   "css.customData": [
     ".vscode/css-data.json",
