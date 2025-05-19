@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { ZodTypeAny } from 'zod'
+import type { ZodType } from 'zod/v4'
 
 export const request = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
@@ -8,7 +8,7 @@ export const request = axios.create({
   adapter: 'fetch',
 })
 
-function validate(data: unknown, schema: ZodTypeAny | undefined) {
+function validate(data: unknown, schema: ZodType | undefined) {
   if (!schema) return
   const result = schema.safeParse(data)
   if (!result.success) {
