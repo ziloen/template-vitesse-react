@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": true,
     "jsx": "react-jsx",
     "rootDir": "./",
     "baseUrl": "./",
@@ -48,14 +49,7 @@
         "./*"
       ],
     },
-    "plugins": [
-      // Disable cause performance issue
-      // https://github.com/mrmckeb/typescript-plugin-css-modules/issues/215
-      // https://github.com/mrmckeb/typescript-plugin-css-modules?tab=readme-ov-file#visual-studio-code
-      // {
-      //   "name": "typescript-plugin-css-modules"
-      // }
-    ]
+    "plugins": []
   },
   "include": [
     "src"

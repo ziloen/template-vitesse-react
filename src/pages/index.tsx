@@ -5,8 +5,8 @@ import { useI18n } from '~/hooks'
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
   const { t } = useI18n()
-
   const navigate = useNavigate()
+
   function go() {
     if (name.current) {
       navigate(`/hi/${encodeURIComponent(name.current.value)}`, {

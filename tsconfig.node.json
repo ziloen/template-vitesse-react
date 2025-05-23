@@ -1,23 +1,46 @@
 {
   "compilerOptions": {
     "composite": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "strictNullChecks": true,
+    "rootDir": "./",
+    "baseUrl": "./",
+    "outDir": "dist",
+    "jsx": "react-jsx",
     "allowJs": true,
     "checkJs": true,
-    "emitDeclarationOnly": true,
-    "erasableSyntaxOnly": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
+    "erasableSyntaxOnly": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "~cwd/*": [
+        "./*"
+      ],
+    },
   },
   "include": [
-    "*.{ts,js}",
+    "*.ts",
+    "*.js",
     "test"
+  ],
+  "exclude": [
+    "src",
+    "dist",
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.json"
+    }
   ]
 }
