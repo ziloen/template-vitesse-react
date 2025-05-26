@@ -1,2 +1,3 @@
 * text=auto eol=lf
 src/locales/*.json linguist-generated=true
+src/locales/en.json linguist-generated=false
