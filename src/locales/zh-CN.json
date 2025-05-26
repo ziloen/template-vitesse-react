@@ -1,4 +1,17 @@
 {
+  "common": {
+    "back": "返回",
+    "cancel": "取消",
+    "close": "关闭",
+    "confirm": "确认",
+    "delete": "删除",
+    "download": "下载",
+    "edit": "编辑",
+    "next": "下一步",
+    "ok": "确定",
+    "save": "保存",
+    "submit": "提交"
+  },
   "loading": "加载中...",
   "placeholder": "你叫什么名字？",
   "useI18nTest": "<link>这里</link>测试标签，这里{{name}}测试变量"
