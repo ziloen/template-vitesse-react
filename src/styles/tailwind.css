@@ -5,6 +5,8 @@
 @theme {
   --color-surface: light-dark(--theme(--color-light-gray-50), --theme(--color-dark-gray-500));
 
+
+
   /* --color-[role]-[prominence]-[interaction] */
   --text-color-neutral-primary: light-dark(black, --theme(--color-light-gray-100));
   --text-color-neutral-primary-muted: light-dark(--theme(--color-dark-gray-700), --theme(--color-light-gray-400));
@@ -15,8 +17,15 @@
   --text-color-neutral-tertiary: light-dark(--theme(--color-dark-gray-300), --theme(--color-light-gray-500));
   --text-color-neutral-tertiary-muted: light-dark(--theme(--color-dark-gray-300), --theme(--color-light-gray-200));
 
+  --text-color-success-primary: light-dark(--theme(--color-green-700), --theme(--color-green-500));
 
   --text-color-error-primary: light-dark(--theme(--color-red-500), --theme(--color-red-300));
+
+  --text-color-info-primary: light-dark(--theme(--color-blue-500), --theme(--color-blue-400));
+
+
+
+  --border-color-neutral-primary: light-dark(--theme(--color-light-gray-500), theme(--color-dark-gray-100));
 
   /* --color-field-bg: light-dark();
   --color-field-fg: light-dark();
