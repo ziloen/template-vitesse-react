@@ -1,4 +1,4 @@
-@import "@ziloen/tailwind-config/preset.css";
+@import "@ziloen/tailwind-config/preset.css" theme(inline);
 
 /* @import "tailwindcss/preflight.css" layer(base); */
 
