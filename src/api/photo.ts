@@ -16,7 +16,7 @@ export type Photo = z.infer<typeof photoSchema>
 export async function getPhotoListApi(params: {
   page: number
   pageSize: number
-}) {
+}): Promise<Photo[]> {
   const start = (params.page - 1) * params.pageSize
   const limit = params.pageSize
 
@@ -28,7 +28,7 @@ export async function getPhotoListApi(params: {
   return data
 }
 
-export async function getPhotoApi(id: number) {
+export async function getPhotoApi(id: number): Promise<Photo> {
   const { data } = await request.get<Photo>(`/photos/${id}`, {
     responseSchema: photoSchema,
   })
