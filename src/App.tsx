@@ -1,3 +1,4 @@
+import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import i18next from 'i18next'
 import { Suspense } from 'react'
@@ -5,6 +6,7 @@ import { I18nextProvider, initReactI18next } from 'react-i18next'
 import type { RouteObject } from 'react-router'
 import { BrowserRouter as Router } from 'react-router'
 import { useI18n } from '~/hooks'
+import CarbonClose from '~icons/carbon/close'
 import routes from '~react-pages'
 
 function flatRoutes(routes: RouteObject[], parentPath: string = ''): string[] {
@@ -52,12 +54,39 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18next}>
-        <Router basename="">
-          <Routes />
-        </Router>
+        <Toast.Provider>
+          <Router basename="">
+            <Routes />
+          </Router>
+
+          <Toast.Portal>
+            <Toast.Viewport className="fixed top-auto right-4 bottom-4">
+              <ToastList />
+            </Toast.Viewport>
+          </Toast.Portal>
+        </Toast.Provider>
       </I18nextProvider>
     </QueryClientProvider>
   )
+}
+
+function ToastList() {
+  const { toasts } = Toast.useToastManager()
+
+  return toasts.map((toast) => (
+    <Toast.Root
+      key={toast.id}
+      toast={toast}
+      className="bg-surface relative z-[calc(1000-var(--toast-index))] rounded-lg p-4"
+    >
+      <Toast.Title className="m-0" />
+      <Toast.Description className="m-0" />
+
+      <Toast.Close className="absolute end-2 top-2 size-5">
+        <CarbonClose width={16} height={16} />
+      </Toast.Close>
+    </Toast.Root>
+  ))
 }
 
 function Routes() {

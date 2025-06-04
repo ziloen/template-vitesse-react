@@ -1,3 +1,4 @@
+import { Toast } from '@base-ui-components/react/toast'
 import { useColorScheme, useCycleList } from '~/hooks'
 
 function enableTransitions() {
@@ -12,6 +13,8 @@ export function ThemeToggleButton() {
   const { state, next } = useCycleList(['light', 'dark', 'auto'] as const, {
     initialValue: colorScheme,
   })
+
+  const { add } = Toast.useToastManager()
 
   useEffect(() => {
     if (enableTransitions()) {
@@ -55,6 +58,11 @@ export function ThemeToggleButton() {
       className="btn select-none"
       onClick={() => {
         setColorScheme(next())
+        add({
+          title: 'Theme changed',
+          description: `Theme changed to ${state}`,
+          priority: 'low',
+        })
       }}
     >
       {state}
