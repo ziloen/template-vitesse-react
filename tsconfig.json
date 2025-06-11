@@ -26,7 +26,7 @@
     // "incremental": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "noUnusedLocals": false,
     "forceConsistentCasingInFileNames": true,
@@ -36,10 +36,10 @@
       "DOM.Iterable"
     ],
     "types": [
-      "vite/client",
-      "vite-plugin-pages/client-react",
-      "unplugin-icons/types/react",
       "ts-lib-enhance",
+      "unplugin-icons/types/react",
+      "vite-plugin-pages/client-react",
+      "vite/client",
     ],
     "paths": {
       "~/*": [
@@ -49,7 +49,6 @@
         "./*"
       ],
     },
-    "plugins": []
   },
   "include": [
     "src"
