@@ -2,7 +2,7 @@
 
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react-oxc'
+import react from '@vitejs/plugin-react'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { resolve as r } from 'node:path'
@@ -110,6 +110,7 @@ export default defineConfig(({ command, mode }) => {
       assetsInlineLimit: 0,
       cssMinify: 'lightningcss',
       target: browserslistToEsbuild(target),
+      reportCompressedSize: false,
     },
 
     css: {
