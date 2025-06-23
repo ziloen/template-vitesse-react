@@ -13,16 +13,6 @@
       ]
     },
     {
-      "name": "@theme",
-      "description": "define custom design tokens",
-      "references": [
-        {
-          "name": "tailwind doc",
-          "url": "https://tailwindcss.com/docs/functions-and-directives#theme-directive"
-        }
-      ]
-    },
-    {
       "name": "@custom-variant",
       "description": "add custom variant",
       "references": [
@@ -39,6 +29,26 @@
         {
           "name": "tailwind doc",
           "url": "https://tailwindcss.com/docs/functions-and-directives#reference-directive"
+        }
+      ]
+    },
+    {
+      "name": "@theme",
+      "description": "define custom design tokens",
+      "references": [
+        {
+          "name": "tailwind doc",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#theme-directive"
+        }
+      ]
+    },
+    {
+      "name": "@utility",
+      "description": "add custom utilities",
+      "references": [
+        {
+          "name": "tailwind doc",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#utility-directive"
         }
       ]
     }
