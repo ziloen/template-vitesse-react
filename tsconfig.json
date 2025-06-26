@@ -23,7 +23,6 @@
     "moduleDetection": "force",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // "incremental": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "moduleResolution": "bundler",
