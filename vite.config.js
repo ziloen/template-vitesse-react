@@ -2,7 +2,7 @@
 
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-oxc'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { resolve as r } from 'node:path'
