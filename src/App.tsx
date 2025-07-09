@@ -1,11 +1,9 @@
 import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import i18next from 'i18next'
-import { Suspense } from 'react'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import type { RouteObject } from 'react-router'
-import { BrowserRouter as Router } from 'react-router'
-import { useI18n } from '~/hooks'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 import CarbonClose from '~icons/carbon/close'
 import routes from '~react-pages'
 
@@ -42,6 +40,8 @@ i18next.use(initReactI18next).init({
 
 const queryClient = new QueryClient()
 
+const router = createBrowserRouter(routes, { basename: '' })
+
 export default function App() {
   useEffect(() => {
     const lang = 'en'
@@ -55,9 +55,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18next}>
         <Toast.Provider>
-          <Router basename="">
-            <Routes />
-          </Router>
+          <RouterProvider router={router} />
 
           <Toast.Portal>
             <Toast.Viewport className="fixed top-auto right-4 bottom-4">
@@ -87,12 +85,4 @@ function ToastList() {
       </Toast.Close>
     </Toast.Root>
   ))
-}
-
-function Routes() {
-  const { t } = useI18n()
-
-  return (
-    <Suspense fallback={<p>{t('loading')}</p>}>{useRoutes(routes)}</Suspense>
-  )
 }
