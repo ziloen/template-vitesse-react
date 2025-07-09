@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { ZodType } from 'zod/v4'
+import type { ZodType } from 'zod'
 
 export const request = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
