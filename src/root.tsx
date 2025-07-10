@@ -62,13 +62,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 rel="icon"
                 href="/favicon.svg"
                 type="image/svg+xml"
-                media="(prefers-color-scheme: dark)"
+                media="(prefers-color-scheme: light)"
               />
               <link
                 rel="icon"
-                href="/favicon.svg"
+                href="/favicon-dark.svg"
                 type="image/svg+xml"
-                media="(prefers-color-scheme: light)"
+                media="(prefers-color-scheme: dark)"
               />
 
               <title>Vite React</title>
