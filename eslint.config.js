@@ -5,4 +5,5 @@ export default [
   ...react({
     project: ['./tsconfig.json', './tsconfig.node.json'],
   }),
+  { ignores: ['.react-router'] },
 ]
