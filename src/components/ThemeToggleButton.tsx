@@ -10,7 +10,7 @@ function enableTransitions() {
 
 export function ThemeToggleButton() {
   const [colorScheme, setColorScheme] = useColorScheme()
-  const { state, next } = useCycleList(['light', 'dark', 'auto'] as const, {
+  const { next } = useCycleList(['light', 'dark', 'auto'] as const, {
     initialValue: colorScheme,
   })
 
@@ -19,17 +19,17 @@ export function ThemeToggleButton() {
   useEffect(() => {
     if (enableTransitions()) {
       document.startViewTransition!(async () => {
-        const colorScheme = document.head.querySelector(
+        const colorSchemeMeta = document.head.querySelector(
           "meta[name='color-scheme']",
         )
-        if (colorScheme) {
-          colorScheme.setAttribute(
+        if (colorSchemeMeta) {
+          colorSchemeMeta.setAttribute(
             'content',
-            state === 'auto' ? 'dark light' : state,
+            colorScheme === 'auto' ? 'dark light' : colorScheme,
           )
         }
 
-        document.documentElement.setAttribute('data-theme', state)
+        document.documentElement.setAttribute('data-theme', colorScheme)
 
         await new Promise<void>((resolve) => {
           setTimeout(() => {
@@ -38,18 +38,18 @@ export function ThemeToggleButton() {
         })
       })
     } else {
-      const colorScheme = document.head.querySelector(
+      const colorSchemeMeta = document.head.querySelector(
         "meta[name='color-scheme']",
       )
 
-      if (colorScheme) {
-        colorScheme.setAttribute(
+      if (colorSchemeMeta) {
+        colorSchemeMeta.setAttribute(
           'content',
-          state === 'auto' ? 'dark light' : state,
+          colorScheme === 'auto' ? 'dark light' : colorScheme,
         )
       }
 
-      document.documentElement.setAttribute('data-theme', state)
+      document.documentElement.setAttribute('data-theme', colorScheme)
     }
   }, [colorScheme])
 
@@ -57,15 +57,16 @@ export function ThemeToggleButton() {
     <button
       className="btn select-none"
       onClick={() => {
-        setColorScheme(next())
+        const nextTheme = next()
+        setColorScheme(nextTheme)
         add({
           title: 'Theme changed',
-          description: `Theme changed to ${state}`,
+          description: `Theme changed to ${nextTheme}`,
           priority: 'low',
         })
       }}
     >
-      {state}
+      {colorScheme}
     </button>
   )
 }

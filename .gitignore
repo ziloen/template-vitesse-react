@@ -12,3 +12,6 @@ node_modules
 .netlify
 
 *.tsbuildinfo
+
+# React Router
+/.react-router/

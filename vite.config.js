@@ -1,15 +1,14 @@
 /// <reference types="vitest" />
 
+import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react-oxc'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
 import unpluginIcons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
-import Pages from 'vite-plugin-pages'
 
 export default defineConfig(({ command, mode }) => {
   const cwd = process.cwd()
@@ -36,11 +35,8 @@ export default defineConfig(({ command, mode }) => {
     },
 
     plugins: [
-      // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
-      react(),
-
-      // https://github.com/hannoeru/vite-plugin-pages
-      Pages(),
+      // https://reactrouter.com/
+      reactRouter(),
 
       // https://github.com/unplugin/unplugin-auto-import
       AutoImport({

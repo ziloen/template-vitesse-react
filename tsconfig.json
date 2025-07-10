@@ -3,6 +3,10 @@
     "composite": true,
     "jsx": "react-jsx",
     "rootDir": "./",
+    "rootDirs": [
+      ".",
+      "./.react-router/types"
+    ],
     "baseUrl": "./",
     "module": "ESNext",
     "target": "ESNext",
@@ -37,7 +41,6 @@
     "types": [
       "ts-lib-enhance",
       "unplugin-icons/types/react",
-      "vite-plugin-pages/client-react",
       "vite/client",
     ],
     "paths": {
@@ -50,7 +53,8 @@
     },
   },
   "include": [
-    "src"
+    "src",
+    ".react-router/types/**/*"
   ],
   "exclude": [
     "dist",

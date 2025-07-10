@@ -1,10 +1,10 @@
 import type { Location } from 'react-router'
 import { useLocation } from 'react-router'
 import CarbonPedestrian from '~icons/carbon/pedestrian'
+import type { Route } from './+types/hi.$name'
 
-export default function Hi() {
+export default function Hi({ params }: Route.ComponentProps) {
   const navigate = useNavigate()
-  const params = useParams()
   const location = useLocation() as Location<{ from?: string } | undefined>
 
   return (
