@@ -36,7 +36,7 @@ export default defineConfig(({ command, mode }) => {
 
     plugins: [
       // https://reactrouter.com/
-      reactRouter(),
+      !process.env.VITEST && reactRouter(),
 
       // https://github.com/unplugin/unplugin-auto-import
       AutoImport({
