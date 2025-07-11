@@ -1,3 +1,6 @@
+import './styles/main.css'
+import './styles/tailwind.css'
+
 import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import i18next from 'i18next'
@@ -5,10 +8,6 @@ import { I18nextProvider, initReactI18next } from 'react-i18next'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import { scan } from 'react-scan'
 import CarbonClose from '~icons/carbon/close'
-
-import './styles/tailwind.css'
-
-import './styles/main.css'
 
 // if (import.meta.env.DEV) {
 //   scan({ enabled: true, animationSpeed: 'off', log: false, _debug: false })
@@ -51,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18next}>
         <Toast.Provider>
-          <html>
+          <html data-theme="auto">
             <head>
               <meta charSet="UTF-8" />
               <meta
