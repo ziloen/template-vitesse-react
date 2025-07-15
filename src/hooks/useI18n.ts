@@ -31,7 +31,9 @@ type Keys = KeysBuilder<typeof ENJSON>
  *    {t('hello', {
  *      variable: <span>world</span>,
  *      tag: text => <strong>{text}</strong>,
- *      element: <span className="text-red" />
+ *      element: <span className="text-red" />,
+ *      list: ['apple', 'banana', 'cherry'],
+ *      // will be formatted as "apple, banana, and cherry"
  *    })}
  *   </div>
  * )
