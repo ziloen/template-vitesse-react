@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
+import { execSync } from 'node:child_process'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
 import unpluginIcons from 'unplugin-icons/vite'
@@ -32,10 +33,14 @@ export default defineConfig(({ command, mode }) => {
       IS_BUILD,
       IS_DEV,
       IS_PROD,
+      APP_BUILD_TIME: JSON.stringify(new Date().toISOString()),
+      APP_BUILD_COMMIT: JSON.stringify(getCommitHash()),
     },
 
     plugins: [
       // https://reactrouter.com/
+      // FIXME: react-router breaks @vitejs/plugin-legacy
+      // https://github.com/remix-run/react-router/issues/12736
       !process.env.VITEST && reactRouter(),
 
       // https://github.com/unplugin/unplugin-auto-import
@@ -131,3 +136,14 @@ export default defineConfig(({ command, mode }) => {
     },
   }
 })
+
+function getCommitHash() {
+  try {
+    return execSync('git rev-parse --short HEAD', {
+      encoding: 'utf8',
+    }).trim()
+  } catch (error) {
+    console.error('Failed to get commit hash:', error)
+    return ''
+  }
+}

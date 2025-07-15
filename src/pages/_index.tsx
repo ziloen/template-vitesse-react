@@ -4,7 +4,7 @@ import { useI18n } from '~/hooks'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
-  const { t } = useI18n()
+  const { t, i18n } = useI18n()
   const navigate = useNavigate()
 
   function go() {
@@ -43,6 +43,16 @@ export default function Index() {
         {t('useI18nTest', {
           link: <a className="text-info-primary" />,
           name: <span className="text-success-primary">Dynamic Content</span>,
+        })}
+      </div>
+
+      <div>
+        {t('_examples.listInterpolation', {
+          list: () =>
+            new Intl.ListFormat(i18n.language, {
+              type: 'conjunction',
+              style: 'long',
+            }).format(['CN', 'FR', 'RU', 'GB', 'US']),
         })}
       </div>
     </div>

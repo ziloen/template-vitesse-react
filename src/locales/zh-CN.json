@@ -1,4 +1,7 @@
 {
+  "_examples": {
+    "listInterpolation": "联合国安全理事会的五个常任理事国是 <list>A, B, C, D 和 E</list>。"
+  },
   "loading": "加载中...",
   "placeholder": "你叫什么名字？",
   "useI18nTest": "<link>这里</link>测试标签，这里{{name}}测试变量"
