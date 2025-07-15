@@ -1,3 +1,4 @@
+import { isString } from 'es-toolkit'
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -70,10 +71,6 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
           }
         }
 
-        if (fnData.size === 0 && elementData.size === 0) {
-          return t(key, stringData)
-        }
-
         // original translation result
         const text = t(key, stringData)
 
@@ -95,7 +92,27 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
           if (tagName) {
             // match <tag>content</tag>
             const render = fnData.get(tagName) ?? elementData.get(tagName)
-            result.push(getRendered(render, content))
+
+            if (
+              !render &&
+              Array.isArray(stringData[tagName]) &&
+              stringData[tagName].every(isString)
+            ) {
+              result.push(
+                new Intl.ListFormat(i18n.language, {
+                  // conjunction: A, B, and C,
+                  // disjunction: A, B, or C,
+                  // unit: A, B, C
+                  type: 'conjunction',
+                  // long: A, B, and C
+                  // short: A, B, & C,
+                  // narrow: A, B, C
+                  style: 'long',
+                }).format(stringData[tagName]),
+              )
+            } else {
+              result.push(getRendered(render, content))
+            }
           } else if (variable) {
             // match {{variable}}
             const element = elementData.get(variable)
@@ -116,6 +133,28 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
     }, [t]),
     i18n,
     ready,
+  }
+}
+
+/**
+ * @example
+ * ```ts
+ * const formatted = listFormat(['apple', 'banana', 'cherry'], 'en-US')
+ * //    ^ "apple, banana, and cherry"
+ * ```
+ */
+export function listFormat(
+  list: readonly string[],
+  language: string,
+  options: Intl.ListFormatOptions = {
+    type: 'conjunction',
+    style: 'long',
+  },
+): string {
+  try {
+    return new Intl.ListFormat(language, options).format(list)
+  } catch {
+    return list.join(', ')
   }
 }
 

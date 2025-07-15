@@ -48,11 +48,7 @@ export default function Index() {
 
       <div>
         {t('_examples.listInterpolation', {
-          list: () =>
-            new Intl.ListFormat(i18n.language, {
-              type: 'conjunction',
-              style: 'long',
-            }).format(['CN', 'FR', 'RU', 'GB', 'US']),
+          list: ['CN', 'FR', 'RU', 'GB', 'US'],
         })}
       </div>
     </div>

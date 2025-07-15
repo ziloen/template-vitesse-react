@@ -1,6 +1,6 @@
 {
   "_examples": {
-    "listInterpolation": "联合国安全理事会的五个常任理事国是 <list>A, B, C, D 和 E</list>。"
+    "listInterpolation": "联合国安全理事会的五个常任理事国是 <list>A、B和C</list>。"
   },
   "loading": "加载中...",
   "placeholder": "你叫什么名字？",

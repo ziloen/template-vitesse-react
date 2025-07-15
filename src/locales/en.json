@@ -1,6 +1,6 @@
 {
   "_examples": {
-    "listInterpolation": "The five permanent members of the United Nations Security Council are <list>A, B, C, D, and E</list>."
+    "listInterpolation": "The five permanent members of the United Nations Security Council are <list>A, B, and C</list>."
   },
   "common": {
     "back": "Back",
