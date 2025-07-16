@@ -1,4 +1,3 @@
-import { isString } from 'es-toolkit'
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -48,11 +47,17 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
       function CustomTFn(key: Keys, data: Record<string, string>): string
       function CustomTFn(
         key: Keys,
-        data: Record<string, ((content: string) => ReactNode) | ReactNode>,
+        data: Record<
+          string,
+          ((content: string) => ReactNode) | ReactElement | string | string[]
+        >,
       ): ReactNode
       function CustomTFn(
         key: Keys,
-        data?: Record<string, ((content: string) => ReactNode) | ReactNode>,
+        data?: Record<
+          string,
+          ((content: string) => ReactNode) | ReactElement | string | string[]
+        >,
       ) {
         if (!data) return t(key)
 
@@ -60,8 +65,11 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         const fnData = new Map<string, (content: string) => ReactNode>()
         // name: <span className="text-red" />
         const elementData = new Map<string, ReactElement>()
-        // name: 'text'
-        const stringData = Object.create(null) as Record<string, unknown>
+        // name: 'text' | ['text1', 'text2', 'text3']
+        const stringData = Object.create(null) as Record<
+          string,
+          string | string[]
+        >
 
         for (const [key, val] of Object.entries(data)) {
           if (typeof val === 'function') {
@@ -76,30 +84,28 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         // original translation result
         const text = t(key, stringData)
 
-        // match <tag>content</tag> or {{variable}}
-        const regex = /<(\w+)>(.*?)<\/\1>|{{(\w+)}}/g
+        // match <tagName>content</tagName> or {{variable}}
+        const regex =
+          /<(?<tagName>\w+)>(?<content>.*?)<\/\k<tagName>>|{{(?<variable>\w+)}}/g
         const result = [] as ReactNode[]
         let lastIndex = 0
 
         // match all interpolation
         for (const match of text.matchAll(regex)) {
           if (match.index === undefined) continue
-          const [full, tagName, content, variable] = match
-          const before = text.slice(lastIndex, match.index)
-          lastIndex = match.index + full.length
+          const fullMatch = match[0]
+          const { tagName, content, variable } = match.groups!
+          const textBetweenMatches = text.slice(lastIndex, match.index)
+          lastIndex = match.index + fullMatch.length
 
           // push content between last match and current match
-          if (before) result.push(before)
+          if (textBetweenMatches) result.push(textBetweenMatches)
 
           if (tagName) {
-            // match <tag>content</tag>
+            // match <tagName>content</tagName>
             const render = fnData.get(tagName) ?? elementData.get(tagName)
 
-            if (
-              !render &&
-              Array.isArray(stringData[tagName]) &&
-              stringData[tagName].every(isString)
-            ) {
+            if (!render && Array.isArray(stringData[tagName])) {
               result.push(
                 new Intl.ListFormat(i18n.language, {
                   // conjunction: A, B, and C,
@@ -119,7 +125,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
             // match {{variable}}
             const element = elementData.get(variable)
 
-            result.push(element ?? full)
+            result.push(element ?? fullMatch)
           }
         }
 
@@ -132,7 +138,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
       }
 
       return CustomTFn
-    }, [t]),
+    }, [t, i18n.language]),
     i18n,
     ready,
   }
@@ -157,6 +163,30 @@ export function listFormat(
     return new Intl.ListFormat(language, options).format(list)
   } catch {
     return list.join(', ')
+  }
+}
+
+/**
+ * @example
+ * ```ts
+ * const displayName = getLanguageDisplayName('zh-Hans', 'en-US')
+ * //    ^ "Chinese (Simplified)"
+ * ```
+ */
+export function getLanguageDisplayName(
+  language: string,
+  toLanguage: string,
+  options: Omit<Intl.DisplayNamesOptions, 'type'> = {
+    fallback: 'code',
+  },
+) {
+  try {
+    return new Intl.DisplayNames([toLanguage], {
+      type: 'language',
+      ...options,
+    }).of(language)
+  } catch {
+    return language
   }
 }
 
