@@ -19,8 +19,6 @@ const routes = Object.entries(
       return null
     }
 
-    console.log(`Route: ${fileName}`)
-
     const index = fileName === 'index'
 
     return {
