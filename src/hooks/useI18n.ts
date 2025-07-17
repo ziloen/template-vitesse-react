@@ -20,6 +20,12 @@ type KeysBuilderWithoutReturnObjects<
 type Keys = KeysBuilder<typeof ENJSON>
 
 /**
+ * match `<tagName>tagContent</tagName>` or `{{variable}}`
+ */
+const TEMPLATE_REGEX =
+  /<(?<tagName>\w+)>(?<tagContent>.*?)<\/\k<tagName>>|{{(?<variable>\w+)}}/g
+
+/**
  * Support custom tag, variable and element in translation string.
  * @example
  * ```
@@ -84,25 +90,25 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         // original translation result
         const text = t(key, stringData)
 
-        // match <tagName>content</tagName> or {{variable}}
-        const regex =
-          /<(?<tagName>\w+)>(?<content>.*?)<\/\k<tagName>>|{{(?<variable>\w+)}}/g
-        const result = [] as ReactNode[]
+        const result: ReactNode[] = []
         let lastIndex = 0
 
         // match all interpolation
-        for (const match of text.matchAll(regex)) {
+        for (const match of text.matchAll(TEMPLATE_REGEX)) {
           if (match.index === undefined) continue
+
           const fullMatch = match[0]
-          const { tagName, content, variable } = match.groups!
+          const { tagName, tagContent, variable } = match.groups ?? {}
           const textBetweenMatches = text.slice(lastIndex, match.index)
           lastIndex = match.index + fullMatch.length
 
           // push content between last match and current match
-          if (textBetweenMatches) result.push(textBetweenMatches)
+          if (textBetweenMatches) {
+            result.push(textBetweenMatches)
+          }
 
           if (tagName) {
-            // match <tagName>content</tagName>
+            // match <tagName>tagContent</tagName>
             const render = fnData.get(tagName) ?? elementData.get(tagName)
 
             if (!render && Array.isArray(stringData[tagName])) {
@@ -119,7 +125,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
                 }).format(stringData[tagName]),
               )
             } else {
-              result.push(getRendered(render, content))
+              result.push(getRendered(render, tagContent))
             }
           } else if (variable) {
             // match {{variable}}
@@ -149,6 +155,8 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
  * ```ts
  * const formatted = listFormat(['apple', 'banana', 'cherry'], 'en-US')
  * //    ^ "apple, banana, and cherry"
+ * const formatted = listFormat(['苹果', '香蕉', '樱桃'], 'zh-CN')
+ * //    ^ "苹果、香蕉和樱桃"
  * ```
  */
 export function listFormat(
