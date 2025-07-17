@@ -115,7 +115,7 @@ function ToastList() {
     <Toast.Root
       key={toast.id}
       toast={toast}
-      className="bg-surface relative z-[calc(1000-var(--toast-index))] rounded-lg p-4"
+      className="relative z-[calc(1000-var(--toast-index))] rounded-lg bg-surface p-4"
     >
       <Toast.Title className="m-0" />
       <Toast.Description className="m-0" />

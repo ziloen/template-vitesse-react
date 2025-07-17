@@ -19,6 +19,7 @@
     }
   ],
   "plugins": [
+    "@prettier/plugin-oxc",
     "prettier-plugin-tailwindcss"
   ],
   "printWidth": 80,
@@ -28,6 +29,7 @@
   "tabWidth": 2,
   "tailwindPreserveDuplicates": false,
   "tailwindPreserveWhitespace": true,
+  "tailwindStylesheet": "./src/styles/tailwind.css",
   "trailingComma": "all",
   "useTabs": false
 }

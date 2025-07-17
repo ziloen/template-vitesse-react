@@ -29,7 +29,7 @@ export default function Index() {
         ref={name}
         placeholder={t('placeholder')}
         type="text"
-        className="border-neutral-primary w-[250px] rounded border bg-transparent px-4 py-2 text-center outline-none active:outline-none"
+        className="w-[250px] rounded border border-neutral-primary bg-transparent px-4 py-2 text-center outline-none active:outline-none"
         onKeyDown={({ key }) => key === 'Enter' && go()}
       />
 
