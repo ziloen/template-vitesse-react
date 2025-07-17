@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 
-import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
+import react from '@vitejs/plugin-react-oxc'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { execSync } from 'node:child_process'
@@ -38,10 +38,8 @@ export default defineConfig(({ command, mode }) => {
     },
 
     plugins: [
-      // https://reactrouter.com/
-      // FIXME: react-router breaks @vitejs/plugin-legacy
-      // https://github.com/remix-run/react-router/issues/12736
-      !process.env.VITEST && reactRouter(),
+      // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react
+      react(),
 
       // https://github.com/unplugin/unplugin-auto-import
       AutoImport({

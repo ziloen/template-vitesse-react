@@ -3,10 +3,6 @@
     "composite": true,
     "jsx": "react-jsx",
     "rootDir": "./",
-    "rootDirs": [
-      ".",
-      "./.react-router/types"
-    ],
     "baseUrl": "./",
     "module": "ESNext",
     "target": "ESNext",
@@ -54,7 +50,6 @@
   },
   "include": [
     "src",
-    ".react-router/types/**/*"
   ],
   "exclude": [
     "dist",
