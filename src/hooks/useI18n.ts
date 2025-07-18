@@ -2,13 +2,13 @@ import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
 import type ENJSON from '../locales/en.json'
+import { useMemoizedFn } from './useMemoizedFn'
 
 type JoinKeys<K1, K2> = `${K1 & string}.${K2 & string}`
-type KeysBuilder<Res> = KeysBuilderWithoutReturnObjects<Res>
 type $OmitArrayKeys<Arr> = Arr extends readonly any[]
   ? Omit<Arr, keyof any[]>
   : Arr
-export type $Dictionary<T = unknown> = { [key: string]: T }
+type $Dictionary<T = unknown> = { [key: string]: T }
 type KeysBuilderWithoutReturnObjects<
   Res,
   Key = keyof $OmitArrayKeys<Res>,
@@ -17,7 +17,20 @@ type KeysBuilderWithoutReturnObjects<
     ? JoinKeys<Key, KeysBuilderWithoutReturnObjects<Res[Key]>>
     : Key
   : never
-type Keys = KeysBuilder<typeof ENJSON>
+
+export type I18nKeys = KeysBuilderWithoutReturnObjects<typeof ENJSON>
+
+type CustomTFunction = {
+  (key: I18nKeys): string
+  (key: I18nKeys, data: Record<string, string>): string
+  (
+    key: I18nKeys,
+    data: Record<
+      string,
+      ((content: string) => ReactNode) | ReactElement | string | string[]
+    >,
+  ): React.ReactElement
+}
 
 /**
  * match `<tagName>tagContent</tagName>` or `{{variable}}`
@@ -48,103 +61,84 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
   const { t, i18n, ready } = useTranslation(...args)
 
   return {
-    t: useMemo(() => {
-      function CustomTFn(key: Keys): string
-      function CustomTFn(key: Keys, data: Record<string, string>): string
-      function CustomTFn(
-        key: Keys,
-        data: Record<
-          string,
-          ((content: string) => ReactNode) | ReactElement | string | string[]
-        >,
-      ): ReactNode
-      function CustomTFn(
-        key: Keys,
-        data?: Record<
-          string,
-          ((content: string) => ReactNode) | ReactElement | string | string[]
-        >,
-      ) {
-        if (!data) return t(key)
+    t: useMemoizedFn(function customT(key, data) {
+      if (!data) return t(key)
 
-        // name: text => <span>{text}</span>
-        const fnData = new Map<string, (content: string) => ReactNode>()
-        // name: <span className="text-red" />
-        const elementData = new Map<string, ReactElement>()
-        // name: 'text' | ['text1', 'text2', 'text3']
-        const stringData = Object.create(null) as Record<
-          string,
-          string | string[]
-        >
+      // name: text => <span>{text}</span>
+      const fnData = new Map<string, (content: string) => ReactNode>()
+      // name: <span className="text-red" />
+      const elementData = new Map<string, ReactElement>()
+      // name: 'text' | ['text1', 'text2', 'text3']
+      const stringData = Object.create(null) as Record<
+        string,
+        string | string[]
+      >
 
-        for (const [key, val] of Object.entries(data)) {
-          if (typeof val === 'function') {
-            fnData.set(key, val)
-          } else if (isValidElement(val)) {
-            elementData.set(key, val)
-          } else {
-            stringData[key] = val
-          }
+      for (const [key, val] of Object.entries(data)) {
+        if (typeof val === 'function') {
+          fnData.set(key, val)
+        } else if (isValidElement(val)) {
+          elementData.set(key, val)
+        } else {
+          stringData[key] = val
         }
-
-        // original translation result
-        const text = t(key, stringData)
-
-        const result: ReactNode[] = []
-        let lastIndex = 0
-
-        // match all interpolation
-        for (const match of text.matchAll(TEMPLATE_REGEX)) {
-          if (match.index === undefined) continue
-
-          const fullMatch = match[0]
-          const { tagName, tagContent, variable } = match.groups ?? {}
-          const textBetweenMatches = text.slice(lastIndex, match.index)
-          lastIndex = match.index + fullMatch.length
-
-          // push content between last match and current match
-          if (textBetweenMatches) {
-            result.push(textBetweenMatches)
-          }
-
-          if (tagName) {
-            // match <tagName>tagContent</tagName>
-            const render = fnData.get(tagName) ?? elementData.get(tagName)
-
-            if (!render && Array.isArray(stringData[tagName])) {
-              result.push(
-                new Intl.ListFormat(i18n.language, {
-                  // conjunction: A, B, and C,
-                  // disjunction: A, B, or C,
-                  // unit: A, B, C
-                  type: 'conjunction',
-                  // long: A, B, and C
-                  // short: A, B, & C,
-                  // narrow: A, B, C
-                  style: 'long',
-                }).format(stringData[tagName]),
-              )
-            } else {
-              result.push(getRendered(render, tagContent))
-            }
-          } else if (variable) {
-            // match {{variable}}
-            const element = elementData.get(variable)
-
-            result.push(element ?? fullMatch)
-          }
-        }
-
-        // push everything after last match
-        const last = text.slice(lastIndex)
-        if (last) result.push(last)
-
-        // combine all results
-        return createElement(Fragment, null, ...result)
       }
 
-      return CustomTFn
-    }, [t, i18n.language]),
+      // original translation result
+      const text = t(key, stringData)
+
+      const result: ReactNode[] = []
+      let lastIndex = 0
+
+      // match all interpolation
+      for (const match of text.matchAll(TEMPLATE_REGEX)) {
+        if (match.index === undefined) continue
+
+        const fullMatch = match[0]
+        const { tagName, tagContent, variable } = match.groups ?? {}
+        const textBetweenMatches = text.slice(lastIndex, match.index)
+        lastIndex = match.index + fullMatch.length
+
+        // push content between last match and current match
+        if (textBetweenMatches) {
+          result.push(textBetweenMatches)
+        }
+
+        if (tagName) {
+          // match <tagName>tagContent</tagName>
+          const render = fnData.get(tagName) ?? elementData.get(tagName)
+
+          if (!render && Array.isArray(stringData[tagName])) {
+            result.push(
+              new Intl.ListFormat(i18n.language, {
+                // conjunction: A, B, and C,
+                // disjunction: A, B, or C,
+                // unit: A, B, C
+                type: 'conjunction',
+                // long: A, B, and C
+                // short: A, B, & C,
+                // narrow: A, B, C
+                style: 'long',
+              }).format(stringData[tagName]),
+            )
+          } else {
+            result.push(getRendered(render, tagContent))
+          }
+        } else if (variable) {
+          // match {{variable}}
+          const element = elementData.get(variable)
+
+          result.push(element ?? fullMatch)
+        }
+      }
+
+      // push everything after last match
+      const last = text.slice(lastIndex)
+      if (last) result.push(last)
+
+      // combine all results
+      return createElement(Fragment, null, ...result)
+    } as CustomTFunction),
     i18n,
     ready,
   }
