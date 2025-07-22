@@ -109,18 +109,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
           const render = fnData.get(tagName) ?? elementData.get(tagName)
 
           if (!render && Array.isArray(stringData[tagName])) {
-            result.push(
-              new Intl.ListFormat(i18n.language, {
-                // conjunction: A, B, and C,
-                // disjunction: A, B, or C,
-                // unit: A, B, C
-                type: 'conjunction',
-                // long: A, B, and C
-                // short: A, B, & C,
-                // narrow: A, B, C
-                style: 'long',
-              }).format(stringData[tagName]),
-            )
+            result.push(listFormat(stringData[tagName], i18n.language))
           } else {
             result.push(getRendered(render, tagContent))
           }
@@ -157,7 +146,13 @@ export function listFormat(
   list: readonly string[],
   language: string,
   options: Intl.ListFormatOptions = {
+    // conjunction: A, B, and C,
+    // disjunction: A, B, or C,
+    // unit: A, B, C
     type: 'conjunction',
+    // long: A, B, and C
+    // short: A, B, & C,
+    // narrow: A, B, C
     style: 'long',
   },
 ): string {

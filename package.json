@@ -33,16 +33,16 @@
     "zustand": "5.0.6"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.359",
+    "@iconify/json": "2.2.360",
     "@prettier/plugin-oxc": "0.0.4",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@tailwindcss/vite": "4.1.11",
     "@testing-library/react": "16.3.0",
-    "@types/node": "24.0.14",
+    "@types/node": "24.0.15",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
-    "@vitejs/plugin-legacy": "7.0.1",
+    "@vitejs/plugin-legacy": "7.1.0",
     "@vitejs/plugin-react-oxc": "0.3.0",
     "@ziloen/eslint-config": "0.1.68",
     "@ziloen/tailwind-config": "2.0.7",
@@ -64,7 +64,7 @@
     "unplugin-auto-import": "19.3.0",
     "unplugin-icons": "22.1.0",
     "unplugin-svg-component": "0.12.2",
-    "vite": "npm:rolldown-vite@7.0.9",
+    "vite": "npm:rolldown-vite@7.0.10",
     "vitest": "3.2.4"
   },
   "lint-staged": {
