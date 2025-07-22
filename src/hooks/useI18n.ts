@@ -145,19 +145,27 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 export function listFormat(
   list: readonly string[],
   language: string,
-  options: Intl.ListFormatOptions = {
-    // conjunction: A, B, and C,
-    // disjunction: A, B, or C,
-    // unit: A, B, C
-    type: 'conjunction',
-    // long: A, B, and C
-    // short: A, B, & C,
-    // narrow: A, B, C
-    style: 'long',
+  options?: {
+    /**
+     * - "conjunction": A, B, and C,
+     * - "disjunction": A, B, or C,
+     * - "unit": A, B, C
+     */
+    type?: Intl.ListFormatType | undefined
+    /**
+     * - "long": A, B, and C
+     * - "short": A, B, & C,
+     * - "narrow": A, B, C
+     */
+    style?: Intl.ListFormatStyle | undefined
   },
 ): string {
   try {
-    return new Intl.ListFormat(language, options).format(list)
+    return new Intl.ListFormat(language, {
+      type: 'conjunction',
+      style: 'long',
+      ...options,
+    }).format(list)
   } catch {
     return list.join(', ')
   }
