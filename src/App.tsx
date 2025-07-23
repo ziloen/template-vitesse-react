@@ -13,7 +13,14 @@ function HydrateFallback() {
   return null
 }
 
-const routes = Object.entries(import.meta.glob('./pages/**/*.tsx'))
+const routes = Object.entries(
+  import.meta.glob<{
+    default: React.ComponentType
+    loader?: LoaderFunction
+    HydrateFallback?: React.ComponentType
+    ErrorBoundary?: React.ComponentType
+  }>('./pages/**/*.tsx'),
+)
   .map<RouteObject | null>(([path, request]) => {
     const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1]
 
@@ -34,12 +41,7 @@ const routes = Object.entries(import.meta.glob('./pages/**/*.tsx'))
       path: normalizedPath,
       HydrateFallback: HydrateFallback,
       lazy: async () => {
-        const value = (await request()) as {
-          default: React.ComponentType
-          loader?: LoaderFunction
-          HydrateFallback?: React.ComponentType
-          ErrorBoundary?: React.ComponentType
-        }
+        const value = await request()
 
         return {
           Component: value.default,
