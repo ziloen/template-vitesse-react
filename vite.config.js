@@ -110,6 +110,12 @@ export default defineConfig(({ command, mode }) => {
       cssMinify: 'lightningcss',
       target: browserslistToEsbuild(target),
       reportCompressedSize: false,
+      minify: 'oxc',
+      rollupOptions: {
+        output: {
+          hashCharacters: 'hex',
+        },
+      },
     },
 
     css: {
@@ -124,13 +130,18 @@ export default defineConfig(({ command, mode }) => {
       },
       devSourcemap: true,
       modules: {
-        generateScopedName: '[hash:base64:8]',
+        generateScopedName: '[hash:hex:8]',
       },
     },
 
     // https://github.com/vitest-dev/vitest
     test: {
       environment: 'jsdom',
+    },
+
+    experimental: {
+      // renderBuiltUrl
+      enableNativePlugin: true,
     },
   }
 })
