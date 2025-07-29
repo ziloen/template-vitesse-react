@@ -62,6 +62,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
   return {
     t: useMemoizedFn(function customT(key, data) {
+      // TODO: support `<notranslate>content</notranslate>` to interpolate without data
       if (!data) return t(key)
 
       // name: text => <span>{text}</span>

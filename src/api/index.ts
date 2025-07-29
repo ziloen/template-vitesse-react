@@ -1,5 +1,6 @@
 import axios from 'axios'
 import type { ZodType } from 'zod'
+import { prettifyError } from 'zod'
 
 export const request = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
@@ -12,7 +13,7 @@ function validate(data: unknown, schema: ZodType | undefined) {
   if (!schema) return
   const result = schema.safeParse(data)
   if (!result.success) {
-    globalThis.console.error(result.error)
+    globalThis.console.error(prettifyError(result.error))
   }
 }
 
