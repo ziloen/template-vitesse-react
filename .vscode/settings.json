@@ -22,13 +22,6 @@
   "css.customData": [
     ".vscode/css-data.json",
   ],
-  "editor.codeActionsOnSave": [
-    // only sort imports
-    "source.sortImports",
-    // remove unused imports & sort imports
-    // "source.organizeImports",
-    // "source.fixAll.eslint",
-  ],
   // due to this issue https://github.com/microsoft/vscode/issues/179355, we need to set this to top
   // "editor.snippetSuggestions": "top",
   // add @container & @media snippet

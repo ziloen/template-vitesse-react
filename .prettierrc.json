@@ -20,6 +20,7 @@
   ],
   "plugins": [
     "@prettier/plugin-oxc",
+    "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss"
   ],
   "printWidth": 80,
