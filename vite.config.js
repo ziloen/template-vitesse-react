@@ -111,7 +111,7 @@ export default defineConfig(({ command, mode }) => {
       target: browserslistToEsbuild(target),
       reportCompressedSize: false,
       minify: 'oxc',
-      rollupOptions: {
+      rolldownOptions: {
         output: {
           hashCharacters: 'hex',
         },
