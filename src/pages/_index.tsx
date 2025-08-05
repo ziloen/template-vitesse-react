@@ -19,11 +19,14 @@ export default function Index() {
 
   return (
     <div className="flex flex-col items-center">
+      <div className="flex w-full justify-between px-2 py-2">
+        <div></div>
+        <ThemeToggleButton />
+      </div>
+
       <em className="text-sm opacity-75">Vite Starter Template</em>
 
       <Counter />
-
-      <ThemeToggleButton />
 
       <input
         ref={name}

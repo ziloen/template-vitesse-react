@@ -38,9 +38,4 @@
     "dist",
     "node_modules"
   ],
-  "references": [
-    {
-      "path": "./tsconfig.json"
-    }
-  ]
 }

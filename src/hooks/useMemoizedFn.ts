@@ -9,6 +9,7 @@ export function useMemoizedFn<T extends (this: any, ...args: any[]) => any>(
 
   fnRef.current = fn
 
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   if (!memoizedFn.current) {
     memoizedFn.current = function (this, ...args) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return

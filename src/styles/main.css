@@ -31,7 +31,7 @@ body,
 
 html {
   font-family: --theme(--font-sans);
-  background-color: light-dark(white, #121212);
+  background-color: --theme(--color-surface-primary);
   color: light-dark(black, --theme(--color-light-gray-200));
 
   &,
@@ -46,4 +46,42 @@ html {
   &[data-theme="light"] {
     color-scheme: light;
   }
+}
+
+@property --view-transition-size {
+  syntax: '<length-percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2147483644;
+  mask-image: radial-gradient(circle at var(--mouse-x, center) var(--mouse-y, center) in oklab,
+      hsl(0, 0%, 100%) calc(var(--view-transition-size) * 1),
+      hsl(0, 0%, 99.36%) calc(var(--view-transition-size) * (1 + .5 * 0.055)),
+      hsl(0, 0%, 97.54%) calc(var(--view-transition-size) * (1 + .5 * 0.116)),
+      hsl(0, 0%, 94.66%) calc(var(--view-transition-size) * (1 + .5 * 0.181)),
+      hsl(0, 0%, 90.81%) calc(var(--view-transition-size) * (1 + .5 * 0.25)),
+      hsl(0, 0%, 86.07%) calc(var(--view-transition-size) * (1 + .5 * 0.321)),
+      hsl(0, 0%, 80.5%) calc(var(--view-transition-size) * (1 + .5 * 0.395)),
+      hsl(0, 0%, 74.16%) calc(var(--view-transition-size) * (1 + .5 * 0.47)),
+      hsl(0, 0%, 67.09%) calc(var(--view-transition-size) * (1 + .5 * 0.545)),
+      hsl(0, 0%, 59.33%) calc(var(--view-transition-size) * (1 + .5 * 0.619)),
+      hsl(0, 0%, 50.92%) calc(var(--view-transition-size) * (1 + .5 * 0.692)),
+      hsl(0, 0%, 41.88%) calc(var(--view-transition-size) * (1 + .5 * 0.762)),
+      hsl(0, 0%, 32.25%) calc(var(--view-transition-size) * (1 + .5 * 0.829)),
+      hsl(0, 0%, 22.04%) calc(var(--view-transition-size) * (1 + .5 * 0.891)),
+      hsl(0, 0%, 11.29%) calc(var(--view-transition-size) * (1 + .5 * 0.949)),
+      hsl(0, 0%, 0%) calc(var(--view-transition-size) * 1.5));
+  mask-mode: luminance;
 }

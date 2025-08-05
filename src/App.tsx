@@ -84,12 +84,12 @@ function ToastList() {
     <Toast.Root
       key={toast.id}
       toast={toast}
-      className="relative z-[calc(1000-var(--toast-index))] rounded-lg bg-surface p-4"
+      className="relative z-[calc(1000-var(--toast-index))] rounded-lg bg-surface-secondary p-4"
     >
       <Toast.Title className="m-0" />
       <Toast.Description className="m-0" />
 
-      <Toast.Close className="absolute end-2 top-2 size-5">
+      <Toast.Close className="absolute end-2 top-2 flex-center bg-transparent p-1">
         <CarbonClose width={16} height={16} />
       </Toast.Close>
     </Toast.Root>

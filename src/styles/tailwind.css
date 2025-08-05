@@ -3,7 +3,8 @@
 /* @import "tailwindcss/preflight.css" layer(base); */
 
 @theme {
-  --color-surface: light-dark(--theme(--color-light-gray-50), --theme(--color-dark-gray-500));
+  --color-surface-primary: light-dark(#ffffff, #121212);
+  --color-surface-secondary: light-dark(--theme(--color-light-gray-200), --theme(--color-dark-gray-400));
 
 
 
