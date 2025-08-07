@@ -62,9 +62,6 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
   return {
     t: useMemoizedFn(function customT(key, data) {
-      // TODO: support `<notranslate>content</notranslate>` to interpolate without data
-      if (!data) return t(key)
-
       // name: text => <span>{text}</span>
       const fnData = new Map<string, (content: string) => ReactNode>()
       // name: <span className="text-red" />
@@ -75,7 +72,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         string | string[]
       >
 
-      for (const [key, val] of Object.entries(data)) {
+      for (const [key, val] of Object.entries(data ?? {})) {
         if (typeof val === 'function') {
           fnData.set(key, val)
         } else if (isValidElement(val)) {
@@ -196,6 +193,7 @@ export function getLanguageDisplayName(
   }
 }
 
+// https://html.spec.whatwg.org/multipage/syntax.html#void-elements
 const voidElements = new Set([
   'area',
   'base',

@@ -1,6 +1,7 @@
 {
   "_examples": {
-    "listInterpolation": "The five permanent members of the United Nations Security Council are <list>A, B, and C</list>."
+    "listInterpolation": "The five permanent members of the United Nations Security Council are <list>A, B, and C</list>.",
+    "notranslate": "try <notranslate>Artifact</notranslate>"
   },
   "common": {
     "back": "Back",
@@ -17,5 +18,5 @@
   },
   "loading": "Loading...",
   "placeholder": "What's your name?",
-  "useI18nTest": "<link>here</link> to test the tag, and {{name}} to test the variable."
+  "useI18nTest": "<link>here</link> to test the tag, and {{name}} to test the variable. <notranslate>This part will not be translated.</notranslate>"
 }

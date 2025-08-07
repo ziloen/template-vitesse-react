@@ -59,6 +59,7 @@ i18next.use(initReactI18next).init({
   lng: 'en',
 
   react: {
+    // Only work when using `<Trans>` component
     transSupportBasicHtmlNodes: true,
     transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'b'],
   },

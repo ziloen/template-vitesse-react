@@ -54,6 +54,8 @@ export default function Index() {
           list: ['CN', 'FR', 'RU', 'GB', 'US'],
         })}
       </div>
+
+      <div>{t('_examples.notranslate')}</div>
     </div>
   )
 }
