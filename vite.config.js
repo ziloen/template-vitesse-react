@@ -127,6 +127,10 @@ export default defineConfig(({ command, mode }) => {
 
         // Never transpile
         exclude: Features.LogicalProperties,
+
+        targets: {
+          firefox: 128, // Current Firefox ESR
+        },
       },
       devSourcemap: true,
       modules: {
