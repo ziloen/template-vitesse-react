@@ -2,7 +2,6 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "./",
-    "baseUrl": "./",
     "outDir": "dist",
     "jsx": "react-jsx",
     "allowJs": true,
@@ -21,7 +20,7 @@
     ],
     "paths": {
       "~/*": [
-        "src/*"
+        "./src/*"
       ],
       "~cwd/*": [
         "./*"
