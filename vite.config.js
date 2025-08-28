@@ -8,7 +8,7 @@ import { Features } from 'lightningcss'
 import { execSync } from 'node:child_process'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
-import unpluginIcons from 'unplugin-icons/vite'
+import Icons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
@@ -85,7 +85,7 @@ export default defineConfig(({ command, mode }) => {
       // }),
 
       // https://github.com/unplugin/unplugin-icons
-      unpluginIcons({
+      Icons({
         compiler: 'jsx',
         jsx: 'react',
         scale: 1,
