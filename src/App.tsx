@@ -74,8 +74,6 @@ i18next.use(initReactI18next).init({
   parseMissingKeyHandler(key, defaultValue) {
     return key
   },
-
-  // debug: IS_DEV,
 })
 
 function ToastList() {
