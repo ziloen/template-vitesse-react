@@ -33,12 +33,6 @@ type CustomTFunction = {
 }
 
 /**
- * match `<tagName>tagContent</tagName>` or `{{variable}}`
- */
-const TEMPLATE_REGEX =
-  /<(?<tagName>\w+)>(?<tagContent>.*?)<\/\k<tagName>>|{{(?<variable>\w+)}}/g
-
-/**
  * Support custom tag, variable and element in translation string.
  * @example
  * ```
@@ -95,6 +89,12 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
   }
 }
 
+/**
+ * match `<tagName>tagContent</tagName>` or `{{variable}}`
+ */
+const TEMPLATE_REGEX =
+  /<(?<tagName>\w+)>(?<tagContent>.*?)<\/\k<tagName>>|{{(?<variable>\w+)}}/g
+
 function parseTemplate(
   text: string,
   elementData: Map<string, ReactElement>,
@@ -126,6 +126,9 @@ function parseTemplate(
       if (!render && Array.isArray(stringData[tagName])) {
         result.push(listFormat(stringData[tagName], language))
       } else {
+        // recursively parse nested tag and variables
+        // <b>bold and <i>italic</i></b>
+        // <b>bold and {{variable}}</b>
         const nestedTagContent = tagContent
           ? parseTemplate(tagContent, elementData, fnData, stringData, language)
           : tagContent
