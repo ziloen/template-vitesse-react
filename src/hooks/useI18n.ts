@@ -123,17 +123,21 @@ function parseTemplate(
       // match <tagName>tagContent</tagName>
       const render = fnData.get(tagName) ?? elementData.get(tagName)
 
-      if (!render && Array.isArray(stringData[tagName])) {
-        result.push(listFormat(stringData[tagName], language))
-      } else {
-        // recursively parse nested tag and variables
-        // <b>bold and <i>italic</i></b>
-        // <b>bold and {{variable}}</b>
-        const parsedTagContent = tagContent
-          ? parseTemplate(tagContent, elementData, fnData, stringData, language)
-          : tagContent
+      // recursively parse nested tag and variables
+      // <b>bold and <i>italic</i></b>
+      // <b>bold and {{variable}}</b>
+      const parsedContent = tagContent
+        ? parseTemplate(tagContent, elementData, fnData, stringData, language)
+        : tagContent
 
-        result.push(getRendered(render, parsedTagContent))
+      if (render) {
+        result.push(getRendered(render, parsedContent))
+      } else {
+        if (Array.isArray(stringData[tagName])) {
+          result.push(listFormat(stringData[tagName], language))
+        } else {
+          result.push(parsedContent)
+        }
       }
     } else if (variable) {
       // match {{variable}}
@@ -235,13 +239,9 @@ const voidElements = new Set([
  * get content from function or element
  */
 function getRendered(
-  getter: ((children: ReactNode) => ReactNode) | ReactElement | undefined,
-  children: string | undefined | ReactNode,
+  getter: ((children: ReactNode) => ReactNode) | ReactElement,
+  children: ReactNode,
 ) {
-  if (!getter || !children) {
-    return children
-  }
-
   if (typeof getter === 'function') {
     return getter(children)
   }
