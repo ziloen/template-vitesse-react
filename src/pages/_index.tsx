@@ -56,6 +56,24 @@ export default function Index() {
       </div>
 
       <div>{t('_examples.notranslate')}</div>
+      <div>
+        {t('_examples.nestedTags', {
+          b: <strong />,
+          i: <i />,
+        })}
+      </div>
+      <div>
+        {t('_examples.multipleSameTags', {
+          b: <strong />,
+        })}
+      </div>
+
+      <div>
+        {t('_examples.tagAndVariable', {
+          b: <strong />,
+          name: <span>{i18n.language}</span>,
+        })}
+      </div>
     </div>
   )
 }

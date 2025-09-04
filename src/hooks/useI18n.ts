@@ -27,7 +27,7 @@ type CustomTFunction = {
     key: I18nKeys,
     data: Record<
       string,
-      ((content: string) => ReactNode) | ReactElement | string | string[]
+      ((children: ReactNode) => ReactNode) | ReactElement | string | string[]
     >,
   ): React.ReactElement
 }
@@ -62,8 +62,8 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
   return {
     t: useMemoizedFn(function customT(key, data) {
-      // name: text => <span>{text}</span>
-      const fnData = new Map<string, (content: string) => ReactNode>()
+      // name: children => <span>{children}</span>
+      const fnData = new Map<string, (children: ReactNode) => ReactNode>()
       // name: <span className="text-red" />
       const elementData = new Map<string, ReactElement>()
       // name: 'text' | ['text1', 'text2', 'text3']
@@ -82,53 +82,70 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         }
       }
 
-      // original translation result
-      const text = t(key, stringData)
-
-      const result: ReactNode[] = []
-      let lastIndex = 0
-
-      // match all interpolation
-      for (const match of text.matchAll(TEMPLATE_REGEX)) {
-        if (match.index === undefined) continue
-
-        const fullMatch = match[0]
-        const { tagName, tagContent, variable } = match.groups ?? {}
-        const textBetweenMatches = text.slice(lastIndex, match.index)
-        lastIndex = match.index + fullMatch.length
-
-        // push content between last match and current match
-        if (textBetweenMatches) {
-          result.push(textBetweenMatches)
-        }
-
-        if (tagName) {
-          // match <tagName>tagContent</tagName>
-          const render = fnData.get(tagName) ?? elementData.get(tagName)
-
-          if (!render && Array.isArray(stringData[tagName])) {
-            result.push(listFormat(stringData[tagName], i18n.language))
-          } else {
-            result.push(getRendered(render, tagContent))
-          }
-        } else if (variable) {
-          // match {{variable}}
-          const element = elementData.get(variable)
-
-          result.push(element ?? fullMatch)
-        }
-      }
-
-      // push everything after last match
-      const last = text.slice(lastIndex)
-      if (last) result.push(last)
-
-      // combine all results
-      return createElement(Fragment, null, ...result)
+      return parseTemplate(
+        t(key, stringData),
+        elementData,
+        fnData,
+        stringData,
+        i18n.language,
+      )
     } as CustomTFunction),
     i18n,
     ready,
   }
+}
+
+function parseTemplate(
+  text: string,
+  elementData: Map<string, ReactElement>,
+  fnData: Map<string, (children: ReactNode) => ReactNode>,
+  stringData: Record<string, string | string[]>,
+  language: string,
+): string | ReactElement {
+  const result: ReactNode[] = []
+  let lastIndex = 0
+
+  // match all interpolation
+  for (const match of text.matchAll(TEMPLATE_REGEX)) {
+    if (match.index === undefined) continue
+
+    const fullMatch = match[0]
+    const { tagName, tagContent, variable } = match.groups ?? {}
+    const textBetweenMatches = text.slice(lastIndex, match.index)
+    lastIndex = match.index + fullMatch.length
+
+    // push content between last match and current match
+    if (textBetweenMatches) {
+      result.push(textBetweenMatches)
+    }
+
+    if (tagName) {
+      // match <tagName>tagContent</tagName>
+      const render = fnData.get(tagName) ?? elementData.get(tagName)
+
+      if (!render && Array.isArray(stringData[tagName])) {
+        result.push(listFormat(stringData[tagName], language))
+      } else {
+        const nestedTagContent = tagContent
+          ? parseTemplate(tagContent, elementData, fnData, stringData, language)
+          : tagContent
+
+        result.push(getRendered(render, nestedTagContent))
+      }
+    } else if (variable) {
+      // match {{variable}}
+      const element = elementData.get(variable)
+
+      result.push(element ?? fullMatch)
+    }
+  }
+
+  // push everything after last match
+  const last = text.slice(lastIndex)
+  if (last) result.push(last)
+
+  // combine all results
+  return createElement(Fragment, null, ...result)
 }
 
 /**
@@ -215,19 +232,19 @@ const voidElements = new Set([
  * get content from function or element
  */
 function getRendered(
-  getter: ((content: string) => ReactNode) | ReactElement | undefined,
-  content: string | undefined,
+  getter: ((children: ReactNode) => ReactNode) | ReactElement | undefined,
+  children: string | undefined | ReactNode,
 ) {
-  if (!getter || !content) {
-    return content
+  if (!getter || !children) {
+    return children
   }
 
   if (typeof getter === 'function') {
-    return getter(content)
+    return getter(children)
   }
 
   const isVoid =
     typeof getter.type === 'string' && voidElements.has(getter.type)
 
-  return cloneElement(getter, undefined, isVoid ? undefined : content)
+  return cloneElement(getter, undefined, isVoid ? undefined : children)
 }
