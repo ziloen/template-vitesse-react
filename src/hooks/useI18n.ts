@@ -129,11 +129,11 @@ function parseTemplate(
         // recursively parse nested tag and variables
         // <b>bold and <i>italic</i></b>
         // <b>bold and {{variable}}</b>
-        const nestedTagContent = tagContent
+        const parsedTagContent = tagContent
           ? parseTemplate(tagContent, elementData, fnData, stringData, language)
           : tagContent
 
-        result.push(getRendered(render, nestedTagContent))
+        result.push(getRendered(render, parsedTagContent))
       }
     } else if (variable) {
       // match {{variable}}
