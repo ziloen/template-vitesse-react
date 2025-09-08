@@ -2,8 +2,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "rootDir": "./",
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "esnext",
+    "target": "esnext",
     // type checking
     "strict": true,
     "noImplicitAny": true,
