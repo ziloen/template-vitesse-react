@@ -23,6 +23,16 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem('color-scheme') || 'auto'
+        document.documentElement.dataset.theme = theme
+      } catch (error) {
+        document.documentElement.dataset.theme = 'auto'
+      }
+    })()
+  </script>
 </body>
 
 </html>

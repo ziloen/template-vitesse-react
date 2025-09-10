@@ -76,11 +76,12 @@ function transitionTheme(fn: () => void, e: MouseEvent) {
     transition.ready.then(() => {
       document.documentElement.animate(
         {
-          '--view-transition-size': ['0%', '100%'],
+          '--view-transition-progress': ['0%', '100%'],
         },
         {
           duration: 1_000,
           easing: 'ease-in-out',
+          fill: 'forwards',
           pseudoElement: '::view-transition-new(root)',
         },
       )

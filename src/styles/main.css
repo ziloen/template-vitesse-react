@@ -48,8 +48,8 @@ html {
   }
 }
 
-@property --view-transition-size {
-  syntax: '<length-percentage>';
+@property --view-transition-progress {
+  syntax: '<percentage>';
   inherits: false;
   initial-value: 0%;
 }
@@ -66,22 +66,25 @@ html {
 
 ::view-transition-new(root) {
   z-index: 2147483644;
-  mask-image: radial-gradient(circle at var(--mouse-x, center) var(--mouse-y, center) in oklab,
-      hsl(0, 0%, 100.0%) calc(var(--view-transition-size) * (1 + .5 * 0.000)),
-      hsl(0, 0%, 99.36%) calc(var(--view-transition-size) * (1 + .5 * 0.055)),
-      hsl(0, 0%, 97.54%) calc(var(--view-transition-size) * (1 + .5 * 0.116)),
-      hsl(0, 0%, 94.66%) calc(var(--view-transition-size) * (1 + .5 * 0.181)),
-      hsl(0, 0%, 90.81%) calc(var(--view-transition-size) * (1 + .5 * 0.250)),
-      hsl(0, 0%, 86.07%) calc(var(--view-transition-size) * (1 + .5 * 0.321)),
-      hsl(0, 0%, 80.50%) calc(var(--view-transition-size) * (1 + .5 * 0.395)),
-      hsl(0, 0%, 74.16%) calc(var(--view-transition-size) * (1 + .5 * 0.470)),
-      hsl(0, 0%, 67.09%) calc(var(--view-transition-size) * (1 + .5 * 0.545)),
-      hsl(0, 0%, 59.33%) calc(var(--view-transition-size) * (1 + .5 * 0.619)),
-      hsl(0, 0%, 50.92%) calc(var(--view-transition-size) * (1 + .5 * 0.692)),
-      hsl(0, 0%, 41.88%) calc(var(--view-transition-size) * (1 + .5 * 0.762)),
-      hsl(0, 0%, 32.25%) calc(var(--view-transition-size) * (1 + .5 * 0.829)),
-      hsl(0, 0%, 22.04%) calc(var(--view-transition-size) * (1 + .5 * 0.891)),
-      hsl(0, 0%, 11.29%) calc(var(--view-transition-size) * (1 + .5 * 0.949)),
-      hsl(0, 0%, 0.000%) calc(var(--view-transition-size) * (1 + .5 * 1.000)));
+  --distance: .5;
   mask-mode: luminance;
+  /* https://github.com/w3c/csswg-drafts/issues/1332 */
+  /* simulate easing color stops */
+  mask-image: radial-gradient(circle farthest-corner at var(--mouse-x, center) var(--mouse-y, center) in oklab,
+      hsl(0, 0%, 100.0%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.000)),
+      hsl(0, 0%, 99.36%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.055)),
+      hsl(0, 0%, 97.54%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.116)),
+      hsl(0, 0%, 94.66%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.181)),
+      hsl(0, 0%, 90.81%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.250)),
+      hsl(0, 0%, 86.07%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.321)),
+      hsl(0, 0%, 80.50%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.395)),
+      hsl(0, 0%, 74.16%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.470)),
+      hsl(0, 0%, 67.09%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.545)),
+      hsl(0, 0%, 59.33%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.619)),
+      hsl(0, 0%, 50.92%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.692)),
+      hsl(0, 0%, 41.88%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.762)),
+      hsl(0, 0%, 32.25%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.829)),
+      hsl(0, 0%, 22.04%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.891)),
+      hsl(0, 0%, 11.29%) calc(var(--view-transition-progress) * (1 + var(--distance) * 0.949)),
+      hsl(0, 0%, 0.000%) calc(var(--view-transition-progress) * (1 + var(--distance) * 1.000)));
 }
