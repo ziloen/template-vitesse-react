@@ -18,7 +18,7 @@ export default function Index() {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="grid h-full content-start justify-items-center overflow-y-auto">
       <div className="flex w-full justify-between px-2 py-2">
         <div></div>
         <ThemeToggleButton />
@@ -29,6 +29,7 @@ export default function Index() {
       <Counter />
 
       <input
+        name="name"
         ref={name}
         placeholder={t('placeholder')}
         type="text"
