@@ -123,13 +123,16 @@ export default defineConfig(({ command, mode }) => {
       lightningcss: {
         // https://lightningcss.dev/transpilation.html#feature-flags
         // Always transpile
-        include: Features.Colors | Features.Nesting | Features.MediaRangeSyntax,
+        include:
+          (Features.Colors ^ Features.LightDark) |
+          Features.Nesting |
+          Features.MediaRangeSyntax,
 
         // Never transpile
-        exclude: Features.LogicalProperties,
+        exclude: Features.LogicalProperties | Features.LightDark,
 
         targets: {
-          firefox: 128, // Current Firefox ESR
+          firefox: 140, // Current Firefox ESR
         },
       },
       devSourcemap: true,

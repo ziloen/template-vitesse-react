@@ -48,6 +48,16 @@ html {
   }
 }
 
+/*
+background-image: linear-gradient(var(--animatable-color-1), var(--animatable-color-2));
+transition: --animatable-color-1 0.3s ease, --animatable-color-2 0.3s ease;
+*/
+@property --animatable-color-1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
 @property --view-transition-progress {
   syntax: '<percentage>';
   inherits: false;
