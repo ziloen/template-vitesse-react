@@ -11,6 +11,7 @@
       "files": "src/locales/*.json",
       "options": {
         "jsonRecursiveSort": true,
+        "jsonSortOrder": "{\"/.*/\":\"caseInsensitiveLexical\"}",
         "plugins": [
           "prettier-plugin-sort-json"
         ],

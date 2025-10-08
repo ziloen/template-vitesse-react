@@ -149,6 +149,7 @@ function parseTemplate(
 
   // push everything after last match
   const last = text.slice(lastIndex)
+  if (result.length === 0) return last
   if (last) result.push(last)
 
   // combine all results
