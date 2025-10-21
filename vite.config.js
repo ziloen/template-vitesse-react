@@ -155,11 +155,17 @@ export default defineConfig(({ command, mode }) => {
 
 function getCommitHash() {
   try {
-    return execSync('git rev-parse --short HEAD', {
+    execSync('git rev-parse --is-inside-work-tree', {
       encoding: 'utf8',
-    }).trim()
-  } catch (error) {
-    console.error('Failed to get commit hash:', error)
+      stdio: 'ignore',
+    })
+  } catch {
+    return ''
+  }
+
+  try {
+    return execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim()
+  } catch {
     return ''
   }
 }

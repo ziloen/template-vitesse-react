@@ -19,8 +19,8 @@ export default function Index() {
 
   return (
     <div className="grid h-full content-start justify-items-center overflow-y-auto">
-      <div className="flex w-full justify-between px-2 py-2">
-        <div></div>
+      <div className="flex w-full items-center justify-end gap-2 px-2 py-2">
+        <span>{APP_BUILD_COMMIT}</span>
         <ThemeToggleButton />
       </div>
 
