@@ -13,7 +13,7 @@ const photoListSchema = z.array(photoSchema)
 
 export type Photo = z.infer<typeof photoSchema>
 
-export async function getPhotoListApi(params: {
+export async function getPhotoList(params: {
   page: number
   pageSize: number
 }): Promise<Photo[]> {
@@ -28,7 +28,7 @@ export async function getPhotoListApi(params: {
   return data
 }
 
-export async function getPhotoApi(id: number): Promise<Photo> {
+export async function getPhoto(id: number): Promise<Photo> {
   const { data } = await request.get<Photo>(`/photos/${id}`, {
     responseSchema: photoSchema,
   })

@@ -54,6 +54,8 @@ type CustomTFunction = {
 export function useI18n(...args: Parameters<typeof useTranslation>) {
   const { t, i18n, ready } = useTranslation(...args)
 
+  // TODO: cache Intl.ListFormat instances
+
   return {
     t: useMemoizedFn(function customT(key, data) {
       // name: children => <span>{children}</span>

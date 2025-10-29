@@ -12,7 +12,7 @@ const postListSchema = z.array(postSchema)
 
 export type Post = z.infer<typeof postSchema>
 
-export async function getPostListApi(params: {
+export async function getPostList(params: {
   page: number
   pageSize: number
 }): Promise<Post[]> {
@@ -27,7 +27,7 @@ export async function getPostListApi(params: {
   return data
 }
 
-export async function getPostApi(id: number): Promise<Post> {
+export async function getPost(id: number): Promise<Post> {
   const { data } = await request.get<Post>(`/posts/${id}`, {
     responseSchema: postSchema,
   })
