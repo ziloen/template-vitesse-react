@@ -3,7 +3,6 @@
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
-import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { Features } from 'lightningcss'
 import { execSync } from 'node:child_process'
 import { resolve as r } from 'node:path'
@@ -96,7 +95,6 @@ export default defineConfig(({ command, mode }) => {
       // polyfills
       // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
       legacy({
-        // render legacy chunks for non-modern browsers
         renderLegacyChunks: false,
         targets: target,
         modernTargets: target,
@@ -108,7 +106,8 @@ export default defineConfig(({ command, mode }) => {
       // disable inline base64
       assetsInlineLimit: 0,
       cssMinify: 'lightningcss',
-      target: browserslistToEsbuild(target),
+      // build.target is overwritten by plugin-legacy modernTargets option
+      // target: browserslistToEsbuild(target),
       reportCompressedSize: false,
       minify: 'oxc',
       rolldownOptions: {

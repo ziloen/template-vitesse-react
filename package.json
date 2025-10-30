@@ -46,7 +46,6 @@
     "@vitejs/plugin-react": "5.1.0",
     "@ziloen/eslint-config": "0.1.73",
     "@ziloen/tailwind-config": "2.0.8",
-    "browserslist-to-esbuild": "2.1.1",
     "cross-env": "10.1.0",
     "eslint": "9.38.0",
     "husky": "9.1.7",
