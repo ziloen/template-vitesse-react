@@ -3,10 +3,20 @@
 /* https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css */
 /* @import "tailwindcss/preflight.css" layer(base); */
 
+:root {
+  /* Primitive Colors */
+  /* 定义在 root 下，不在 tailwind @theme 里，避免直接使用颜色原语 */
+  /* 如果颜色有透明，增加 alpha 后缀 `--color-name-100-a90` -> `--color-name-100` with alpha 90% */
+  /* --color-green-100-a4: #xxxxxxxx; */
+}
+
 @theme {
+  /* 命名规则参考 */
+  /* https://daisyui.com/docs/utilities/#theme-css-variables */
+  /* https://ui.shadcn.com/docs/theming */
+
   --color-surface-primary: light-dark(#ffffff, #121212);
   --color-surface-secondary: light-dark(--theme(--color-light-gray-200), --theme(--color-dark-gray-400));
-
 
 
   /* --color-[role]-[prominence]-[interaction] */
@@ -24,7 +34,6 @@
   --text-color-error-primary: light-dark(--theme(--color-red-500), --theme(--color-red-300));
 
   --text-color-info-primary: light-dark(--theme(--color-blue-500), --theme(--color-blue-400));
-
 
 
   --border-color-neutral-primary: light-dark(--theme(--color-light-gray-500), theme(--color-dark-gray-100));
