@@ -32,6 +32,8 @@
   "javascript.preferences.autoImportSpecifierExcludeRegexes": [
     "^node:console$",
     "^typescript$",
+    "^zod/locales",
+    "^zod/v4/locales",
   ],
   "prettier.enable": true,
   "tailwindCSS.experimental.configFile": "src/styles/tailwind.css",
@@ -39,5 +41,7 @@
   "typescript.preferences.autoImportSpecifierExcludeRegexes": [
     "^node:console$",
     "^typescript$",
+    "^zod/locales",
+    "^zod/v4/locales",
   ]
 }
