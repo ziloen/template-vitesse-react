@@ -1,2 +1,6 @@
 * text=auto eol=lf
+
 src/locales/*.json linguist-generated=true
+
+# Disable diff for `package-lock.json`
+package-lock.json binary 
