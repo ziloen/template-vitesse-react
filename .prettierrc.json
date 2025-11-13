@@ -30,7 +30,7 @@
   "singleQuote": true,
   "tabWidth": 2,
   "tailwindPreserveDuplicates": false,
-  "tailwindPreserveWhitespace": true,
+  "tailwindPreserveWhitespace": false,
   "tailwindStylesheet": "./src/styles/tailwind.css",
   "trailingComma": "all",
   "useTabs": false
