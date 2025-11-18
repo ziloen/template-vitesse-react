@@ -6,7 +6,7 @@ export type { I18nKeys } from './useI18n'
 export { useLatest } from './useLatest'
 export { useMagicKeys } from './useMagicKeys'
 export { useMemoizedFn } from './useMemoizedFn'
-export { useNextTick } from './useNextTick'
+export { useNextEffect, useNextLayoutEffect } from './useNextEffect'
 export { usePointerCaptureRef } from './usePointerCaptureRef'
 
 /**
