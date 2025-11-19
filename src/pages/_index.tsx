@@ -1,6 +1,6 @@
 import { Counter } from '~/components/Counter'
 import { ThemeToggleButton } from '~/components/ThemeToggleButton'
-import { useI18n } from '~/hooks'
+import { listFormat, useI18n } from '~/hooks'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
@@ -52,7 +52,7 @@ export default function Index() {
 
       <div>
         {t('_examples.listInterpolation', {
-          list: ['CN', 'FR', 'RU', 'GB', 'US'],
+          list: listFormat(['CN', 'FR', 'RU', 'GB', 'US'], i18n.language),
         })}
       </div>
 

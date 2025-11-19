@@ -27,7 +27,7 @@ type CustomTFunction = {
     key: I18nKeys,
     data: Record<
       string,
-      ((children: ReactNode) => ReactNode) | ReactElement | string | string[]
+      ((children: ReactNode) => ReactNode) | ReactElement | string
     >,
   ): React.ReactElement
 }
@@ -41,11 +41,10 @@ type CustomTFunction = {
  * return (
  *   <div>
  *    {t('hello', {
+ *      string: 'world',
  *      variable: <span>world</span>,
- *      tag: text => <strong>{text}</strong>,
+ *      tag: (text) => <strong>{text}</strong>,
  *      element: <span className="text-red" />,
- *      list: ['apple', 'banana', 'cherry'],
- *      // will be formatted as "apple, banana, and cherry"
  *    })}
  *   </div>
  * )
@@ -58,15 +57,12 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
 
   return {
     t: useMemoizedFn(function customT(key, data) {
-      // name: children => <span>{children}</span>
+      // name: (children) => <span>{children}</span>
       const fnData = new Map<string, (children: ReactNode) => ReactNode>()
       // name: <span className="text-red" />
       const elementData = new Map<string, ReactElement>()
-      // name: 'text' | ['text1', 'text2', 'text3']
-      const stringData = Object.create(null) as Record<
-        string,
-        string | string[]
-      >
+      // name: 'text'
+      const stringData = Object.create(null) as Record<string, string>
 
       for (const [key, val] of Object.entries(data ?? {})) {
         if (typeof val === 'function') {
@@ -78,13 +74,7 @@ export function useI18n(...args: Parameters<typeof useTranslation>) {
         }
       }
 
-      return parseTemplate(
-        t(key, stringData),
-        elementData,
-        fnData,
-        stringData,
-        i18n.language,
-      )
+      return parseTemplate(t(key, stringData), elementData, fnData, stringData)
     } as CustomTFunction),
     i18n,
     ready,
@@ -101,8 +91,7 @@ function parseTemplate(
   text: string,
   elementData: Map<string, ReactElement>,
   fnData: Map<string, (children: ReactNode) => ReactNode>,
-  stringData: Record<string, string | string[]>,
-  language: string,
+  stringData: Record<string, string>,
 ): string | ReactElement {
   const result: ReactNode[] = []
   let lastIndex = 0
@@ -129,17 +118,13 @@ function parseTemplate(
       // <b>bold and <i>italic</i></b>
       // <b>bold and {{variable}}</b>
       const parsedContent = tagContent
-        ? parseTemplate(tagContent, elementData, fnData, stringData, language)
+        ? parseTemplate(tagContent, elementData, fnData, stringData)
         : tagContent
 
       if (render) {
         result.push(getRendered(render, parsedContent))
       } else {
-        if (Array.isArray(stringData[tagName])) {
-          result.push(listFormat(stringData[tagName], language))
-        } else {
-          result.push(parsedContent)
-        }
+        result.push(parsedContent)
       }
     } else if (variable) {
       // match {{variable}}
