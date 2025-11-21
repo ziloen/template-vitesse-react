@@ -1,14 +1,15 @@
 import './styles/main.css'
 import './styles/tailwind.css'
 
-import { createRoot } from 'react-dom/client'
 import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { isNotNil } from 'es-toolkit'
 import i18next from 'i18next'
+import { createRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import type { LoaderFunction, RouteObject } from 'react-router'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import enJson from '~/locales/en.json'
 import CarbonClose from '~icons/carbon/close'
 
 const queryClient = new QueryClient()
@@ -62,6 +63,10 @@ const router = createBrowserRouter(routes, { basename: '' })
 i18next.use(initReactI18next).init({
   lng: 'en',
 
+  resources: {
+    en: { translation: enJson },
+  },
+
   react: {
     // Only work when using `<Trans>` component
     transSupportBasicHtmlNodes: true,
@@ -106,13 +111,27 @@ function ToastList() {
 }
 
 function App() {
+  const [lang, setLang] = useState('en')
+
   useEffect(() => {
-    const lang = 'en'
+    if (i18next.hasResourceBundle(lang, 'translation')) {
+      return
+    }
+
+    let cancelled = false
+
     import(`~/locales/${lang}.json`).then((resource) => {
+      if (cancelled) {
+        return
+      }
       i18next.addResourceBundle(lang, 'translation', resource)
       i18next.changeLanguage(lang)
     })
-  }, [])
+
+    return () => {
+      cancelled = true
+    }
+  }, [lang])
 
   return (
     <QueryClientProvider client={queryClient}>
