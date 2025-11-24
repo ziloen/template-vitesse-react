@@ -1,0 +1,25 @@
+{
+  "_examples": {
+    "listInterpolation": "The five permanent members of the United Nations Security Council are <list>A, B, and C</list>.",
+    "multipleSameTags": "try <b>bold</b> and <b>bold</b>",
+    "nestedTags": "try <b>bold and <i>italic</i></b>",
+    "notranslate": "try Artifact",
+    "tagAndVariable": "try <b>{{name}}</b>"
+  },
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "download": "Download",
+    "edit": "Edit",
+    "next": "Next",
+    "ok": "OK",
+    "save": "Save",
+    "submit": "Submit"
+  },
+  "loading": "Loading...",
+  "placeholder": "What's your name?",
+  "useI18nTest": "<link>here</link> to test the tag, and {{name}} to test the variable. This part will not be translated."
+}

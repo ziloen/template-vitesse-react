@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import { Fragment, cloneElement, createElement, isValidElement } from 'react'
 import { useTranslation } from 'react-i18next'
-import type ENJSON from '../locales/en.json'
+import type ENJSON from '../locales/en-tpl.json'
 import { useMemoizedFn } from './useMemoizedFn'
 
 type JoinKeys<K1, K2> = `${K1 & string}.${K2 & string}`
