@@ -60,8 +60,25 @@ const routes = Object.entries(
 
 const router = createBrowserRouter(routes, { basename: '' })
 
+const supportedLngs = Object.keys(import.meta.glob('./locales/*.json'))
+  .map((p) => p.slice(10, -5))
+  .filter((l) => !l.endsWith('-tpl'))
+
+const fallbackLng = {
+  zh: ['zh-Hans'],
+  'zh-CN': ['zh-Hans'],
+  'zh-SG': ['zh-Hans'],
+
+  'zh-TW': ['zh-Hant'],
+  'zh-HK': ['zh-Hant'],
+
+  default: ['en'],
+}
+
 i18next.use(initReactI18next).init({
   lng: 'en',
+  supportedLngs,
+  fallbackLng,
 
   resources: {
     en: { translation: enJson },
@@ -91,6 +108,14 @@ i18next.use(initReactI18next).init({
   },
 })
 
+function resolveLanguage(lng: string) {
+  if (supportedLngs.includes(lng)) {
+    return lng
+  }
+
+  return fallbackLng[lng]?.[0] ?? fallbackLng['default'][0]
+}
+
 function ToastList() {
   const { toasts } = Toast.useToastManager()
 
@@ -114,18 +139,20 @@ function App() {
   const [lang, setLang] = useState('en')
 
   useEffect(() => {
-    if (i18next.hasResourceBundle(lang, 'translation')) {
+    const resolvedLang = resolveLanguage(lang)
+
+    if (i18next.hasResourceBundle(resolvedLang, 'translation')) {
       return
     }
 
     let cancelled = false
 
-    import(`~/locales/${lang}.json`).then((resource) => {
+    import(`~/locales/${resolvedLang}.json`).then((resource) => {
       if (cancelled) {
         return
       }
-      i18next.addResourceBundle(lang, 'translation', resource)
-      i18next.changeLanguage(lang)
+      i18next.addResourceBundle(resolvedLang, 'translation', resource)
+      i18next.changeLanguage(resolvedLang)
     })
 
     return () => {
