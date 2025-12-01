@@ -25,9 +25,9 @@ export function isInstanceofElement<T extends typeof Element>(
 
   return Boolean(
     element?.ownerDocument?.defaultView &&
-      element instanceof
-        element.ownerDocument.defaultView[
-          instance.name as keyof typeof globalThis
-        ],
+    element instanceof
+      element.ownerDocument.defaultView[
+        instance.name as keyof typeof globalThis
+      ],
   )
 }

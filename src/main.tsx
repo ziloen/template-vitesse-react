@@ -9,6 +9,7 @@ import { createRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
 import type { LoaderFunction, RouteObject } from 'react-router'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import type { LiteralUnion } from 'type-fest'
 import enJson from '~/locales/en.json'
 import CarbonClose from '~icons/carbon/close'
 
@@ -60,11 +61,16 @@ const routes = Object.entries(
 
 const router = createBrowserRouter(routes, { basename: '' })
 
-const supportedLngs = Object.keys(import.meta.glob('./locales/*.json'))
-  .map((p) => p.slice(10, -5))
+const supportedLngs = Object.keys(
+  import.meta.glob('./*.json', { base: './locales/' }),
+)
+  .map((p) => p.slice(2, -5))
   .filter((l) => !l.endsWith('-tpl'))
 
-const fallbackLng = {
+const fallbackLng: Record<
+  LiteralUnion<'default', string>,
+  [string, ...string[]]
+> = {
   zh: ['zh-Hans'],
   'zh-CN': ['zh-Hans'],
   'zh-SG': ['zh-Hans'],
@@ -113,7 +119,21 @@ function resolveLanguage(lng: string) {
     return lng
   }
 
-  return fallbackLng[lng]?.[0] ?? fallbackLng['default'][0]
+  if (fallbackLng[lng]) {
+    return fallbackLng[lng][0]
+  }
+
+  const lngCode = lng.split(/-_/)[0]!
+
+  if (supportedLngs.includes(lngCode)) {
+    return lngCode
+  }
+
+  if (fallbackLng[lngCode]) {
+    return fallbackLng[lngCode][0]
+  }
+
+  return fallbackLng.default[0]
 }
 
 function ToastList() {
