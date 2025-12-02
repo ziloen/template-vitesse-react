@@ -1,3 +1,4 @@
+import { Temporal } from 'temporal-polyfill'
 import { Counter } from '~/components/Counter'
 import { ThemeToggleButton } from '~/components/ThemeToggleButton'
 import { listFormat, useI18n } from '~/hooks'
@@ -20,7 +21,8 @@ export default function Index() {
   return (
     <div className="grid h-full content-start justify-items-center overflow-y-auto">
       <div className="flex w-full items-center justify-end gap-2 px-2 py-2">
-        <span>{APP_BUILD_COMMIT}</span>
+        <span>{Temporal.Instant.from(APP_BUILD_TIME).toLocaleString()}</span>
+        <span className="opacity-50">{APP_BUILD_COMMIT}</span>
         <ThemeToggleButton />
       </div>
 
@@ -38,7 +40,7 @@ export default function Index() {
       />
 
       <div>
-        <button className="btn m-3 text-sm" disabled={!name} onClick={go}>
+        <button className="m-3 btn text-sm" disabled={!name} onClick={go}>
           Go
         </button>
       </div>

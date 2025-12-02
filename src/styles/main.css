@@ -49,10 +49,10 @@ html {
 }
 
 /*
-background-image: linear-gradient(var(--animatable-color-1), var(--animatable-color-2));
-transition: --animatable-color-1 0.3s ease, --animatable-color-2 0.3s ease;
+background-image: linear-gradient(var(--color-1), var(--color-2));
+transition: --color-1 0.3s ease, --color-2 0.3s ease;
 */
-@property --animatable-color-1 {
+@property --color-1 {
   syntax: '<color>';
   inherits: false;
   initial-value: transparent;

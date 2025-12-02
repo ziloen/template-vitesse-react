@@ -18,6 +18,7 @@ declare const IS_DEV: boolean
 // use const to declare direct global constants
 declare const IS_BUILD: boolean
 
+declare const APP_BUILD_TIME: string
 declare const APP_BUILD_COMMIT: string
 
 // use var to declare direct / globalThis / window variables
