@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "cross-env TIMING=20 eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsgo --noEmit",
     "format": "prettier --write . --experimental-cli",
     "prepare": "husky"
   },
@@ -42,6 +42,7 @@
     "@types/node": "24.10.1",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20251202.1",
     "@vitejs/devtools-vite": "0.0.0-alpha.19",
     "@vitejs/plugin-legacy": "7.2.1",
     "@vitejs/plugin-react": "5.1.1",
