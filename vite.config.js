@@ -3,7 +3,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
-import { Features } from 'lightningcss'
+import { Features, browserslistToTargets } from 'lightningcss'
 import { execSync } from 'node:child_process'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -130,9 +130,7 @@ export default defineConfig(({ command, mode }) => {
         // Never transpile
         exclude: Features.LogicalProperties | Features.LightDark,
 
-        targets: {
-          firefox: 140, // Current Firefox ESR
-        },
+        targets: browserslistToTargets([target]),
       },
       devSourcemap: true,
       modules: {
