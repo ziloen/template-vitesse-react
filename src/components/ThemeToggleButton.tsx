@@ -1,12 +1,9 @@
-import { Toast } from '@base-ui-components/react/toast'
 import { useColorScheme } from '~/hooks'
-import CarbonMoon from '~icons/carbon/moon'
 import CarbonSun from '~icons/carbon/sun'
+import CarbonMoon from '~icons/carbon/moon'
 
 export function ThemeToggleButton() {
   const [colorScheme, setColorScheme] = useColorScheme()
-
-  const { add } = Toast.useToastManager()
 
   const computedTheme = useMemo(() => {
     if (colorScheme === 'auto') {
@@ -35,11 +32,6 @@ export function ThemeToggleButton() {
 
           document.documentElement.setAttribute('data-theme', nextTheme)
         }, e.nativeEvent)
-        // add({
-        //   title: 'Theme changed',
-        //   description: `Theme changed to ${nextTheme}`,
-        //   priority: 'low',
-        // })
       }}
     >
       {computedTheme === 'light' ? (
