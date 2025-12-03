@@ -3,7 +3,7 @@ import './styles/tailwind.css'
 
 import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { isNotNil } from 'es-toolkit'
+import { isNotNil, mapKeys } from 'es-toolkit'
 import i18next from 'i18next'
 import { createRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
@@ -61,11 +61,17 @@ const routes = Object.entries(
 
 const router = createBrowserRouter(routes, { basename: '' })
 
-const supportedLngs = Object.keys(
-  import.meta.glob('./*.json', { base: './locales/' }),
+const i18nResourcesMap = mapKeys(
+  import.meta.glob<string>(['./*.json', '!./*-tpl.json'], {
+    base: './locales/',
+    import: 'default',
+    query: '?url',
+    eager: true,
+  }),
+  (v, k) => k.slice(2, -5),
 )
-  .map((p) => p.slice(2, -5))
-  .filter((l) => !l.endsWith('-tpl'))
+
+const supportedLngs = Object.keys(i18nResourcesMap)
 
 const fallbackLng: Record<
   LiteralUnion<'default', string>,
@@ -133,6 +139,12 @@ function resolveLanguage(lng: string) {
     return fallbackLng[lngCode][0]
   }
 
+  const similarLng = supportedLngs.find((l) => l.startsWith(lngCode))
+
+  if (similarLng) {
+    return similarLng
+  }
+
   return fallbackLng.default[0]
 }
 
@@ -167,13 +179,15 @@ function App() {
 
     let cancelled = false
 
-    import(`~/locales/${resolvedLang}.json`).then((resource) => {
-      if (cancelled) {
-        return
-      }
-      i18next.addResourceBundle(resolvedLang, 'translation', resource)
-      i18next.changeLanguage(resolvedLang)
-    })
+    fetch(i18nResourcesMap[resolvedLang]!)
+      .then((res) => res.json())
+      .then((resource) => {
+        if (cancelled) {
+          return
+        }
+        i18next.addResourceBundle(resolvedLang, 'translation', resource)
+        i18next.changeLanguage(resolvedLang)
+      })
 
     return () => {
       cancelled = true
