@@ -33,6 +33,16 @@
       ]
     },
     {
+      "name": "@source",
+      "description": "explicitly specify source files",
+      "references": [
+        {
+          "name": "tailwind doc",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#reference-directive"
+        }
+      ]
+    },
+    {
       "name": "@theme",
       "description": "define custom design tokens",
       "references": [
