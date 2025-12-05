@@ -25,45 +25,39 @@ const routes = Object.entries(
     loader?: LoaderFunction
     HydrateFallback?: React.ComponentType
     ErrorBoundary?: React.ComponentType
-  }>('./pages/**/*.tsx'),
-)
-  .map<RouteObject | null>(([path, request]) => {
-    const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1]
+  }>('./**/*.tsx', { base: './pages' }),
+).map<RouteObject>(([path, request]) => {
+  const fileName = path.slice(2, -4)
 
-    if (!fileName) {
-      return null
-    }
+  const index = fileName.endsWith('_index')
 
-    const index = fileName.endsWith('_index')
+  const normalizedPath = fileName
+    .replaceAll('_index', '')
+    .replaceAll(/\$$/g, '*')
+    .replaceAll('$', ':')
+    .replaceAll('.', '/')
 
-    const normalizedPath = fileName
-      .replaceAll('_index', '')
-      .replaceAll(/\$$/g, '*')
-      .replaceAll('$', ':')
-      .replaceAll('.', '/')
+  return {
+    index: index,
+    path: normalizedPath,
+    HydrateFallback: HydrateFallback,
+    lazy: async () => {
+      const value = await request()
 
-    return {
-      index: index,
-      path: normalizedPath,
-      HydrateFallback: HydrateFallback,
-      lazy: async () => {
-        const value = await request()
-
-        return {
-          Component: value.default,
-          HydrateFallback: value.HydrateFallback ?? null,
-          loader: value.loader,
-        }
-      },
-    }
-  })
-  .filter(isNotNil)
+      return {
+        Component: value.default,
+        HydrateFallback: value.HydrateFallback ?? null,
+        loader: value.loader,
+      }
+    },
+  }
+})
 
 const router = createBrowserRouter(routes, { basename: '' })
 
 const i18nResourcesMap = mapKeys(
   import.meta.glob<string>(['./*.json', '!./*-tpl.json'], {
-    base: './locales/',
+    base: './locales',
     import: 'default',
     query: '?url',
     eager: true,
