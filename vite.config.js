@@ -62,8 +62,12 @@ export default defineConfig(({ command, mode }) => {
             'react-dom': ['createPortal'],
             'react-router': ['useNavigate', 'useParams', 'useRoutes'],
             'motion/react': ['motion', 'AnimatePresence'],
-            clsx: ['clsx'],
-            'clsx/lite': [['clsx', 'clsxLite']],
+          },
+          {
+            from: 'clsx/lite',
+            imports: ['clsx'],
+            // Manually declare clsx in src/types/modules.d.ts for strict type checking clsx/lite
+            dtsDisabled: true,
           },
           {
             type: true,

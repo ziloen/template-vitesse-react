@@ -27,4 +27,11 @@ declare module 'axios' {
   }
 }
 
+declare global {
+  // strict type checking for clsx/lite, disallow object and array
+  const clsx: (
+    ...inputs: (string | number | bigint | null | boolean | undefined)[]
+  ) => string
+}
+
 export {}

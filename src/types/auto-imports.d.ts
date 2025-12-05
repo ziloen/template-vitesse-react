@@ -9,8 +9,6 @@ declare global {
   const AnimatePresence: typeof import('motion/react').AnimatePresence
   const Fragment: typeof import('react').Fragment
   const Suspense: typeof import('react').Suspense
-  const clsx: typeof import('clsx').clsx
-  const clsxLite: typeof import('clsx/lite').clsx
   const createPortal: typeof import('react-dom').createPortal
   const motion: typeof import('motion/react').motion
   const useCallback: typeof import('react').useCallback

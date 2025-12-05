@@ -1,4 +1,5 @@
 @import "@ziloen/tailwind-config/preset.css" theme(inline);
+@import "./typography.css";
 
 /* https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css */
 /* @import "tailwindcss/preflight.css" layer(base); */
