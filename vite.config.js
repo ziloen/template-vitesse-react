@@ -9,14 +9,13 @@ import { execSync } from 'node:child_process'
 import { resolve as r } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   const cwd = process.cwd()
-  const env = loadEnv(mode, cwd)
 
-  const IS_PROD = env.PROD
-  const IS_DEV = env.DEV
+  const IS_DEV = process.env.NODE_ENV === 'development'
+  const IS_PROD = !IS_DEV
   const IS_BUILD = command === 'build'
 
   const target = '> 0.5%, last 2 versions, Firefox ESR, not dead'

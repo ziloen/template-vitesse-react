@@ -3,7 +3,7 @@ import './styles/tailwind.css'
 
 import { Toast } from '@base-ui-components/react/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { isNotNil, mapKeys } from 'es-toolkit'
+import { mapKeys } from 'es-toolkit'
 import i18next from 'i18next'
 import { createRoot } from 'react-dom/client'
 import { I18nextProvider, initReactI18next } from 'react-i18next'
