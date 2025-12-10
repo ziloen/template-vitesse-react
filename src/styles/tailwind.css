@@ -12,6 +12,8 @@
 }
 
 @theme {
+  --font-handwriting: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+
   /* 命名规则参考 */
   /* https://daisyui.com/docs/utilities/#theme-css-variables */
   /* https://ui.shadcn.com/docs/theming */
@@ -37,7 +39,7 @@
   --text-color-info-primary: light-dark(--theme(--color-blue-500), --theme(--color-blue-400));
 
 
-  --border-color-neutral-primary: light-dark(--theme(--color-light-gray-500), theme(--color-dark-gray-100));
+  --border-color-neutral-primary: light-dark(--theme(--color-light-gray-500), --theme(--color-dark-gray-100));
 
   /* --color-field-bg: light-dark();
   --color-field-fg: light-dark();

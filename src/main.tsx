@@ -176,10 +176,10 @@ function App() {
     fetch(i18nResourcesMap[resolvedLang]!)
       .then((res) => res.json())
       .then((resource) => {
-        if (cancelled) {
-          return
-        }
         i18next.addResourceBundle(resolvedLang, 'translation', resource)
+
+        if (cancelled) return
+
         i18next.changeLanguage(resolvedLang)
       })
 
