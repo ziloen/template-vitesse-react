@@ -9,6 +9,10 @@ node_modules
 *.log
 .rolldown
 
+.env
+.env.local
+.env.*.local
+
 # Local Netlify folder
 .netlify
 

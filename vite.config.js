@@ -21,6 +21,7 @@ export default defineConfig(({ command, mode }) => {
   const target = '> 0.5%, last 2 versions, Firefox ESR, not dead'
 
   return {
+    base: process.env.BASE_URL || '/',
     resolve: {
       alias: {
         '~': r('src'),
@@ -126,10 +127,7 @@ export default defineConfig(({ command, mode }) => {
       lightningcss: {
         // https://lightningcss.dev/transpilation.html#feature-flags
         // Always transpile
-        include:
-          (Features.Colors ^ Features.LightDark) |
-          Features.Nesting |
-          Features.MediaRangeSyntax,
+        include: (Features.Colors ^ Features.LightDark) | Features.Nesting,
 
         // Never transpile
         exclude: Features.LogicalProperties | Features.LightDark,
