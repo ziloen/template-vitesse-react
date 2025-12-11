@@ -2,8 +2,7 @@ import axios from 'axios'
 import type { ZodType } from 'zod'
 import { prettifyError } from 'zod'
 
-export * as photoAPI from './photo'
-export * as postAPI from './post'
+export * as API from './api'
 
 export const request = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
