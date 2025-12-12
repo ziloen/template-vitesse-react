@@ -1,7 +1,7 @@
 import './styles/main.css'
 import './styles/tailwind.css'
 
-import { Toast } from '@base-ui-components/react/toast'
+import { Toast } from '@base-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { mapKeys } from 'es-toolkit'
 import i18next from 'i18next'
