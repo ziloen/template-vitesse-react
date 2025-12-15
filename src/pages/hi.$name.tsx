@@ -17,7 +17,7 @@ export default function Hi() {
 
       <div>
         <button
-          className="btn m-3 mt-8 text-sm"
+          className="m-3 mt-8 btn text-sm"
           onClick={() => {
             if (location.state?.from) {
               navigate(-1)

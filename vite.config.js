@@ -60,7 +60,12 @@ export default defineConfig(({ command, mode }) => {
               'useSyncExternalStore',
             ],
             'react-dom': ['createPortal'],
-            'react-router': ['useNavigate', 'useParams', 'useRoutes'],
+            'react-router': [
+              'useLocation',
+              'useNavigate',
+              'useParams',
+              'useRoutes',
+            ],
             'motion/react': ['motion', 'AnimatePresence'],
           },
           {

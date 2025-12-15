@@ -17,6 +17,7 @@ declare global {
   const useImperativeHandle: typeof import('react').useImperativeHandle
   const useInsertionEffect: typeof import('react').useInsertionEffect
   const useLayoutEffect: typeof import('react').useLayoutEffect
+  const useLocation: typeof import('react-router').useLocation
   const useMemo: typeof import('react').useMemo
   const useNavigate: typeof import('react-router').useNavigate
   const useParams: typeof import('react-router').useParams
