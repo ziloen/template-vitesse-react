@@ -27,6 +27,11 @@ declare module 'axios' {
   }
 }
 
+declare module 'react-router' {
+  import type { Location } from 'react-router'
+  declare function useLocation<S = unknown>(): Location<S | undefined>
+}
+
 declare global {
   // strict type checking for clsx/lite, disallow object and array
   const clsx: (

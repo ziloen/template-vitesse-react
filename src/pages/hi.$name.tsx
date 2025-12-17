@@ -1,11 +1,9 @@
-import type { Location } from 'react-router'
-import { useLocation } from 'react-router'
 import CarbonPedestrian from '~icons/carbon/pedestrian'
 
 export default function Hi() {
   const params = useParams()
   const navigate = useNavigate()
-  const location = useLocation() as Location<{ from?: string } | undefined>
+  const location = useLocation<{ from?: string }>()
 
   return (
     <div>
@@ -15,20 +13,18 @@ export default function Hi() {
         <em>Dynamic route!</em>
       </p>
 
-      <div>
-        <button
-          className="m-3 mt-8 btn text-sm"
-          onClick={() => {
-            if (location.state?.from) {
-              navigate(-1)
-            } else {
-              navigate('/')
-            }
-          }}
-        >
-          Back
-        </button>
-      </div>
+      <button
+        className="m-3 mt-8 btn text-sm"
+        onClick={() => {
+          if (location.state?.from) {
+            navigate(-1)
+          } else {
+            navigate('/')
+          }
+        }}
+      >
+        Back
+      </button>
     </div>
   )
 }
