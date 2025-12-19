@@ -1,14 +1,10 @@
 import { Toast } from '@base-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { mapKeys } from 'es-toolkit'
-import i18next from 'i18next'
 import type { ComponentType } from 'react'
-import { I18nextProvider, initReactI18next } from 'react-i18next'
 import type { LoaderFunction, RouteObject } from 'react-router'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import type { LiteralUnion } from 'type-fest'
-import enJson from '~/locales/en.json'
 import CarbonClose from '~icons/carbon/close'
+import { I18nProvider } from './i18n'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -69,93 +65,6 @@ export const routes = Object.entries(
 
 export const router = createBrowserRouter(routes, { basename: '' })
 
-const i18nResourcesMap = mapKeys(
-  import.meta.glob<string>(['./*.json', '!./*-tpl.json'], {
-    base: './locales',
-    import: 'default',
-    query: '?url',
-    eager: true,
-  }),
-  (v, k) => k.slice(2, -5),
-)
-
-export const supportedLngs = Object.keys(i18nResourcesMap)
-
-const fallbackLng: Record<
-  LiteralUnion<'default', string>,
-  [string, ...string[]]
-> = {
-  zh: ['zh-Hans'],
-  'zh-CN': ['zh-Hans'],
-  'zh-SG': ['zh-Hans'],
-
-  'zh-TW': ['zh-Hant'],
-  'zh-HK': ['zh-Hant'],
-
-  default: ['en'],
-}
-
-i18next.use(initReactI18next).init({
-  lng: 'en',
-  supportedLngs,
-  fallbackLng,
-
-  resources: {
-    en: { translation: enJson },
-  },
-
-  react: {
-    // Only work when using `<Trans>` component
-    transSupportBasicHtmlNodes: true,
-    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'b'],
-  },
-
-  interpolation: {
-    /** global variables */
-    defaultVariables: {
-      APP_NAME: 'Vite React Template',
-    },
-    // TODO: support default tags
-    // defaultTags: {
-    //   notranslate({ key, content, children }): string {
-    //     return children
-    //   },
-    // },
-  },
-
-  parseMissingKeyHandler(key, defaultValue) {
-    return key
-  },
-})
-
-function resolveLanguage(lng: string) {
-  if (supportedLngs.includes(lng)) {
-    return lng
-  }
-
-  if (fallbackLng[lng]) {
-    return fallbackLng[lng][0]
-  }
-
-  const lngCode = lng.split(/-_/)[0]!
-
-  if (supportedLngs.includes(lngCode)) {
-    return lngCode
-  }
-
-  if (fallbackLng[lngCode]) {
-    return fallbackLng[lngCode][0]
-  }
-
-  const similarLng = supportedLngs.find((l) => l.startsWith(lngCode))
-
-  if (similarLng) {
-    return similarLng
-  }
-
-  return fallbackLng.default[0]
-}
-
 function ToastList() {
   const { toasts } = Toast.useToastManager()
 
@@ -176,35 +85,9 @@ function ToastList() {
 }
 
 export default function App() {
-  const [lang, setLang] = useState('en')
-
-  useEffect(() => {
-    const resolvedLang = resolveLanguage(lang)
-
-    if (i18next.hasResourceBundle(resolvedLang, 'translation')) {
-      return
-    }
-
-    let cancelled = false
-
-    fetch(i18nResourcesMap[resolvedLang]!)
-      .then((res) => res.json())
-      .then((resource) => {
-        i18next.addResourceBundle(resolvedLang, 'translation', resource)
-
-        if (cancelled) return
-
-        i18next.changeLanguage(resolvedLang)
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [lang])
-
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nextProvider i18n={i18next}>
+      <I18nProvider>
         <Toast.Provider>
           <RouterProvider router={router} />
 
@@ -214,7 +97,7 @@ export default function App() {
             </Toast.Viewport>
           </Toast.Portal>
         </Toast.Provider>
-      </I18nextProvider>
+      </I18nProvider>
     </QueryClientProvider>
   )
 }

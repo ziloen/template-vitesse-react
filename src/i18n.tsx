@@ -1,8 +1,115 @@
+import { mapKeys } from 'es-toolkit'
+import i18next from 'i18next'
 import type { ReactElement, ReactNode } from 'react'
-import { Fragment, cloneElement, createElement, isValidElement } from 'react'
-import { useTranslation } from 'react-i18next'
-import type ENJSON from '../locales/en-tpl.json'
-import { useMemoizedFn } from './useMemoizedFn'
+import {
+  Fragment,
+  cloneElement,
+  createContext,
+  createElement,
+  isValidElement,
+  use,
+} from 'react'
+import {
+  I18nextProvider,
+  initReactI18next,
+  useTranslation,
+} from 'react-i18next'
+import type { LiteralUnion } from 'type-fest'
+import enJson from '~/locales/en.json'
+import type TplJson from './locales/_en-tpl.json'
+import { useMemoizedFn } from './hooks'
+
+const i18nResourcesMap = mapKeys(
+  import.meta.glob<string>(['./*.json', '!./*-tpl.json'], {
+    base: './locales',
+    import: 'default',
+    query: '?url',
+    eager: true,
+  }),
+  (_, k) => k.slice(2, -5),
+)
+
+export const supportedLngs = Object.keys(i18nResourcesMap)
+
+const fallbackLng: Record<
+  LiteralUnion<'default', string>,
+  [string, ...string[]]
+> = {
+  zh: ['zh-CN'],
+  'zh-SG': ['zh-CN'],
+
+  default: ['en'],
+}
+
+// use 'en' as fallback in production
+if (import.meta.env.PROD) {
+  for (const lng in fallbackLng) {
+    fallbackLng[lng]!.push('en')
+  }
+
+  fallbackLng['default'] = ['en']
+}
+
+i18next.use(initReactI18next).init({
+  lng: 'en',
+  supportedLngs,
+  fallbackLng,
+
+  resources: {
+    en: { translation: enJson },
+  },
+
+  react: {
+    // Only work when using `<Trans>` component
+    transSupportBasicHtmlNodes: true,
+    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'b'],
+  },
+
+  interpolation: {
+    /** global variables */
+    defaultVariables: {
+      APP_NAME: 'Vite React Template',
+    },
+    // TODO: support default tags
+    // defaultTags: {
+    //   notranslate({ key, content, children }): string {
+    //     return children
+    //   },
+    // },
+  },
+
+  parseMissingKeyHandler(key, defaultValue) {
+    return key
+  },
+})
+
+function resolveLanguage(lng: string) {
+  if (supportedLngs.includes(lng)) {
+    return lng
+  }
+
+  if (fallbackLng[lng]) {
+    return fallbackLng[lng][0]
+  }
+
+  const lngCode = lng.split(/-_/)[0]!
+
+  if (supportedLngs.includes(lngCode)) {
+    return lngCode
+  }
+
+  if (fallbackLng[lngCode]) {
+    return fallbackLng[lngCode][0]
+  }
+
+  const similarLng = supportedLngs.find((l) => l.startsWith(lngCode))
+
+  if (similarLng) {
+    return similarLng
+  }
+
+  return fallbackLng.default[0]
+}
 
 type JoinKeys<K1, K2> = `${K1 & string}.${K2 & string}`
 type $OmitArrayKeys<Arr> = Arr extends readonly any[]
@@ -18,7 +125,7 @@ type KeysBuilderWithoutReturnObjects<
     : Key
   : never
 
-export type I18nKeys = KeysBuilderWithoutReturnObjects<typeof ENJSON>
+export type I18nKeys = KeysBuilderWithoutReturnObjects<typeof TplJson>
 
 type CustomTFunction = {
   (key: I18nKeys): string
@@ -50,35 +157,8 @@ type CustomTFunction = {
  * )
  * ```
  */
-export function useI18n(...args: Parameters<typeof useTranslation>) {
-  const { t, i18n, ready } = useTranslation(...args)
-
-  // TODO: cache Intl.ListFormat instances
-
-  return {
-    t: useMemoizedFn(function customT(key, data) {
-      // name: (children) => <span>{children}</span>
-      const fnData = new Map<string, (children: ReactNode) => ReactNode>()
-      // name: <span className="text-red" />
-      const elementData = new Map<string, ReactElement>()
-      // name: 'text'
-      const stringData = Object.create(null) as Record<string, string>
-
-      for (const [key, val] of Object.entries(data ?? {})) {
-        if (typeof val === 'function') {
-          fnData.set(key, val)
-        } else if (isValidElement(val)) {
-          elementData.set(key, val)
-        } else {
-          stringData[key] = val
-        }
-      }
-
-      return parseTemplate(t(key, stringData), elementData, fnData, stringData)
-    } as CustomTFunction),
-    i18n,
-    ready,
-  }
+export function useI18n() {
+  return use(I18nContext)!
 }
 
 /**
@@ -238,4 +318,88 @@ function getRendered(
     typeof getter.type === 'string' && voidElements.has(getter.type)
 
   return cloneElement(getter, undefined, isVoid ? undefined : children)
+}
+
+const I18nContext = createContext<
+  | (Omit<ReturnType<typeof useTranslation>, 't'> & {
+      t: CustomTFunction
+      changeLanguage: (lang: string) => void
+      fetchingLanguage: string | null
+    })
+  | null
+>(null)
+
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const translation = useTranslation(undefined, { i18n: i18next })
+  const [fetchingLanguage, setFetchingLanguage] = useState<string | null>(null)
+
+  const lastFetchKey = useRef<symbol | null>(null)
+  const changeLanguage = useMemoizedFn((language: string) => {
+    const resolvedLang = resolveLanguage(language)
+
+    if (resolvedLang === i18next.language) return
+
+    if (i18next.hasResourceBundle(resolvedLang, 'translation')) {
+      i18next.changeLanguage(resolvedLang)
+      return
+    }
+
+    setFetchingLanguage(resolvedLang)
+
+    const key = (lastFetchKey.current = Symbol('fetchLang'))
+
+    fetch(i18nResourcesMap[resolvedLang]!)
+      .then((res) => res.json())
+      .then((resource) => {
+        i18next.addResourceBundle(resolvedLang, 'translation', resource)
+
+        if (key !== lastFetchKey.current) return
+
+        i18next.changeLanguage(resolvedLang)
+      })
+      .finally(() => {
+        if (key !== lastFetchKey.current) return
+        setFetchingLanguage(null)
+      })
+  })
+
+  const ctxValue = useMemo(() => {
+    return {
+      // eslint-disable-next-line @typescript-eslint/no-misused-spread
+      ...translation,
+      changeLanguage,
+      fetchingLanguage,
+      t: function customT(key, data) {
+        // name: (children) => <span>{children}</span>
+        const fnData = new Map<string, (children: ReactNode) => ReactNode>()
+        // name: <span className="text-red" />
+        const elementData = new Map<string, ReactElement>()
+        // name: 'text'
+        const stringData = Object.create(null) as Record<string, string>
+
+        for (const [key, val] of Object.entries(data ?? {})) {
+          if (typeof val === 'function') {
+            fnData.set(key, val)
+          } else if (isValidElement(val)) {
+            elementData.set(key, val)
+          } else {
+            stringData[key] = val
+          }
+        }
+
+        return parseTemplate(
+          translation.t(key, stringData),
+          elementData,
+          fnData,
+          stringData,
+        )
+      } as CustomTFunction,
+    }
+  }, [translation, fetchingLanguage])
+
+  return (
+    <I18nextProvider i18n={i18next}>
+      <I18nContext value={ctxValue}>{children}</I18nContext>
+    </I18nextProvider>
+  )
 }

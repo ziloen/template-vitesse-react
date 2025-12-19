@@ -22,6 +22,7 @@ export async function getPhotoList(params: {
 
   const { data } = await request.get<Photo[]>(
     `/photos?_start=${start}&_limit=${limit}`,
+    // TODO: 根据 responseSchema 自动推导 data 类型
     { responseSchema: photoListSchema },
   )
 

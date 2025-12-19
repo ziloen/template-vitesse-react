@@ -1,7 +1,8 @@
+import { Combobox } from '@base-ui/react'
 import { Temporal } from 'temporal-polyfill'
 import { Counter } from '~/components/Counter'
 import { ThemeToggleButton } from '~/components/ThemeToggleButton'
-import { listFormat, useI18n } from '~/hooks'
+import { listFormat, supportedLngs, useI18n } from '~/i18n'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
@@ -23,6 +24,7 @@ export default function Index() {
       <div className="flex w-full items-center justify-end gap-2 px-2 py-2">
         <span>{Temporal.Instant.from(APP_BUILD_TIME).toLocaleString()}</span>
         <span className="opacity-50">{APP_BUILD_COMMIT}</span>
+        <LanguageSelect />
         <ThemeToggleButton />
       </div>
 
@@ -78,5 +80,40 @@ export default function Index() {
         })}
       </div>
     </div>
+  )
+}
+
+function LanguageSelect() {
+  const { i18n, changeLanguage, fetchingLanguage } = useI18n()
+
+  return (
+    <Combobox.Root
+      items={supportedLngs}
+      value={i18n.language}
+      onValueChange={(value) => {
+        if (!value) return
+        changeLanguage(value)
+      }}
+    >
+      <Combobox.Trigger className="btn">
+        {!!fetchingLanguage && <span>Loading...</span>}
+        <Combobox.Value />
+        <Combobox.Icon />
+      </Combobox.Trigger>
+
+      <Combobox.Portal>
+        <Combobox.Positioner>
+          <Combobox.Popup className="bg-surface-primary">
+            <Combobox.List>
+              {supportedLngs.map((l) => (
+                <Combobox.Item key={l} value={l}>
+                  {l}
+                </Combobox.Item>
+              ))}
+            </Combobox.List>
+          </Combobox.Popup>
+        </Combobox.Positioner>
+      </Combobox.Portal>
+    </Combobox.Root>
   )
 }
