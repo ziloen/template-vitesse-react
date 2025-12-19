@@ -2,7 +2,12 @@ import { Combobox } from '@base-ui/react'
 import { Temporal } from 'temporal-polyfill'
 import { Counter } from '~/components/Counter'
 import { ThemeToggleButton } from '~/components/ThemeToggleButton'
-import { listFormat, supportedLngs, useI18n } from '~/i18n'
+import {
+  getLanguageDisplayName,
+  listFormat,
+  supportedLngs,
+  useI18n,
+} from '~/i18n'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
@@ -86,6 +91,15 @@ export default function Index() {
 function LanguageSelect() {
   const { i18n, changeLanguage, fetchingLanguage } = useI18n()
 
+  const languageItems = useMemo(() => {
+    return supportedLngs.map((l) => (
+      <Combobox.Item key={l} value={l} className="flex justify-between gap-2">
+        <span>{getLanguageDisplayName(l, i18n.language)}</span>
+        <span>{getLanguageDisplayName(l, l)}</span>
+      </Combobox.Item>
+    ))
+  }, [i18n.language])
+
   return (
     <Combobox.Root
       items={supportedLngs}
@@ -97,20 +111,16 @@ function LanguageSelect() {
     >
       <Combobox.Trigger className="btn">
         {!!fetchingLanguage && <span>Loading...</span>}
-        <Combobox.Value />
+        <Combobox.Value>
+          {(v: string) => getLanguageDisplayName(v, i18n.language)}
+        </Combobox.Value>
         <Combobox.Icon />
       </Combobox.Trigger>
 
       <Combobox.Portal>
         <Combobox.Positioner>
-          <Combobox.Popup className="bg-surface-primary">
-            <Combobox.List>
-              {supportedLngs.map((l) => (
-                <Combobox.Item key={l} value={l}>
-                  {l}
-                </Combobox.Item>
-              ))}
-            </Combobox.List>
+          <Combobox.Popup className="border bg-surface-primary px-1 py-2">
+            <Combobox.List>{languageItems}</Combobox.List>
           </Combobox.Popup>
         </Combobox.Positioner>
       </Combobox.Portal>
