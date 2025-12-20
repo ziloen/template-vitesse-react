@@ -1,36 +1,22 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
     "rootDir": "./",
     "outDir": "dist",
     "jsx": "react-jsx",
     "allowJs": true,
     "checkJs": true,
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "erasableSyntaxOnly": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "strict": true,
-    "strictNullChecks": true,
     "types": [
       "node"
     ],
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "~cwd/*": [
-        "./*"
-      ],
-    },
   },
   "include": [
     "*.ts",
     "*.js",
-    "test"
   ],
   "exclude": [
     "src",

@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "cross-env TIMING=20 eslint .",
-    "typecheck": "tsgo --noEmit",
+    "typecheck": "tsgo -b --noEmit",
     "format": "prettier --write . --experimental-cli",
     "prepare": "husky"
   },
