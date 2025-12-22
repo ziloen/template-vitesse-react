@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "composite": true,
     "rootDir": "./",
+    "incremental": false,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",

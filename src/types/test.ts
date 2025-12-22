@@ -12,3 +12,5 @@ window.IS_BUILD
 LanguageDetector.create({ expectedInputLanguages: [] })
 globalThis.LanguageDetector
 window.LanguageDetector
+
+const timer: number = setTimeout(() => {}, 0)
