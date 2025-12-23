@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import type { ZodType } from 'zod'
 import { prettifyError } from 'zod'
 
@@ -30,6 +30,12 @@ request.interceptors.response.use(
     return value
   },
   (error: Error) => {
+    if (isAxiosError(error)) {
+      if (error.config?.isExpectedError?.(error) !== true) {
+        globalThis.console.error('[API Error]', error)
+      }
+    }
+
     throw error
   },
 )

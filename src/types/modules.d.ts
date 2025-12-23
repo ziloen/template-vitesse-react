@@ -24,6 +24,10 @@ declare module 'axios' {
   interface AxiosRequestConfig {
     requestSchema?: import('zod').ZodType
     responseSchema?: import('zod').ZodType
+    /**
+     * Return true to skip error logging for this error
+     */
+    isExpectedError?: (error: AxiosError) => boolean
   }
 }
 

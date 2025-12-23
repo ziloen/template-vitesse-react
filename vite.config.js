@@ -135,7 +135,10 @@ export default defineConfig(({ command, mode }) => {
         include: (Features.Colors ^ Features.LightDark) | Features.Nesting,
 
         // Never transpile
-        exclude: Features.LogicalProperties | Features.LightDark,
+        exclude:
+          Features.LogicalProperties |
+          Features.LightDark |
+          Features.MediaRangeSyntax,
 
         targets: browserslistToTargets(browserslist(target)),
       },

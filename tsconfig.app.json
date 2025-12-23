@@ -41,7 +41,7 @@
   },
   "include": [
     "src",
-    "test"
+    "tests"
   ],
   "exclude": [
     "dist",
