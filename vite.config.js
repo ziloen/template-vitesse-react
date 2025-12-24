@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
       IS_BUILD,
       IS_DEV,
       IS_PROD,
-      APP_BUILD_TIME: JSON.stringify(new Date().toISOString()),
+      APP_BUILD_TIME: JSON.stringify(Date.now()),
       APP_BUILD_COMMIT: JSON.stringify(getCommitHash()),
     },
 
@@ -65,6 +65,7 @@ export default defineConfig(({ command, mode }) => {
               'useNavigate',
               'useParams',
               'useRoutes',
+              'useSearchParams',
             ],
             'motion/react': ['motion', 'AnimatePresence'],
           },
@@ -77,7 +78,12 @@ export default defineConfig(({ command, mode }) => {
           {
             type: true,
             from: 'react',
-            imports: ['ReactNode', 'ComponentProps'],
+            imports: [
+              'ComponentProps',
+              'ReactNode',
+              'RefCallback',
+              'RefObject',
+            ],
           },
         ],
         dts: 'src/types/auto-imports.d.ts',
@@ -119,8 +125,12 @@ export default defineConfig(({ command, mode }) => {
       // build.target is overwritten by plugin-legacy modernTargets option
       // target: browserslistToEsbuild(target),
       reportCompressedSize: false,
+      // FIXME: esbuild.drop: ['console', 'debugger']
       minify: 'oxc',
       rolldownOptions: {
+        optimization: {
+          inlineConst: { mode: 'all', pass: 3 },
+        },
         output: {
           hashCharacters: 'hex',
         },

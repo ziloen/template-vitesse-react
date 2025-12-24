@@ -23,12 +23,13 @@ declare global {
   const useParams: typeof import('react-router').useParams
   const useRef: typeof import('react').useRef
   const useRoutes: typeof import('react-router').useRoutes
+  const useSearchParams: typeof import('react-router').useSearchParams
   const useState: typeof import('react').useState
   const useSyncExternalStore: typeof import('react').useSyncExternalStore
 }
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { ReactNode, ComponentProps } from 'react'
+  export type { ComponentProps, ReactNode, RefCallback, RefObject } from 'react'
   import('react')
 }

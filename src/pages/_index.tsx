@@ -1,17 +1,12 @@
-import { Combobox } from '@base-ui/react'
 import { Temporal } from 'temporal-polyfill'
 import { Counter } from '~/components/Counter'
+import { LanguageSelect } from '~/components/LanguageSelect'
 import { ThemeToggleButton } from '~/components/ThemeToggleButton'
-import {
-  getLanguageDisplayName,
-  listFormat,
-  supportedLngs,
-  useI18n,
-} from '~/i18n'
+import { listFormat, useI18n } from '~/i18n'
 
 export default function Index() {
   const name = useRef<HTMLInputElement>(null)
-  const { t, i18n } = useI18n()
+  const { t } = useI18n()
   const navigate = useNavigate()
 
   function go() {
@@ -26,14 +21,7 @@ export default function Index() {
 
   return (
     <div className="grid h-full content-start justify-items-center overflow-y-auto">
-      <div className="flex w-full items-center justify-end gap-2 px-2 py-2">
-        <span>{Temporal.Instant.from(APP_BUILD_TIME).toLocaleString()}</span>
-        <span className="opacity-50">{APP_BUILD_COMMIT}</span>
-        <LanguageSelect />
-        <ThemeToggleButton />
-      </div>
-
-      <em className="text-sm opacity-75">Vite Starter Template</em>
+      <Header />
 
       <Counter />
 
@@ -52,6 +40,16 @@ export default function Index() {
         </button>
       </div>
 
+      <I18nExample />
+    </div>
+  )
+}
+
+function I18nExample() {
+  const { t, i18n } = useI18n()
+
+  return (
+    <>
       <div>
         {t('useI18nTest', {
           link: <a className="text-info-primary" />,
@@ -84,46 +82,61 @@ export default function Index() {
           name: <span>{i18n.language}</span>,
         })}
       </div>
+    </>
+  )
+}
+
+function Header() {
+  const { i18n } = useI18n()
+
+  const timeString = useMemo(() => {
+    const buildTime = Temporal.Instant.fromEpochMilliseconds(
+      APP_BUILD_TIME,
+    ).toLocaleString(i18n.language, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    })
+
+    const relativeTime = getRelativeString(APP_BUILD_TIME, i18n.language)
+
+    return `${buildTime} (${relativeTime})`
+  }, [i18n.language])
+
+  return (
+    <div className="flex w-full items-center justify-end gap-2 px-2 py-2">
+      <span>{timeString}</span>
+      <span className="opacity-50">{APP_BUILD_COMMIT}</span>
+      <LanguageSelect />
+      <ThemeToggleButton />
     </div>
   )
 }
 
-function LanguageSelect() {
-  const { i18n, changeLanguage, fetchingLanguage } = useI18n()
+function getRelativeString(date: number, language: string) {
+  const dateTime =
+    Temporal.Instant.fromEpochMilliseconds(date).toZonedDateTimeISO('UTC')
+  const now = Temporal.Now.zonedDateTimeISO('UTC')
+  const diff = dateTime.since(now, {
+    largestUnit: 'years',
+    smallestUnit: 'minutes',
+  })
 
-  const languageItems = useMemo(() => {
-    return supportedLngs.map((l) => (
-      <Combobox.Item key={l} value={l} className="flex justify-between gap-2">
-        <span>{getLanguageDisplayName(l, i18n.language)}</span>
-        <span>{getLanguageDisplayName(l, l)}</span>
-      </Combobox.Item>
-    ))
-  }, [i18n.language])
+  const formatter = new Intl.RelativeTimeFormat(language, {
+    style: 'narrow',
+    numeric: 'always',
+  })
 
-  return (
-    <Combobox.Root
-      items={supportedLngs}
-      value={i18n.language}
-      onValueChange={(value) => {
-        if (!value) return
-        changeLanguage(value)
-      }}
-    >
-      <Combobox.Trigger className="btn">
-        {!!fetchingLanguage && <span>Loading...</span>}
-        <Combobox.Value>
-          {(v: string) => getLanguageDisplayName(v, i18n.language)}
-        </Combobox.Value>
-        <Combobox.Icon />
-      </Combobox.Trigger>
+  const units = ['years', 'months', 'days', 'hours', 'minutes'] as const
 
-      <Combobox.Portal>
-        <Combobox.Positioner>
-          <Combobox.Popup className="border bg-surface-primary px-1 py-2">
-            <Combobox.List>{languageItems}</Combobox.List>
-          </Combobox.Popup>
-        </Combobox.Positioner>
-      </Combobox.Portal>
-    </Combobox.Root>
-  )
+  for (const unit of units) {
+    if (diff[unit] !== 0) {
+      return formatter.format(diff[unit], unit)
+    }
+  }
+
+  return formatter.format(0, 'minutes')
 }
