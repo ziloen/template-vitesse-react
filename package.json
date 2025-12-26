@@ -42,8 +42,8 @@
     "@types/node": "24.10.4",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
-    "@typescript/native-preview": "7.0.0-dev.20251223.1",
-    "@vitejs/devtools-vite": "0.0.0-alpha.21",
+    "@typescript/native-preview": "7.0.0-dev.20251226.1",
+    "@vitejs/devtools-vite": "0.0.0-alpha.22",
     "@vitejs/plugin-legacy": "8.0.0-beta.0",
     "@vitejs/plugin-react": "5.1.2",
     "@ziloen/eslint-config": "0.1.77",
@@ -52,7 +52,7 @@
     "cross-env": "10.1.0",
     "eslint": "9.39.2",
     "husky": "9.1.7",
-    "jsdom": "27.3.0",
+    "jsdom": "27.4.0",
     "lightningcss": "1.30.2",
     "lint-staged": "16.2.7",
     "prettier": "3.7.4",
@@ -67,7 +67,7 @@
     "unplugin-auto-import": "20.3.0",
     "unplugin-icons": "22.5.0",
     "unplugin-svg-component": "0.12.4",
-    "vite": "8.0.0-beta.4",
+    "vite": "8.0.0-beta.5",
     "vitest": "4.0.16"
   },
   "lint-staged": {

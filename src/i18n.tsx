@@ -1,4 +1,5 @@
 import { mapKeys } from 'es-toolkit'
+import type { ParseKeys } from 'i18next'
 import i18next from 'i18next'
 import type { ReactElement, ReactNode } from 'react'
 import {
@@ -16,12 +17,11 @@ import {
 } from 'react-i18next'
 import type { LiteralUnion } from 'type-fest'
 import enJson from '~/locales/en.json'
-import type TplJson from './locales/_en-tpl.json'
 import { useMemoizedFn } from './hooks'
 
 const i18nResourcesMap = mapKeys(
   import.meta.glob<string>(['./*.json', '!./*-tpl.json'], {
-    base: './locales',
+    base: './locales/',
     import: 'default',
     query: '?url',
     eager: true,
@@ -111,25 +111,11 @@ function resolveLanguage(lng: string) {
   return fallbackLng.default[0]
 }
 
-type JoinKeys<K1, K2> = `${K1 & string}.${K2 & string}`
-type $OmitArrayKeys<Arr> = Arr extends readonly any[]
-  ? Omit<Arr, keyof any[]>
-  : Arr
-type $Dictionary<T = unknown> = { [key: string]: T }
-type KeysBuilderWithoutReturnObjects<
-  Res,
-  Key = keyof $OmitArrayKeys<Res>,
-> = Key extends keyof Res
-  ? Res[Key] extends $Dictionary | readonly unknown[]
-    ? JoinKeys<Key, KeysBuilderWithoutReturnObjects<Res[Key]>>
-    : Key
-  : never
-
-export type I18nKeys = KeysBuilderWithoutReturnObjects<typeof TplJson>
+export type I18nKeys = ParseKeys
 
 type CustomTFunction = {
   (key: I18nKeys): string
-  (key: I18nKeys, data: Record<string, string>): string
+  (key: I18nKeys, data: Record<string, string | number>): string
   (
     key: I18nKeys,
     data: Record<
@@ -171,7 +157,7 @@ function parseTemplate(
   text: string,
   elementData: Map<string, ReactElement>,
   fnData: Map<string, (children: ReactNode) => ReactNode>,
-  stringData: Record<string, string>,
+  stringData: Record<string, string | number>,
 ): string | ReactElement {
   const result: ReactNode[] = []
   let lastIndex = 0
@@ -375,7 +361,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         // name: <span className="text-red" />
         const elementData = new Map<string, ReactElement>()
         // name: 'text'
-        const stringData = Object.create(null) as Record<string, string>
+        const stringData = Object.create(null) as Record<
+          string,
+          string | number
+        >
 
         for (const [key, val] of Object.entries(data ?? {})) {
           if (typeof val === 'function') {

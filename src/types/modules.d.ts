@@ -33,7 +33,16 @@ declare module 'axios' {
 
 declare module 'react-router' {
   import type { Location } from 'react-router'
+  // https://github.com/remix-run/react-router/issues/9358
   declare function useLocation<S = unknown>(): Location<S | undefined>
+}
+
+// https://www.i18next.com/overview/typescript
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'translation'
+    resources: typeof import('../locales/_en-tpl.json')
+  }
 }
 
 declare global {
