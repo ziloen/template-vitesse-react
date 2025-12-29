@@ -1,5 +1,4 @@
 import axios, { isAxiosError } from 'axios'
-import type { ZodType } from 'zod'
 import { prettifyError } from 'zod'
 
 export * as API from './api'
@@ -11,22 +10,36 @@ export const request = axios.create({
   adapter: 'fetch',
 })
 
-function validate(data: unknown, schema: ZodType | undefined) {
-  if (!schema) return
-  const result = schema.safeParse(data)
-  if (!result.success) {
-    globalThis.console.error(prettifyError(result.error))
-  }
-}
-
 request.interceptors.request.use((config) => {
-  validate(config.data, config.requestSchema)
+  if (config.requestSchema) {
+    const result = config.requestSchema.safeParse(config.data)
+
+    if (!result.success) {
+      globalThis.console.error(
+        `[API] Invalid request data for ${String(config.url)}:`,
+        config.data,
+      )
+      globalThis.console.error(prettifyError(result.error))
+    }
+  }
+
   return config
 })
 
 request.interceptors.response.use(
   (value) => {
-    validate(value.data, value.config.responseSchema)
+    if (value.config.responseSchema) {
+      const result = value.config.responseSchema.safeParse(value.data)
+
+      if (!result.success) {
+        globalThis.console.error(
+          `[API] Invalid response data for ${String(value.config.url)}:`,
+          value.data,
+        )
+        globalThis.console.error(prettifyError(result.error))
+      }
+    }
+
     return value
   },
   (error: Error) => {
