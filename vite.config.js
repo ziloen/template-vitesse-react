@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
       IS_BUILD,
       IS_DEV,
       IS_PROD,
-      APP_BUILD_TIME: JSON.stringify(Date.now()),
+      APP_BUILD_TIME: JSON.stringify(new Date().toISOString()),
       APP_BUILD_COMMIT: JSON.stringify(getCommitHash()),
     },
 

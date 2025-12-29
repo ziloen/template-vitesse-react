@@ -90,16 +90,17 @@ function Header() {
   const { i18n } = useI18n()
 
   const timeString = useMemo(() => {
-    const buildTime = Temporal.Instant.fromEpochMilliseconds(
-      APP_BUILD_TIME,
-    ).toLocaleString(i18n.language, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    })
+    const buildTime = Temporal.Instant.from(APP_BUILD_TIME).toLocaleString(
+      i18n.language,
+      {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      },
+    )
 
     const relativeTime = getRelativeString(APP_BUILD_TIME, i18n.language)
 
@@ -116,9 +117,8 @@ function Header() {
   )
 }
 
-function getRelativeString(date: number, language: string) {
-  const dateTime =
-    Temporal.Instant.fromEpochMilliseconds(date).toZonedDateTimeISO('UTC')
+function getRelativeString(date: string, language: string) {
+  const dateTime = Temporal.Instant.from(date).toZonedDateTimeISO('UTC')
   const now = Temporal.Now.zonedDateTimeISO('UTC')
   const diff = dateTime.since(now, {
     largestUnit: 'years',
