@@ -35,16 +35,16 @@ const fallbackLng: Record<
   LiteralUnion<'default', string>,
   [string, ...string[]]
 > = {
-  zh: ['zh-CN'],
-  'zh-SG': ['zh-CN'],
+  zh: ['zh-CN', 'en'],
+  'zh-SG': ['zh-CN', 'en'],
 
   default: ['en'],
 }
 
 // use 'en' as fallback in production
-if (import.meta.env.PROD) {
+if (import.meta.env.DEV) {
   for (const lng in fallbackLng) {
-    fallbackLng[lng]!.push('en')
+    fallbackLng[lng]!.pop()
   }
 
   fallbackLng['default'] = ['en']
