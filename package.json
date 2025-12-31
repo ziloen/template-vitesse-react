@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@base-ui/react": "1.0.0",
-    "@tanstack/react-query": "5.90.12",
+    "@tanstack/react-query": "5.90.16",
     "@wai-ri/core": "0.0.108",
     "axios": "1.13.2",
     "clsx": "2.1.1",
@@ -29,11 +29,11 @@
     "tailwind-merge": "3.4.0",
     "temporal-polyfill": "0.3.0",
     "use-context-selector": "2.0.0",
-    "zod": "4.2.1",
+    "zod": "4.3.2",
     "zustand": "5.0.9"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.421",
+    "@iconify/json": "2.2.423",
     "@prettier/plugin-oxc": "0.1.3",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
@@ -42,7 +42,7 @@
     "@types/node": "24.10.4",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
-    "@typescript/native-preview": "7.0.0-dev.20251226.1",
+    "@typescript/native-preview": "7.0.0-dev.20251231.1",
     "@vitejs/devtools-vite": "0.0.0-alpha.22",
     "@vitejs/plugin-legacy": "8.0.0-beta.0",
     "@vitejs/plugin-react": "5.1.2",

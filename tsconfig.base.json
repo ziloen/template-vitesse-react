@@ -5,8 +5,11 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
+    "moduleDetection": "force",
     "verbatimModuleSyntax": true,
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     // Type checking
     "strict": true,
     "alwaysStrict": true,
