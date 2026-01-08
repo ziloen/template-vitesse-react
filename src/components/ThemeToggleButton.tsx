@@ -52,24 +52,16 @@ function enableTransitions() {
 
 function transitionTheme(fn: () => void, e: MouseEvent) {
   if (enableTransitions()) {
-    const transition = document.startViewTransition!(async () => {
+    const transition = document.startViewTransition(async () => {
       fn()
 
       document.documentElement.style.setProperty('--mouse-x', `${e.x}px`)
       document.documentElement.style.setProperty('--mouse-y', `${e.y}px`)
-
-      await new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve()
-        }, 0)
-      })
     })
 
     transition.ready.then(() => {
       document.documentElement.animate(
-        {
-          '--view-transition-progress': ['0%', '100%'],
-        },
+        { '--percentage-1': ['0%', '100%'] },
         {
           duration: 1_000,
           easing: 'ease-in-out',
